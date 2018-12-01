@@ -6,16 +6,16 @@ defmodule Travenger.AccountTest do
   alias Travenger.Account
   alias Travenger.Account.User
 
-  describe "create_user!/1" do
+  describe "upsert_user/1" do
     test "creates a user if not existing" do
-      {:ok, user} = Account.create_user!(params_for(:user))
+      {:ok, user} = Account.upsert_user(params_for(:user))
 
       assert user.id
     end
 
     test "updates a user if existing" do
       user = insert(:user)
-      {:ok, user} = Account.create_user!(%{email: user.email})
+      {:ok, user} = Account.upsert_user(%{email: user.email})
 
       assert user.id
     end

@@ -8,7 +8,7 @@ defmodule Travenger.Account do
 
   alias Travenger.Account.User
 
-  def create_user!(params) do
+  def upsert_user(params) do
     params
     |> get_user_by()
     |> case do

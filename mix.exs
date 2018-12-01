@@ -27,7 +27,7 @@ defmodule Travenger.Mixfile do
   def application do
     [
       mod: {Travenger.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :ueberauth_facebook]
     ]
   end
 
