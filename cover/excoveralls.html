@@ -393,13 +393,24 @@ function find(y) {
           </li>
         
           <li>
-            <span class='cov terrible'>0</span>
+            <span class='cov none'>0</span>
             <a href='#lib/travenger/account/guardian.ex'>
               
               
                 <span class='dirname'>lib/travenger/account/</span>
               
               <span class='basename'>guardian.ex</span>
+            </a>
+          </li>
+        
+          <li>
+            <span class='cov high'>100</span>
+            <a href='#lib/travenger/account/token.ex'>
+              
+              
+                <span class='dirname'>lib/travenger/account/</span>
+              
+              <span class='basename'>token.ex</span>
             </a>
           </li>
         
@@ -416,6 +427,28 @@ function find(y) {
         
           <li>
             <span class='cov high'>100</span>
+            <a href='#lib/travenger/helpers/utils.ex'>
+              
+              
+                <span class='dirname'>lib/travenger/helpers/</span>
+              
+              <span class='basename'>utils.ex</span>
+            </a>
+          </li>
+        
+          <li>
+            <span class='cov high'>100</span>
+            <a href='#lib/travenger_web/controllers/account_controller.ex'>
+              
+              
+                <span class='dirname'>lib/travenger_web/controllers/</span>
+              
+              <span class='basename'>account_controller.ex</span>
+            </a>
+          </li>
+        
+          <li>
+            <span class='cov high'>100</span>
             <a href='#lib/travenger_web/controllers/page_controller.ex'>
               
               
@@ -426,13 +459,24 @@ function find(y) {
           </li>
         
           <li>
-            <span class='cov medium'>66.7</span>
+            <span class='cov high'>100</span>
             <a href='#lib/travenger_web/router.ex'>
               
               
                 <span class='dirname'>lib/travenger_web/</span>
               
               <span class='basename'>router.ex</span>
+            </a>
+          </li>
+        
+          <li>
+            <span class='cov high'>100</span>
+            <a href='#lib/travenger_web/views/account_view.ex'>
+              
+              
+                <span class='dirname'>lib/travenger_web/views/</span>
+              
+              <span class='basename'>account_view.ex</span>
             </a>
           </li>
         
@@ -472,10 +516,10 @@ function find(y) {
       </div>
 
       <div id='stats' class='high'>
-        <div class='percentage'>86.7</div>
-        <div class='sloc'>15</div>
-        <div class='hits'>26</div>
-        <div class='misses'>2</div>
+        <div class='percentage'>100</div>
+        <div class='sloc'>32</div>
+        <div class='hits'>51</div>
+        <div class='misses'>0</div>
       </div>
       <div id='files'>
         
@@ -577,7 +621,7 @@ function find(y) {
             <div id='stats' class='high'>
               <div class='percentage'>100</div>
               <div class='sloc'>5</div>
-              <div class='hits'>7</div>
+              <div class='hits'>10</div>
               <div class='misses'>0</div>
             </div>
             <table id='source'>
@@ -673,7 +717,7 @@ function find(y) {
                       <tr>
                         <td class='line'>10</td>
                         <td class='hits'></td>
-                        <td class='source'>  def create_user!(params) do</td>
+                        <td class='source'>  def upsert_user(params) do</td>
                       </tr>
                   
                 
@@ -704,7 +748,7 @@ function find(y) {
                   
                       <tr class='hit'>
                         <td class='line'>14</td>
-                        <td class='hits'>1</td>
+                        <td class='hits'>2</td>
                         <td class='source'>      nil -&gt; %User{}</td>
                       </tr>
                     
@@ -736,7 +780,7 @@ function find(y) {
                   
                       <tr class='hit'>
                         <td class='line'>18</td>
-                        <td class='hits'>2</td>
+                        <td class='hits'>3</td>
                         <td class='source'>    |&gt; Repo.insert_or_update()</td>
                       </tr>
                     
@@ -768,7 +812,7 @@ function find(y) {
                   
                       <tr class='hit'>
                         <td class='line'>22</td>
-                        <td class='hits'>2</td>
+                        <td class='hits'>3</td>
                         <td class='source'>  def get_user_by(%{email: email}), do: Repo.get_by(User, email: email)</td>
                       </tr>
                     
@@ -936,11 +980,11 @@ function find(y) {
         
           <div class='file'>
             <h2 id='lib/travenger/account/guardian.ex'>lib/travenger/account/guardian.ex</h1>
-            <div id='stats' class='terrible'>
+            <div id='stats' class='none'>
               <div class='percentage'>0</div>
-              <div class='sloc'>1</div>
+              <div class='sloc'>0</div>
               <div class='hits'>0</div>
-              <div class='misses'>1</div>
+              <div class='misses'>0</div>
             </div>
             <table id='source'>
               <thead>
@@ -1099,23 +1143,23 @@ function find(y) {
                       <tr>
                         <td class='line'>18</td>
                         <td class='hits'></td>
-                        <td class='source'>  def resource_from_claims(%{&quot;auth&quot; =&gt; 1, &quot;sub&quot; =&gt; %{&quot;id&quot; =&gt; id}}) when is_integer(id) do</td>
+                        <td class='source'>  # def resource_from_claims(%{&quot;auth&quot; =&gt; 1, &quot;sub&quot; =&gt; %{&quot;id&quot; =&gt; id}}) when is_integer(id) do</td>
                       </tr>
                   
                 
                   
-                      <tr class='miss'>
+                      <tr>
                         <td class='line'>19</td>
-                        <td class='hits'>0</td>
-                        <td class='source'>    case Account.get_user(id) do</td>
+                        <td class='hits'></td>
+                        <td class='source'>  #   case Account.get_user(id) do</td>
                       </tr>
-                    
+                  
                 
                   
                       <tr>
                         <td class='line'>20</td>
                         <td class='hits'></td>
-                        <td class='source'>      nil -&gt; {:error, :invalid_user}</td>
+                        <td class='source'>  #     nil -&gt; {:error, :invalid_user}</td>
                       </tr>
                   
                 
@@ -1123,7 +1167,7 @@ function find(y) {
                       <tr>
                         <td class='line'>21</td>
                         <td class='hits'></td>
-                        <td class='source'>      user -&gt; {:ok, user}</td>
+                        <td class='source'>  #     user -&gt; {:ok, user}</td>
                       </tr>
                   
                 
@@ -1131,7 +1175,7 @@ function find(y) {
                       <tr>
                         <td class='line'>22</td>
                         <td class='hits'></td>
-                        <td class='source'>    end</td>
+                        <td class='source'>  #   end</td>
                       </tr>
                   
                 
@@ -1139,7 +1183,7 @@ function find(y) {
                       <tr>
                         <td class='line'>23</td>
                         <td class='hits'></td>
-                        <td class='source'>  end</td>
+                        <td class='source'>  # end</td>
                       </tr>
                   
                 
@@ -1155,7 +1199,7 @@ function find(y) {
                       <tr>
                         <td class='line'>25</td>
                         <td class='hits'></td>
-                        <td class='source'>  def resource_from_claims(%{&quot;sub&quot; =&gt; sub}), do: {:ok, sub}</td>
+                        <td class='source'>  # def resource_from_claims(%{&quot;sub&quot; =&gt; sub}), do: {:ok, sub}</td>
                       </tr>
                   
                 
@@ -1172,11 +1216,264 @@ function find(y) {
           </div>
         
           <div class='file'>
+            <h2 id='lib/travenger/account/token.ex'>lib/travenger/account/token.ex</h1>
+            <div id='stats' class='high'>
+              <div class='percentage'>100</div>
+              <div class='sloc'>2</div>
+              <div class='hits'>2</div>
+              <div class='misses'>0</div>
+            </div>
+            <table id='source'>
+              <thead>
+                <tr>
+                  <th>Line</th>
+                  <th>Hits</th>
+                  <th>Source</th>
+                </tr>
+              <tbody>
+                
+                  
+                      <tr>
+                        <td class='line'>0</td>
+                        <td class='hits'></td>
+                        <td class='source'>defmodule Travenger.Account.Token do</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>1</td>
+                        <td class='hits'></td>
+                        <td class='source'>  @moduledoc &quot;&quot;&quot;</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>2</td>
+                        <td class='hits'></td>
+                        <td class='source'>  Functions for generating and decoding tokens</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>3</td>
+                        <td class='hits'></td>
+                        <td class='source'>  &quot;&quot;&quot;</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>4</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>5</td>
+                        <td class='hits'></td>
+                        <td class='source'>  import Travenger.Account.Guardian</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>6</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>7</td>
+                        <td class='hits'></td>
+                        <td class='source'>  alias Travenger.Account.User</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>8</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>9</td>
+                        <td class='hits'></td>
+                        <td class='source'>  # token&#39;s default time-to-live</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>10</td>
+                        <td class='hits'></td>
+                        <td class='source'>  @ttl {30, :days}</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>11</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>12</td>
+                        <td class='hits'></td>
+                        <td class='source'>  @doc &quot;&quot;&quot;</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>13</td>
+                        <td class='hits'></td>
+                        <td class='source'>  Generates a User authorization token</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>14</td>
+                        <td class='hits'></td>
+                        <td class='source'>  &quot;&quot;&quot;</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>15</td>
+                        <td class='hits'></td>
+                        <td class='source'>  def generate_auth_token(%User{} = user) do</td>
+                      </tr>
+                  
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>16</td>
+                        <td class='hits'>1</td>
+                        <td class='source'>    encode_resource(user, %{auth: 1})</td>
+                      </tr>
+                    
+                
+                  
+                      <tr>
+                        <td class='line'>17</td>
+                        <td class='hits'></td>
+                        <td class='source'>  end</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>18</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>19</td>
+                        <td class='hits'></td>
+                        <td class='source'>  # Private Functions</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>20</td>
+                        <td class='hits'></td>
+                        <td class='source'>  defp encode_resource(resource, type, ttl \\ @ttl) do</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>21</td>
+                        <td class='hits'></td>
+                        <td class='source'>    resource</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>22</td>
+                        <td class='hits'></td>
+                        <td class='source'>    |&gt; encode_and_sign(type, ttl: ttl)</td>
+                      </tr>
+                  
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>23</td>
+                        <td class='hits'>1</td>
+                        <td class='source'>    |&gt; encode_resource()</td>
+                      </tr>
+                    
+                
+                  
+                      <tr>
+                        <td class='line'>24</td>
+                        <td class='hits'></td>
+                        <td class='source'>  end</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>25</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>26</td>
+                        <td class='hits'></td>
+                        <td class='source'>  defp encode_resource({:ok, token, _claims}), do: {:ok, token}</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>27</td>
+                        <td class='hits'></td>
+                        <td class='source'>  defp encode_resource(_), do: {:error, &quot;Error encoding resource&quot;}</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>28</td>
+                        <td class='hits'></td>
+                        <td class='source'>end</td>
+                      </tr>
+                  
+                
+              </tbody>
+            </table>
+          </div>
+        
+          <div class='file'>
             <h2 id='lib/travenger/account/user.ex'>lib/travenger/account/user.ex</h1>
             <div id='stats' class='high'>
               <div class='percentage'>100</div>
               <div class='sloc'>2</div>
-              <div class='hits'>8</div>
+              <div class='hits'>10</div>
               <div class='misses'>0</div>
             </div>
             <table id='source'>
@@ -1247,7 +1544,7 @@ function find(y) {
                   
                       <tr class='hit'>
                         <td class='line'>7</td>
-                        <td class='hits'>6</td>
+                        <td class='hits'>7</td>
                         <td class='source'>  schema &quot;users&quot; do</td>
                       </tr>
                     
@@ -1327,7 +1624,7 @@ function find(y) {
                   
                       <tr class='hit'>
                         <td class='line'>17</td>
-                        <td class='hits'>2</td>
+                        <td class='hits'>3</td>
                         <td class='source'>    |&gt; validate_required([:email])</td>
                       </tr>
                     
@@ -1343,6 +1640,544 @@ function find(y) {
                   
                       <tr>
                         <td class='line'>19</td>
+                        <td class='hits'></td>
+                        <td class='source'>end</td>
+                      </tr>
+                  
+                
+              </tbody>
+            </table>
+          </div>
+        
+          <div class='file'>
+            <h2 id='lib/travenger/helpers/utils.ex'>lib/travenger/helpers/utils.ex</h1>
+            <div id='stats' class='high'>
+              <div class='percentage'>100</div>
+              <div class='sloc'>2</div>
+              <div class='hits'>2</div>
+              <div class='misses'>0</div>
+            </div>
+            <table id='source'>
+              <thead>
+                <tr>
+                  <th>Line</th>
+                  <th>Hits</th>
+                  <th>Source</th>
+                </tr>
+              <tbody>
+                
+                  
+                      <tr>
+                        <td class='line'>0</td>
+                        <td class='hits'></td>
+                        <td class='source'>defmodule Travenger.Helpers.Utils do</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>1</td>
+                        <td class='hits'></td>
+                        <td class='source'>  @moduledoc &quot;&quot;&quot;</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>2</td>
+                        <td class='hits'></td>
+                        <td class='source'>  Generic helper utility functions</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>3</td>
+                        <td class='hits'></td>
+                        <td class='source'>  &quot;&quot;&quot;</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>4</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>5</td>
+                        <td class='hits'></td>
+                        <td class='source'>  @doc &quot;&quot;&quot;</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>6</td>
+                        <td class='hits'></td>
+                        <td class='source'>  Converts map string keys to atom keys</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>7</td>
+                        <td class='hits'></td>
+                        <td class='source'>  &quot;&quot;&quot;</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>8</td>
+                        <td class='hits'></td>
+                        <td class='source'>  def string_keys_to_atom(map) do</td>
+                      </tr>
+                  
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>9</td>
+                        <td class='hits'>1</td>
+                        <td class='source'>    for {key, val} &lt;- map, into: %{} do</td>
+                      </tr>
+                    
+                
+                  
+                      <tr>
+                        <td class='line'>10</td>
+                        <td class='hits'></td>
+                        <td class='source'>      {to_atom(key), val}</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>11</td>
+                        <td class='hits'></td>
+                        <td class='source'>    end</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>12</td>
+                        <td class='hits'></td>
+                        <td class='source'>  end</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>13</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>14</td>
+                        <td class='hits'></td>
+                        <td class='source'>  @doc &quot;&quot;&quot;</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>15</td>
+                        <td class='hits'></td>
+                        <td class='source'>  Converts string to atom</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>16</td>
+                        <td class='hits'></td>
+                        <td class='source'>  &quot;&quot;&quot;</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>17</td>
+                        <td class='hits'></td>
+                        <td class='source'>  def to_atom(string) when is_binary(string) do</td>
+                      </tr>
+                  
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>18</td>
+                        <td class='hits'>1</td>
+                        <td class='source'>    String.to_atom(string)</td>
+                      </tr>
+                    
+                
+                  
+                      <tr>
+                        <td class='line'>19</td>
+                        <td class='hits'></td>
+                        <td class='source'>  end</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>20</td>
+                        <td class='hits'></td>
+                        <td class='source'>end</td>
+                      </tr>
+                  
+                
+              </tbody>
+            </table>
+          </div>
+        
+          <div class='file'>
+            <h2 id='lib/travenger_web/controllers/account_controller.ex'>lib/travenger_web/controllers/account_controller.ex</h1>
+            <div id='stats' class='high'>
+              <div class='percentage'>100</div>
+              <div class='sloc'>11</div>
+              <div class='hits'>11</div>
+              <div class='misses'>0</div>
+            </div>
+            <table id='source'>
+              <thead>
+                <tr>
+                  <th>Line</th>
+                  <th>Hits</th>
+                  <th>Source</th>
+                </tr>
+              <tbody>
+                
+                  
+                      <tr>
+                        <td class='line'>0</td>
+                        <td class='hits'></td>
+                        <td class='source'>defmodule TravengerWeb.AccountController do</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>1</td>
+                        <td class='hits'></td>
+                        <td class='source'>  @moduledoc &quot;&quot;&quot;</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>2</td>
+                        <td class='hits'></td>
+                        <td class='source'>  Account Controller</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>3</td>
+                        <td class='hits'></td>
+                        <td class='source'>  &quot;&quot;&quot;</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>4</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>5</td>
+                        <td class='hits'></td>
+                        <td class='source'>  use TravengerWeb, :controller</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>6</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>7</td>
+                        <td class='hits'></td>
+                        <td class='source'>  import Travenger.Helpers.Utils</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>8</td>
+                        <td class='hits'></td>
+                        <td class='source'>  import Travenger.Account.Token</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>9</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>10</td>
+                        <td class='hits'></td>
+                        <td class='source'>  alias Travenger.Account</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>11</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>12</td>
+                        <td class='hits'></td>
+                        <td class='source'>  plug(Ueberauth)</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>13</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>14</td>
+                        <td class='hits'></td>
+                        <td class='source'>  defp build_auth_params(auth) do</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>15</td>
+                        <td class='hits'></td>
+                        <td class='source'>    Map.new()</td>
+                      </tr>
+                  
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>16</td>
+                        <td class='hits'>1</td>
+                        <td class='source'>    |&gt; Map.put(:token, auth.credentials.token)</td>
+                      </tr>
+                    
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>17</td>
+                        <td class='hits'>1</td>
+                        <td class='source'>    |&gt; Map.put(:email, auth.info.email)</td>
+                      </tr>
+                    
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>18</td>
+                        <td class='hits'>1</td>
+                        <td class='source'>    |&gt; Map.put(:image_url, auth.info.image)</td>
+                      </tr>
+                    
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>19</td>
+                        <td class='hits'>1</td>
+                        <td class='source'>    |&gt; Map.put(:name, auth.info.name)</td>
+                      </tr>
+                    
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>20</td>
+                        <td class='hits'>1</td>
+                        <td class='source'>    |&gt; Map.put(:first_name, auth.info.first_name)</td>
+                      </tr>
+                    
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>21</td>
+                        <td class='hits'>1</td>
+                        <td class='source'>    |&gt; Map.put(:last_name, auth.info.last_name)</td>
+                      </tr>
+                    
+                
+                  
+                      <tr>
+                        <td class='line'>22</td>
+                        <td class='hits'></td>
+                        <td class='source'>  end</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>23</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>24</td>
+                        <td class='hits'></td>
+                        <td class='source'>  def callback(%{assigns: %{ueberauth_auth: auth}} = conn, params) do</td>
+                      </tr>
+                  
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>25</td>
+                        <td class='hits'>1</td>
+                        <td class='source'>    params =</td>
+                      </tr>
+                    
+                
+                  
+                      <tr>
+                        <td class='line'>26</td>
+                        <td class='hits'></td>
+                        <td class='source'>      params</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>27</td>
+                        <td class='hits'></td>
+                        <td class='source'>      |&gt; string_keys_to_atom()</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>28</td>
+                        <td class='hits'></td>
+                        <td class='source'>      |&gt; Map.merge(build_auth_params(auth))</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>29</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>30</td>
+                        <td class='hits'>1</td>
+                        <td class='source'>    authenticate_or_register(conn, params)</td>
+                      </tr>
+                    
+                
+                  
+                      <tr>
+                        <td class='line'>31</td>
+                        <td class='hits'></td>
+                        <td class='source'>  end</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>32</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>33</td>
+                        <td class='hits'></td>
+                        <td class='source'>  def authenticate_or_register(conn, params) do</td>
+                      </tr>
+                  
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>34</td>
+                        <td class='hits'>1</td>
+                        <td class='source'>    with {:ok, user} &lt;- Account.upsert_user(params),</td>
+                      </tr>
+                    
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>35</td>
+                        <td class='hits'>1</td>
+                        <td class='source'>         {:ok, token} &lt;- generate_auth_token(user) do</td>
+                      </tr>
+                    
+                
+                  
+                      <tr>
+                        <td class='line'>36</td>
+                        <td class='hits'></td>
+                        <td class='source'>      conn</td>
+                      </tr>
+                  
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>37</td>
+                        <td class='hits'>1</td>
+                        <td class='source'>      |&gt; render(&quot;token.json&quot;, token: token)</td>
+                      </tr>
+                    
+                
+                  
+                      <tr>
+                        <td class='line'>38</td>
+                        <td class='hits'></td>
+                        <td class='source'>    end</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>39</td>
+                        <td class='hits'></td>
+                        <td class='source'>  end</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>40</td>
                         <td class='hits'></td>
                         <td class='source'>end</td>
                       </tr>
@@ -1431,11 +2266,11 @@ function find(y) {
         
           <div class='file'>
             <h2 id='lib/travenger_web/router.ex'>lib/travenger_web/router.ex</h1>
-            <div id='stats' class='medium'>
-              <div class='percentage'>66.7</div>
-              <div class='sloc'>3</div>
-              <div class='hits'>2</div>
-              <div class='misses'>1</div>
+            <div id='stats' class='high'>
+              <div class='percentage'>100</div>
+              <div class='sloc'>5</div>
+              <div class='hits'>6</div>
+              <div class='misses'>0</div>
             </div>
             <table id='source'>
               <thead>
@@ -1482,7 +2317,7 @@ function find(y) {
                       <tr>
                         <td class='line'>4</td>
                         <td class='hits'></td>
-                        <td class='source'>    plug :accepts, [&quot;html&quot;]</td>
+                        <td class='source'>    plug(:accepts, [&quot;html&quot;])</td>
                       </tr>
                   
                 
@@ -1490,7 +2325,7 @@ function find(y) {
                       <tr>
                         <td class='line'>5</td>
                         <td class='hits'></td>
-                        <td class='source'>    plug :fetch_session</td>
+                        <td class='source'>    plug(:fetch_session)</td>
                       </tr>
                   
                 
@@ -1498,7 +2333,7 @@ function find(y) {
                       <tr>
                         <td class='line'>6</td>
                         <td class='hits'></td>
-                        <td class='source'>    plug :fetch_flash</td>
+                        <td class='source'>    plug(:fetch_flash)</td>
                       </tr>
                   
                 
@@ -1506,7 +2341,7 @@ function find(y) {
                       <tr>
                         <td class='line'>7</td>
                         <td class='hits'></td>
-                        <td class='source'>    plug :protect_from_forgery</td>
+                        <td class='source'>    plug(:protect_from_forgery)</td>
                       </tr>
                   
                 
@@ -1514,7 +2349,7 @@ function find(y) {
                       <tr>
                         <td class='line'>8</td>
                         <td class='hits'></td>
-                        <td class='source'>    plug :put_secure_browser_headers</td>
+                        <td class='source'>    plug(:put_secure_browser_headers)</td>
                       </tr>
                   
                 
@@ -1535,9 +2370,9 @@ function find(y) {
                   
                 
                   
-                      <tr class='miss'>
+                      <tr class='hit'>
                         <td class='line'>11</td>
-                        <td class='hits'>0</td>
+                        <td class='hits'>2</td>
                         <td class='source'>  pipeline :api do</td>
                       </tr>
                     
@@ -1546,7 +2381,7 @@ function find(y) {
                       <tr>
                         <td class='line'>12</td>
                         <td class='hits'></td>
-                        <td class='source'>    plug :accepts, [&quot;json&quot;]</td>
+                        <td class='source'>    plug(:accepts, [&quot;json&quot;])</td>
                       </tr>
                   
                 
@@ -1578,7 +2413,7 @@ function find(y) {
                       <tr>
                         <td class='line'>16</td>
                         <td class='hits'></td>
-                        <td class='source'>    pipe_through :browser # Use the default browser stack</td>
+                        <td class='source'>    # Use the default browser stack</td>
                       </tr>
                   
                 
@@ -1586,21 +2421,29 @@ function find(y) {
                       <tr>
                         <td class='line'>17</td>
                         <td class='hits'></td>
+                        <td class='source'>    pipe_through(:browser)</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>18</td>
+                        <td class='hits'></td>
                         <td class='source'></td>
                       </tr>
                   
                 
                   
                       <tr class='hit'>
-                        <td class='line'>18</td>
+                        <td class='line'>19</td>
                         <td class='hits'>1</td>
-                        <td class='source'>    get &quot;/&quot;, PageController, :index</td>
+                        <td class='source'>    get(&quot;/&quot;, PageController, :index)</td>
                       </tr>
                     
                 
                   
                       <tr>
-                        <td class='line'>19</td>
+                        <td class='line'>20</td>
                         <td class='hits'></td>
                         <td class='source'>  end</td>
                       </tr>
@@ -1608,7 +2451,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>20</td>
+                        <td class='line'>21</td>
                         <td class='hits'></td>
                         <td class='source'></td>
                       </tr>
@@ -1616,7 +2459,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>21</td>
+                        <td class='line'>22</td>
                         <td class='hits'></td>
                         <td class='source'>  # Other scopes may use custom stacks.</td>
                       </tr>
@@ -1624,7 +2467,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>22</td>
+                        <td class='line'>23</td>
                         <td class='hits'></td>
                         <td class='source'>  # scope &quot;/api&quot;, TravengerWeb do</td>
                       </tr>
@@ -1632,7 +2475,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>23</td>
+                        <td class='line'>24</td>
                         <td class='hits'></td>
                         <td class='source'>  #   pipe_through :api</td>
                       </tr>
@@ -1640,7 +2483,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>24</td>
+                        <td class='line'>25</td>
                         <td class='hits'></td>
                         <td class='source'>  # end</td>
                       </tr>
@@ -1648,7 +2491,164 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>25</td>
+                        <td class='line'>26</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>27</td>
+                        <td class='hits'></td>
+                        <td class='source'>  scope &quot;/auth&quot;, TravengerWeb do</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>28</td>
+                        <td class='hits'></td>
+                        <td class='source'>    pipe_through(:api)</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>29</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>30</td>
+                        <td class='hits'>1</td>
+                        <td class='source'>    get(&quot;/:provider&quot;, AccountController, :request)</td>
+                      </tr>
+                    
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>31</td>
+                        <td class='hits'>1</td>
+                        <td class='source'>    get(&quot;/:provider/callback&quot;, AccountController, :callback)</td>
+                      </tr>
+                    
+                
+                  
+                      <tr>
+                        <td class='line'>32</td>
+                        <td class='hits'></td>
+                        <td class='source'>  end</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>33</td>
+                        <td class='hits'></td>
+                        <td class='source'>end</td>
+                      </tr>
+                  
+                
+              </tbody>
+            </table>
+          </div>
+        
+          <div class='file'>
+            <h2 id='lib/travenger_web/views/account_view.ex'>lib/travenger_web/views/account_view.ex</h1>
+            <div id='stats' class='high'>
+              <div class='percentage'>100</div>
+              <div class='sloc'>1</div>
+              <div class='hits'>1</div>
+              <div class='misses'>0</div>
+            </div>
+            <table id='source'>
+              <thead>
+                <tr>
+                  <th>Line</th>
+                  <th>Hits</th>
+                  <th>Source</th>
+                </tr>
+              <tbody>
+                
+                  
+                      <tr>
+                        <td class='line'>0</td>
+                        <td class='hits'></td>
+                        <td class='source'>defmodule TravengerWeb.AccountView do</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>1</td>
+                        <td class='hits'></td>
+                        <td class='source'>  use TravengerWeb, :view</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>2</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>3</td>
+                        <td class='hits'></td>
+                        <td class='source'>  alias __MODULE__</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>4</td>
+                        <td class='hits'></td>
+                        <td class='source'>  alias Scrivener.Page</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>5</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>6</td>
+                        <td class='hits'></td>
+                        <td class='source'>  def render(&quot;token.json&quot;, %{token: token}) do</td>
+                      </tr>
+                  
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>7</td>
+                        <td class='hits'>1</td>
+                        <td class='source'>    %{data: %{token: token}}</td>
+                      </tr>
+                    
+                
+                  
+                      <tr>
+                        <td class='line'>8</td>
+                        <td class='hits'></td>
+                        <td class='source'>  end</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>9</td>
                         <td class='hits'></td>
                         <td class='source'>end</td>
                       </tr>

@@ -15,13 +15,4 @@ defmodule Travenger.Account.Guardian do
   def subject_for_token(%User{} = user, %{"auth" => 1}) do
     {:ok, Map.take(user, @auth_token_attrs)}
   end
-
-  def resource_from_claims(%{"auth" => 1, "sub" => %{"id" => id}}) when is_integer(id) do
-    case Account.get_user(id) do
-      nil -> {:error, :invalid_user}
-      user -> {:ok, user}
-    end
-  end
-
-  def resource_from_claims(%{"sub" => sub}), do: {:ok, sub}
 end
