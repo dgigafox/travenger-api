@@ -14,7 +14,6 @@ defmodule TravengerWeb.AccountController do
 
   defp build_auth_params(auth) do
     Map.new()
-    |> Map.put(:token, auth.credentials.token)
     |> Map.put(:email, auth.info.email)
     |> Map.put(:image_url, auth.info.image)
     |> Map.put(:name, auth.info.name)

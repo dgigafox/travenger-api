@@ -11,6 +11,8 @@ defmodule Travenger.AccountTest do
       {:ok, user} = Account.upsert_user(params_for(:user))
 
       assert user.id
+      assert user.email
+      assert user.name
     end
 
     test "updates a user if existing" do
@@ -18,6 +20,8 @@ defmodule Travenger.AccountTest do
       {:ok, user} = Account.upsert_user(%{email: user.email})
 
       assert user.id
+      assert user.email
+      assert user.name
     end
   end
 

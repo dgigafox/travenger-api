@@ -4,7 +4,6 @@ defmodule Travenger.Account.Guardian do
   """
   use Guardian, otp_app: :travenger
 
-  alias Travenger.Account
   alias Travenger.Account.User
 
   @auth_token_attrs ~w(id)a

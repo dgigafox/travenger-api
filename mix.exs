@@ -52,6 +52,7 @@ defmodule Travenger.Mixfile do
       {:httpoison, "~> 0.13"},
       {:scrivener_ecto, "~> 1.0"},
       {:ecto_enum, "~> 1.0"},
+      {:plug_cowboy, "~> 1.0"},
 
       # Authentication
       {:guardian, "~> 1.0"},

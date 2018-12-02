@@ -383,6 +383,17 @@ function find(y) {
         
           <li>
             <span class='cov high'>100</span>
+            <a href='#lib/travenger/account/ecto_enums.ex'>
+              
+              
+                <span class='dirname'>lib/travenger/account/</span>
+              
+              <span class='basename'>ecto_enums.ex</span>
+            </a>
+          </li>
+        
+          <li>
+            <span class='cov high'>100</span>
             <a href='#lib/travenger/account/factory.ex'>
               
               
@@ -518,7 +529,7 @@ function find(y) {
       <div id='stats' class='high'>
         <div class='percentage'>100</div>
         <div class='sloc'>32</div>
-        <div class='hits'>51</div>
+        <div class='hits'>59</div>
         <div class='misses'>0</div>
       </div>
       <div id='files'>
@@ -830,11 +841,88 @@ function find(y) {
           </div>
         
           <div class='file'>
+            <h2 id='lib/travenger/account/ecto_enums.ex'>lib/travenger/account/ecto_enums.ex</h1>
+            <div id='stats' class='high'>
+              <div class='percentage'>100</div>
+              <div class='sloc'>1</div>
+              <div class='hits'>4</div>
+              <div class='misses'>0</div>
+            </div>
+            <table id='source'>
+              <thead>
+                <tr>
+                  <th>Line</th>
+                  <th>Hits</th>
+                  <th>Source</th>
+                </tr>
+              <tbody>
+                
+                  
+                      <tr>
+                        <td class='line'>0</td>
+                        <td class='hits'></td>
+                        <td class='source'>import EctoEnum</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>1</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>2</td>
+                        <td class='hits'>4</td>
+                        <td class='source'>defenum(</td>
+                      </tr>
+                    
+                
+                  
+                      <tr>
+                        <td class='line'>3</td>
+                        <td class='hits'></td>
+                        <td class='source'>  GenderTypeEnum,</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>4</td>
+                        <td class='hits'></td>
+                        <td class='source'>  male: 0,</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>5</td>
+                        <td class='hits'></td>
+                        <td class='source'>  female: 1</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>6</td>
+                        <td class='hits'></td>
+                        <td class='source'>)</td>
+                      </tr>
+                  
+                
+              </tbody>
+            </table>
+          </div>
+        
+          <div class='file'>
             <h2 id='lib/travenger/account/factory.ex'>lib/travenger/account/factory.ex</h1>
             <div id='stats' class='high'>
               <div class='percentage'>100</div>
               <div class='sloc'>2</div>
-              <div class='hits'>6</div>
+              <div class='hits'>8</div>
               <div class='misses'>0</div>
             </div>
             <table id='source'>
@@ -921,7 +1009,7 @@ function find(y) {
                   
                       <tr class='hit'>
                         <td class='line'>9</td>
-                        <td class='hits'>3</td>
+                        <td class='hits'>4</td>
                         <td class='source'>    email = sequence(:email, &amp;&quot;email-#{&amp;1}@example.com&quot;)</td>
                       </tr>
                     
@@ -937,7 +1025,7 @@ function find(y) {
                   
                       <tr class='hit'>
                         <td class='line'>11</td>
-                        <td class='hits'>3</td>
+                        <td class='hits'>4</td>
                         <td class='source'>    %User{</td>
                       </tr>
                     
@@ -946,7 +1034,7 @@ function find(y) {
                       <tr>
                         <td class='line'>12</td>
                         <td class='hits'></td>
-                        <td class='source'>      email: email</td>
+                        <td class='source'>      email: email,</td>
                       </tr>
                   
                 
@@ -954,7 +1042,7 @@ function find(y) {
                       <tr>
                         <td class='line'>13</td>
                         <td class='hits'></td>
-                        <td class='source'>    }</td>
+                        <td class='source'>      name: &quot;Darren Gegantino&quot;,</td>
                       </tr>
                   
                 
@@ -962,13 +1050,61 @@ function find(y) {
                       <tr>
                         <td class='line'>14</td>
                         <td class='hits'></td>
-                        <td class='source'>  end</td>
+                        <td class='source'>      image_url: &quot;http://graph.facebook.com/10216277902323229/picture?type=square&quot;,</td>
                       </tr>
                   
                 
                   
                       <tr>
                         <td class='line'>15</td>
+                        <td class='hits'></td>
+                        <td class='source'>      first_name: &quot;Darren&quot;,</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>16</td>
+                        <td class='hits'></td>
+                        <td class='source'>      last_name: &quot;Gegantino&quot;,</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>17</td>
+                        <td class='hits'></td>
+                        <td class='source'>      gender: &quot;male&quot;,</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>18</td>
+                        <td class='hits'></td>
+                        <td class='source'>      provider: &quot;facebook&quot;</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>19</td>
+                        <td class='hits'></td>
+                        <td class='source'>    }</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>20</td>
+                        <td class='hits'></td>
+                        <td class='source'>  end</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>21</td>
                         <td class='hits'></td>
                         <td class='source'>end</td>
                       </tr>
@@ -1047,7 +1183,7 @@ function find(y) {
                       <tr>
                         <td class='line'>6</td>
                         <td class='hits'></td>
-                        <td class='source'>  alias Travenger.Account</td>
+                        <td class='source'>  alias Travenger.Account.User</td>
                       </tr>
                   
                 
@@ -1055,7 +1191,7 @@ function find(y) {
                       <tr>
                         <td class='line'>7</td>
                         <td class='hits'></td>
-                        <td class='source'>  alias Travenger.Account.User</td>
+                        <td class='source'></td>
                       </tr>
                   
                 
@@ -1063,7 +1199,7 @@ function find(y) {
                       <tr>
                         <td class='line'>8</td>
                         <td class='hits'></td>
-                        <td class='source'></td>
+                        <td class='source'>  @auth_token_attrs ~w(id)a</td>
                       </tr>
                   
                 
@@ -1071,7 +1207,7 @@ function find(y) {
                       <tr>
                         <td class='line'>9</td>
                         <td class='hits'></td>
-                        <td class='source'>  @auth_token_attrs ~w(id)a</td>
+                        <td class='source'></td>
                       </tr>
                   
                 
@@ -1079,7 +1215,7 @@ function find(y) {
                       <tr>
                         <td class='line'>10</td>
                         <td class='hits'></td>
-                        <td class='source'></td>
+                        <td class='source'>  @doc &quot;&quot;&quot;</td>
                       </tr>
                   
                 
@@ -1087,7 +1223,7 @@ function find(y) {
                       <tr>
                         <td class='line'>11</td>
                         <td class='hits'></td>
-                        <td class='source'>  @doc &quot;&quot;&quot;</td>
+                        <td class='source'>  Generates authorization token for User</td>
                       </tr>
                   
                 
@@ -1095,7 +1231,7 @@ function find(y) {
                       <tr>
                         <td class='line'>12</td>
                         <td class='hits'></td>
-                        <td class='source'>  Generates authorization token for User</td>
+                        <td class='source'>  &quot;&quot;&quot;</td>
                       </tr>
                   
                 
@@ -1103,7 +1239,7 @@ function find(y) {
                       <tr>
                         <td class='line'>13</td>
                         <td class='hits'></td>
-                        <td class='source'>  &quot;&quot;&quot;</td>
+                        <td class='source'>  def subject_for_token(%User{} = user, %{&quot;auth&quot; =&gt; 1}) do</td>
                       </tr>
                   
                 
@@ -1111,7 +1247,7 @@ function find(y) {
                       <tr>
                         <td class='line'>14</td>
                         <td class='hits'></td>
-                        <td class='source'>  def subject_for_token(%User{} = user, %{&quot;auth&quot; =&gt; 1}) do</td>
+                        <td class='source'>    {:ok, Map.take(user, @auth_token_attrs)}</td>
                       </tr>
                   
                 
@@ -1119,21 +1255,13 @@ function find(y) {
                       <tr>
                         <td class='line'>15</td>
                         <td class='hits'></td>
-                        <td class='source'>    {:ok, Map.take(user, @auth_token_attrs)}</td>
-                      </tr>
-                  
-                
-                  
-                      <tr>
-                        <td class='line'>16</td>
-                        <td class='hits'></td>
                         <td class='source'>  end</td>
                       </tr>
                   
                 
                   
                       <tr>
-                        <td class='line'>17</td>
+                        <td class='line'>16</td>
                         <td class='hits'></td>
                         <td class='source'>end</td>
                       </tr>
@@ -1401,7 +1529,7 @@ function find(y) {
             <div id='stats' class='high'>
               <div class='percentage'>100</div>
               <div class='sloc'>2</div>
-              <div class='hits'>10</div>
+              <div class='hits'>13</div>
               <div class='misses'>0</div>
             </div>
             <table id='source'>
@@ -1470,18 +1598,18 @@ function find(y) {
                   
                 
                   
-                      <tr class='hit'>
+                      <tr>
                         <td class='line'>7</td>
-                        <td class='hits'>7</td>
-                        <td class='source'>  schema &quot;users&quot; do</td>
+                        <td class='hits'></td>
+                        <td class='source'>  @attrs ~w(email name image_url first_name last_name gender)a</td>
                       </tr>
-                    
+                  
                 
                   
                       <tr>
                         <td class='line'>8</td>
                         <td class='hits'></td>
-                        <td class='source'>    field(:email, :string)</td>
+                        <td class='source'>  @required_attrs ~w(email image_url first_name last_name)a</td>
                       </tr>
                   
                 
@@ -1494,18 +1622,18 @@ function find(y) {
                   
                 
                   
-                      <tr>
+                      <tr class='hit'>
                         <td class='line'>10</td>
-                        <td class='hits'></td>
-                        <td class='source'>    timestamps()</td>
+                        <td class='hits'>8</td>
+                        <td class='source'>  schema &quot;users&quot; do</td>
                       </tr>
-                  
+                    
                 
                   
                       <tr>
                         <td class='line'>11</td>
                         <td class='hits'></td>
-                        <td class='source'>  end</td>
+                        <td class='source'>    # provider info</td>
                       </tr>
                   
                 
@@ -1513,7 +1641,7 @@ function find(y) {
                       <tr>
                         <td class='line'>12</td>
                         <td class='hits'></td>
-                        <td class='source'></td>
+                        <td class='source'>    field(:provider, :string)</td>
                       </tr>
                   
                 
@@ -1521,7 +1649,7 @@ function find(y) {
                       <tr>
                         <td class='line'>13</td>
                         <td class='hits'></td>
-                        <td class='source'>  @doc false</td>
+                        <td class='source'></td>
                       </tr>
                   
                 
@@ -1529,7 +1657,7 @@ function find(y) {
                       <tr>
                         <td class='line'>14</td>
                         <td class='hits'></td>
-                        <td class='source'>  def changeset(user, attrs) do</td>
+                        <td class='source'>    # user info</td>
                       </tr>
                   
                 
@@ -1537,7 +1665,7 @@ function find(y) {
                       <tr>
                         <td class='line'>15</td>
                         <td class='hits'></td>
-                        <td class='source'>    user</td>
+                        <td class='source'>    field(:email, :string)</td>
                       </tr>
                   
                 
@@ -1545,21 +1673,61 @@ function find(y) {
                       <tr>
                         <td class='line'>16</td>
                         <td class='hits'></td>
-                        <td class='source'>    |&gt; cast(attrs, [:email])</td>
+                        <td class='source'>    field(:name, :string)</td>
                       </tr>
                   
                 
                   
-                      <tr class='hit'>
+                      <tr>
                         <td class='line'>17</td>
-                        <td class='hits'>3</td>
-                        <td class='source'>    |&gt; validate_required([:email])</td>
+                        <td class='hits'></td>
+                        <td class='source'>    field(:image_url, :string)</td>
                       </tr>
-                    
+                  
                 
                   
                       <tr>
                         <td class='line'>18</td>
+                        <td class='hits'></td>
+                        <td class='source'>    field(:first_name, :string)</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>19</td>
+                        <td class='hits'></td>
+                        <td class='source'>    field(:last_name, :string)</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>20</td>
+                        <td class='hits'></td>
+                        <td class='source'>    field(:gender, GenderTypeEnum)</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>21</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>22</td>
+                        <td class='hits'></td>
+                        <td class='source'>    timestamps()</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>23</td>
                         <td class='hits'></td>
                         <td class='source'>  end</td>
                       </tr>
@@ -1567,7 +1735,63 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>19</td>
+                        <td class='line'>24</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>25</td>
+                        <td class='hits'></td>
+                        <td class='source'>  @doc false</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>26</td>
+                        <td class='hits'></td>
+                        <td class='source'>  def changeset(user, attrs) do</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>27</td>
+                        <td class='hits'></td>
+                        <td class='source'>    user</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>28</td>
+                        <td class='hits'></td>
+                        <td class='source'>    |&gt; cast(attrs, @attrs)</td>
+                      </tr>
+                  
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>29</td>
+                        <td class='hits'>5</td>
+                        <td class='source'>    |&gt; validate_required(@required_attrs)</td>
+                      </tr>
+                    
+                
+                  
+                      <tr>
+                        <td class='line'>30</td>
+                        <td class='hits'></td>
+                        <td class='source'>  end</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>31</td>
                         <td class='hits'></td>
                         <td class='source'>end</td>
                       </tr>
@@ -1770,8 +1994,8 @@ function find(y) {
             <h2 id='lib/travenger_web/controllers/account_controller.ex'>lib/travenger_web/controllers/account_controller.ex</h1>
             <div id='stats' class='high'>
               <div class='percentage'>100</div>
-              <div class='sloc'>11</div>
-              <div class='hits'>11</div>
+              <div class='sloc'>10</div>
+              <div class='hits'>10</div>
               <div class='misses'>0</div>
             </div>
             <table id='source'>
@@ -1915,7 +2139,7 @@ function find(y) {
                       <tr class='hit'>
                         <td class='line'>16</td>
                         <td class='hits'>1</td>
-                        <td class='source'>    |&gt; Map.put(:token, auth.credentials.token)</td>
+                        <td class='source'>    |&gt; Map.put(:email, auth.info.email)</td>
                       </tr>
                     
                 
@@ -1923,7 +2147,7 @@ function find(y) {
                       <tr class='hit'>
                         <td class='line'>17</td>
                         <td class='hits'>1</td>
-                        <td class='source'>    |&gt; Map.put(:email, auth.info.email)</td>
+                        <td class='source'>    |&gt; Map.put(:image_url, auth.info.image)</td>
                       </tr>
                     
                 
@@ -1931,7 +2155,7 @@ function find(y) {
                       <tr class='hit'>
                         <td class='line'>18</td>
                         <td class='hits'>1</td>
-                        <td class='source'>    |&gt; Map.put(:image_url, auth.info.image)</td>
+                        <td class='source'>    |&gt; Map.put(:name, auth.info.name)</td>
                       </tr>
                     
                 
@@ -1939,7 +2163,7 @@ function find(y) {
                       <tr class='hit'>
                         <td class='line'>19</td>
                         <td class='hits'>1</td>
-                        <td class='source'>    |&gt; Map.put(:name, auth.info.name)</td>
+                        <td class='source'>    |&gt; Map.put(:first_name, auth.info.first_name)</td>
                       </tr>
                     
                 
@@ -1947,23 +2171,23 @@ function find(y) {
                       <tr class='hit'>
                         <td class='line'>20</td>
                         <td class='hits'>1</td>
-                        <td class='source'>    |&gt; Map.put(:first_name, auth.info.first_name)</td>
-                      </tr>
-                    
-                
-                  
-                      <tr class='hit'>
-                        <td class='line'>21</td>
-                        <td class='hits'>1</td>
                         <td class='source'>    |&gt; Map.put(:last_name, auth.info.last_name)</td>
                       </tr>
                     
                 
                   
                       <tr>
-                        <td class='line'>22</td>
+                        <td class='line'>21</td>
                         <td class='hits'></td>
                         <td class='source'>  end</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>22</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
                       </tr>
                   
                 
@@ -1971,21 +2195,13 @@ function find(y) {
                       <tr>
                         <td class='line'>23</td>
                         <td class='hits'></td>
-                        <td class='source'></td>
-                      </tr>
-                  
-                
-                  
-                      <tr>
-                        <td class='line'>24</td>
-                        <td class='hits'></td>
                         <td class='source'>  def callback(%{assigns: %{ueberauth_auth: auth}} = conn, params) do</td>
                       </tr>
                   
                 
                   
                       <tr class='hit'>
-                        <td class='line'>25</td>
+                        <td class='line'>24</td>
                         <td class='hits'>1</td>
                         <td class='source'>    params =</td>
                       </tr>
@@ -1993,7 +2209,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>26</td>
+                        <td class='line'>25</td>
                         <td class='hits'></td>
                         <td class='source'>      params</td>
                       </tr>
@@ -2001,7 +2217,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>27</td>
+                        <td class='line'>26</td>
                         <td class='hits'></td>
                         <td class='source'>      |&gt; string_keys_to_atom()</td>
                       </tr>
@@ -2009,7 +2225,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>28</td>
+                        <td class='line'>27</td>
                         <td class='hits'></td>
                         <td class='source'>      |&gt; Map.merge(build_auth_params(auth))</td>
                       </tr>
@@ -2017,7 +2233,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>29</td>
+                        <td class='line'>28</td>
                         <td class='hits'></td>
                         <td class='source'></td>
                       </tr>
@@ -2025,7 +2241,7 @@ function find(y) {
                 
                   
                       <tr class='hit'>
-                        <td class='line'>30</td>
+                        <td class='line'>29</td>
                         <td class='hits'>1</td>
                         <td class='source'>    authenticate_or_register(conn, params)</td>
                       </tr>
@@ -2033,7 +2249,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>31</td>
+                        <td class='line'>30</td>
                         <td class='hits'></td>
                         <td class='source'>  end</td>
                       </tr>
@@ -2041,7 +2257,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>32</td>
+                        <td class='line'>31</td>
                         <td class='hits'></td>
                         <td class='source'></td>
                       </tr>
@@ -2049,7 +2265,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>33</td>
+                        <td class='line'>32</td>
                         <td class='hits'></td>
                         <td class='source'>  def authenticate_or_register(conn, params) do</td>
                       </tr>
@@ -2057,7 +2273,7 @@ function find(y) {
                 
                   
                       <tr class='hit'>
-                        <td class='line'>34</td>
+                        <td class='line'>33</td>
                         <td class='hits'>1</td>
                         <td class='source'>    with {:ok, user} &lt;- Account.upsert_user(params),</td>
                       </tr>
@@ -2065,7 +2281,7 @@ function find(y) {
                 
                   
                       <tr class='hit'>
-                        <td class='line'>35</td>
+                        <td class='line'>34</td>
                         <td class='hits'>1</td>
                         <td class='source'>         {:ok, token} &lt;- generate_auth_token(user) do</td>
                       </tr>
@@ -2073,7 +2289,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>36</td>
+                        <td class='line'>35</td>
                         <td class='hits'></td>
                         <td class='source'>      conn</td>
                       </tr>
@@ -2081,7 +2297,7 @@ function find(y) {
                 
                   
                       <tr class='hit'>
-                        <td class='line'>37</td>
+                        <td class='line'>36</td>
                         <td class='hits'>1</td>
                         <td class='source'>      |&gt; render(&quot;token.json&quot;, token: token)</td>
                       </tr>
@@ -2089,7 +2305,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>38</td>
+                        <td class='line'>37</td>
                         <td class='hits'></td>
                         <td class='source'>    end</td>
                       </tr>
@@ -2097,7 +2313,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>39</td>
+                        <td class='line'>38</td>
                         <td class='hits'></td>
                         <td class='source'>  end</td>
                       </tr>
@@ -2105,7 +2321,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>40</td>
+                        <td class='line'>39</td>
                         <td class='hits'></td>
                         <td class='source'>end</td>
                       </tr>
@@ -2530,37 +2746,13 @@ function find(y) {
                       <tr>
                         <td class='line'>3</td>
                         <td class='hits'></td>
-                        <td class='source'>  alias __MODULE__</td>
-                      </tr>
-                  
-                
-                  
-                      <tr>
-                        <td class='line'>4</td>
-                        <td class='hits'></td>
-                        <td class='source'>  alias Scrivener.Page</td>
-                      </tr>
-                  
-                
-                  
-                      <tr>
-                        <td class='line'>5</td>
-                        <td class='hits'></td>
-                        <td class='source'></td>
-                      </tr>
-                  
-                
-                  
-                      <tr>
-                        <td class='line'>6</td>
-                        <td class='hits'></td>
                         <td class='source'>  def render(&quot;token.json&quot;, %{token: token}) do</td>
                       </tr>
                   
                 
                   
                       <tr class='hit'>
-                        <td class='line'>7</td>
+                        <td class='line'>4</td>
                         <td class='hits'>1</td>
                         <td class='source'>    %{data: %{token: token}}</td>
                       </tr>
@@ -2568,7 +2760,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>8</td>
+                        <td class='line'>5</td>
                         <td class='hits'></td>
                         <td class='source'>  end</td>
                       </tr>
@@ -2576,7 +2768,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>9</td>
+                        <td class='line'>6</td>
                         <td class='hits'></td>
                         <td class='source'>end</td>
                       </tr>

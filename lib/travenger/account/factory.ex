@@ -10,7 +10,13 @@ defmodule Travenger.Account.Factory do
     email = sequence(:email, &"email-#{&1}@example.com")
 
     %User{
-      email: email
+      email: email,
+      name: "Darren Gegantino",
+      image_url: "http://graph.facebook.com/10216277902323229/picture?type=square",
+      first_name: "Darren",
+      last_name: "Gegantino",
+      gender: "male",
+      provider: "facebook"
     }
   end
 end
