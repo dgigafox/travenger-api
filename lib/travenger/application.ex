@@ -1,9 +1,5 @@
 defmodule Travenger.Application do
-  @moduledoc false
   use Application
-
-  alias Travenger.Repo
-  alias TravengerWeb.Endpoint
 
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
@@ -13,11 +9,10 @@ defmodule Travenger.Application do
     # Define workers and child supervisors to be supervised
     children = [
       # Start the Ecto repository
-      supervisor(Repo, []),
+      supervisor(Travenger.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(Endpoint, [])
-      # Start your own worker by calling:
-      # Travenger.Worker.start_link(arg1, arg2, arg3)
+      supervisor(TravengerWeb.Endpoint, []),
+      # Start your own worker by calling: Travenger.Worker.start_link(arg1, arg2, arg3)
       # worker(Travenger.Worker, [arg1, arg2, arg3]),
     ]
 
@@ -30,7 +25,7 @@ defmodule Travenger.Application do
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   def config_change(changed, _new, removed) do
-    Endpoint.config_change(changed, removed)
+    TravengerWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end

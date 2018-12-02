@@ -15,9 +15,6 @@ defmodule TravengerWeb.ChannelCase do
 
   use ExUnit.CaseTemplate
 
-  alias Ecto.Adapters.SQL.Sandbox
-  alias Travenger.Repo
-
   using do
     quote do
       # Import conveniences for testing with channels
@@ -28,13 +25,13 @@ defmodule TravengerWeb.ChannelCase do
     end
   end
 
+
   setup tags do
-    :ok = Sandbox.checkout(Repo)
-
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Travenger.Repo)
     unless tags[:async] do
-      Sandbox.mode(Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Travenger.Repo, {:shared, self()})
     end
-
     :ok
   end
+
 end

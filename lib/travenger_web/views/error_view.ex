@@ -1,8 +1,6 @@
 defmodule TravengerWeb.ErrorView do
   use TravengerWeb, :view
 
-  alias Phoenix.Controller
-
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.
   # def render("500.html", _assigns) do
@@ -13,6 +11,6 @@ defmodule TravengerWeb.ErrorView do
   # the template name. For example, "404.html" becomes
   # "Not Found".
   def template_not_found(template, _assigns) do
-    Controller.status_message_from_template(template)
+    Phoenix.Controller.status_message_from_template(template)
   end
 end

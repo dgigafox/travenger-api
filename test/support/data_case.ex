@@ -14,9 +14,6 @@ defmodule Travenger.DataCase do
 
   use ExUnit.CaseTemplate
 
-  alias Ecto.Adapters.SQL.Sandbox
-  alias Travenger.Repo
-
   using do
     quote do
       alias Travenger.Repo
@@ -29,10 +26,10 @@ defmodule Travenger.DataCase do
   end
 
   setup tags do
-    :ok = Sandbox.checkout(Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Travenger.Repo)
 
     unless tags[:async] do
-      Sandbox.mode(Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Travenger.Repo, {:shared, self()})
     end
 
     :ok
