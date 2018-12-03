@@ -470,7 +470,7 @@ function find(y) {
           </li>
         
           <li>
-            <span class='cov none'>0</span>
+            <span class='cov high'>100</span>
             <a href='#lib/travenger/travel_group/travel_group.ex'>
               
               
@@ -561,8 +561,8 @@ function find(y) {
 
       <div id='stats' class='high'>
         <div class='percentage'>100</div>
-        <div class='sloc'>36</div>
-        <div class='hits'>65</div>
+        <div class='sloc'>37</div>
+        <div class='hits'>71</div>
         <div class='misses'>0</div>
       </div>
       <div id='files'>
@@ -878,7 +878,7 @@ function find(y) {
             <div id='stats' class='high'>
               <div class='percentage'>100</div>
               <div class='sloc'>1</div>
-              <div class='hits'>4</div>
+              <div class='hits'>5</div>
               <div class='misses'>0</div>
             </div>
             <table id='source'>
@@ -909,7 +909,7 @@ function find(y) {
                   
                       <tr class='hit'>
                         <td class='line'>2</td>
-                        <td class='hits'>4</td>
+                        <td class='hits'>5</td>
                         <td class='source'>defenum(</td>
                       </tr>
                     
@@ -955,7 +955,7 @@ function find(y) {
             <div id='stats' class='high'>
               <div class='percentage'>100</div>
               <div class='sloc'>2</div>
-              <div class='hits'>8</div>
+              <div class='hits'>10</div>
               <div class='misses'>0</div>
             </div>
             <table id='source'>
@@ -1042,7 +1042,7 @@ function find(y) {
                   
                       <tr class='hit'>
                         <td class='line'>9</td>
-                        <td class='hits'>4</td>
+                        <td class='hits'>5</td>
                         <td class='source'>    email = sequence(:email, &amp;&quot;email-#{&amp;1}@example.com&quot;)</td>
                       </tr>
                     
@@ -1058,7 +1058,7 @@ function find(y) {
                   
                       <tr class='hit'>
                         <td class='line'>11</td>
-                        <td class='hits'>4</td>
+                        <td class='hits'>5</td>
                         <td class='source'>    %User{</td>
                       </tr>
                     
@@ -2156,7 +2156,7 @@ function find(y) {
                       <tr>
                         <td class='line'>14</td>
                         <td class='hits'></td>
-                        <td class='source'>      image_url: &quot;https://dummyimage.com/600x400/000/fff.jpg&amp;text=Testing&quot;</td>
+                        <td class='source'>      image_url: &quot;https://dummyimage.com/600x400/000/fff.jpg&amp;text=Testing&quot;,</td>
                       </tr>
                   
                 
@@ -2164,7 +2164,7 @@ function find(y) {
                       <tr>
                         <td class='line'>15</td>
                         <td class='hits'></td>
-                        <td class='source'>    }</td>
+                        <td class='source'>      creator_id: sequence(&quot;&quot;)</td>
                       </tr>
                   
                 
@@ -2172,13 +2172,21 @@ function find(y) {
                       <tr>
                         <td class='line'>16</td>
                         <td class='hits'></td>
-                        <td class='source'>  end</td>
+                        <td class='source'>    }</td>
                       </tr>
                   
                 
                   
                       <tr>
                         <td class='line'>17</td>
+                        <td class='hits'></td>
+                        <td class='source'>  end</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>18</td>
                         <td class='hits'></td>
                         <td class='source'>end</td>
                       </tr>
@@ -2193,7 +2201,7 @@ function find(y) {
             <div id='stats' class='high'>
               <div class='percentage'>100</div>
               <div class='sloc'>2</div>
-              <div class='hits'>4</div>
+              <div class='hits'>6</div>
               <div class='misses'>0</div>
             </div>
             <table id='source'>
@@ -2265,7 +2273,7 @@ function find(y) {
                       <tr>
                         <td class='line'>7</td>
                         <td class='hits'></td>
-                        <td class='source'>  @required_attrs ~w(name image_url)a</td>
+                        <td class='source'>  @required_attrs ~w(name image_url creator_id)a</td>
                       </tr>
                   
                 
@@ -2288,7 +2296,7 @@ function find(y) {
                   
                       <tr class='hit'>
                         <td class='line'>10</td>
-                        <td class='hits'>2</td>
+                        <td class='hits'>3</td>
                         <td class='source'>  schema &quot;groups&quot; do</td>
                       </tr>
                     
@@ -2321,7 +2329,7 @@ function find(y) {
                       <tr>
                         <td class='line'>14</td>
                         <td class='hits'></td>
-                        <td class='source'></td>
+                        <td class='source'>    field(:creator_id, :id)</td>
                       </tr>
                   
                 
@@ -2329,7 +2337,7 @@ function find(y) {
                       <tr>
                         <td class='line'>15</td>
                         <td class='hits'></td>
-                        <td class='source'>    timestamps()</td>
+                        <td class='source'></td>
                       </tr>
                   
                 
@@ -2337,7 +2345,7 @@ function find(y) {
                       <tr>
                         <td class='line'>16</td>
                         <td class='hits'></td>
-                        <td class='source'>  end</td>
+                        <td class='source'>    timestamps()</td>
                       </tr>
                   
                 
@@ -2345,7 +2353,7 @@ function find(y) {
                       <tr>
                         <td class='line'>17</td>
                         <td class='hits'></td>
-                        <td class='source'></td>
+                        <td class='source'>  end</td>
                       </tr>
                   
                 
@@ -2353,7 +2361,7 @@ function find(y) {
                       <tr>
                         <td class='line'>18</td>
                         <td class='hits'></td>
-                        <td class='source'>  @doc false</td>
+                        <td class='source'></td>
                       </tr>
                   
                 
@@ -2361,7 +2369,7 @@ function find(y) {
                       <tr>
                         <td class='line'>19</td>
                         <td class='hits'></td>
-                        <td class='source'>  def changeset(group, attrs) do</td>
+                        <td class='source'>  @doc false</td>
                       </tr>
                   
                 
@@ -2369,7 +2377,7 @@ function find(y) {
                       <tr>
                         <td class='line'>20</td>
                         <td class='hits'></td>
-                        <td class='source'>    group</td>
+                        <td class='source'>  def changeset(group, attrs) do</td>
                       </tr>
                   
                 
@@ -2377,21 +2385,29 @@ function find(y) {
                       <tr>
                         <td class='line'>21</td>
                         <td class='hits'></td>
+                        <td class='source'>    group</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>22</td>
+                        <td class='hits'></td>
                         <td class='source'>    |&gt; cast(attrs, @required_attrs ++ @optional_attrs)</td>
                       </tr>
                   
                 
                   
                       <tr class='hit'>
-                        <td class='line'>22</td>
-                        <td class='hits'>2</td>
+                        <td class='line'>23</td>
+                        <td class='hits'>3</td>
                         <td class='source'>    |&gt; validate_required(@required_attrs)</td>
                       </tr>
                     
                 
                   
                       <tr>
-                        <td class='line'>23</td>
+                        <td class='line'>24</td>
                         <td class='hits'></td>
                         <td class='source'>  end</td>
                       </tr>
@@ -2399,7 +2415,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>24</td>
+                        <td class='line'>25</td>
                         <td class='hits'></td>
                         <td class='source'>end</td>
                       </tr>
@@ -2411,10 +2427,10 @@ function find(y) {
         
           <div class='file'>
             <h2 id='lib/travenger/travel_group/travel_group.ex'>lib/travenger/travel_group/travel_group.ex</h1>
-            <div id='stats' class='none'>
-              <div class='percentage'>0</div>
-              <div class='sloc'>0</div>
-              <div class='hits'>0</div>
+            <div id='stats' class='high'>
+              <div class='percentage'>100</div>
+              <div class='sloc'>1</div>
+              <div class='hits'>1</div>
               <div class='misses'>0</div>
             </div>
             <table id='source'>
@@ -2501,6 +2517,54 @@ function find(y) {
                   
                       <tr>
                         <td class='line'>9</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>10</td>
+                        <td class='hits'></td>
+                        <td class='source'>  def create_group(params) do</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>11</td>
+                        <td class='hits'></td>
+                        <td class='source'>    %Group{}</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>12</td>
+                        <td class='hits'></td>
+                        <td class='source'>    |&gt; Group.changeset(params)</td>
+                      </tr>
+                  
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>13</td>
+                        <td class='hits'>1</td>
+                        <td class='source'>    |&gt; Repo.insert()</td>
+                      </tr>
+                    
+                
+                  
+                      <tr>
+                        <td class='line'>14</td>
+                        <td class='hits'></td>
+                        <td class='source'>  end</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>15</td>
                         <td class='hits'></td>
                         <td class='source'>end</td>
                       </tr>

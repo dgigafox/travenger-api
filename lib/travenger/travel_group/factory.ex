@@ -12,7 +12,8 @@ defmodule Travenger.TravelGroup.Factory do
     %Group{
       name: name,
       description: "This is a sample travel group",
-      image_url: "https://dummyimage.com/600x400/000/fff.jpg&text=Testing"
+      image_url: "https://dummyimage.com/600x400/000/fff.jpg&text=Testing",
+      creator_id: sequence("")
     }
   end
 end

@@ -5,13 +5,14 @@ defmodule Travenger.TravelGroup.Group do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @required_attrs ~w(name image_url)a
+  @required_attrs ~w(name image_url creator_id)a
   @optional_attrs ~w(description)a
 
   schema "groups" do
     field(:description, :string)
     field(:image_url, :string)
     field(:name, :string)
+    field(:creator_id, :id)
 
     timestamps()
   end
