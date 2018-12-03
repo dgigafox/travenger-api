@@ -4,7 +4,7 @@ defmodule Travenger.TravelGroupTest do
   import Travenger.Account.Factory
   alias Travenger.TravelGroup
 
-  def build_user() do
+  def build_user do
     insert(:user)
   end
 
