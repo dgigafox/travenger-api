@@ -13,6 +13,10 @@ defmodule TravengerWeb.Router do
     plug(:accepts, ["json"])
   end
 
+  pipeline :authorize_user do
+    plug(TravengerWeb.UserAuthPipeline)
+  end
+
   scope "/", TravengerWeb do
     # Use the default browser stack
     pipe_through(:browser)
@@ -30,5 +34,16 @@ defmodule TravengerWeb.Router do
 
     get("/:provider", AccountController, :request)
     get("/:provider/callback", AccountController, :callback)
+  end
+
+  scope "/api", TravengerWeb, as: :api do
+    pipe_through(:api)
+
+    scope "/v1", as: :v1 do
+      scope "/groups" do
+        pipe_through(:authorize_user)
+        resources("/", GroupController, only: [:create])
+      end
+    end
   end
 end
