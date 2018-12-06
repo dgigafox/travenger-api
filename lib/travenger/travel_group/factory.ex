@@ -5,6 +5,7 @@ defmodule Travenger.TravelGroup.Factory do
   use ExMachina.Ecto, repo: Travenger.Repo
 
   alias Travenger.TravelGroup.Group
+  alias Travenger.TravelGroup.Membership
 
   def group_factory do
     name = sequence(:email, &"Travel Group #{&1}")
@@ -12,8 +13,14 @@ defmodule Travenger.TravelGroup.Factory do
     %Group{
       name: name,
       description: "This is a sample travel group",
-      image_url: "https://dummyimage.com/600x400/000/fff.jpg&text=Testing",
-      creator_id: sequence("")
+      image_url: "https://dummyimage.com/600x400/000/fff.jpg&text=Testing"
+    }
+  end
+
+  def membership_factory do
+    %Membership{
+      role: :member,
+      group: build(:group)
     }
   end
 end

@@ -1,4 +1,4 @@
-defmodule Travenger.TravelGroup.GrooupTest do
+defmodule Travenger.TravelGroup.GroupTest do
   use ExUnit.Case, async: true
 
   import Travenger.TravelGroup.Factory
@@ -16,8 +16,6 @@ defmodule Travenger.TravelGroup.GrooupTest do
 
       refute ch.valid?
       assert ch.errors[:name]
-      assert ch.errors[:image_url]
-      assert ch.errors[:creator_id]
     end
   end
 end
