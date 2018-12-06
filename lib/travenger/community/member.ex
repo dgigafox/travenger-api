@@ -1,9 +1,12 @@
-defmodule Travenger.TravelGroup.Member do
+defmodule Travenger.Community.Member do
+  @moduledoc """
+  Community member schema
+  """
   use Ecto.Schema
   import Ecto.Changeset
 
   alias Travenger.Account.User
-  alias Travenger.TravelGroup.Membership
+  alias Travenger.Community.Membership
 
   schema "members" do
     belongs_to(:user, User)

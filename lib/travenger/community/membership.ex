@@ -1,10 +1,13 @@
-defmodule Travenger.TravelGroup.Membership do
+defmodule Travenger.Community.Membership do
+  @moduledoc """
+  Membership schema
+  """
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias Travenger.TravelGroup.Group
-  alias Travenger.TravelGroup.Member
-  alias Travenger.TravelGroup.Membership
+  alias Travenger.Community.Group
+  alias Travenger.Community.Member
+  alias Travenger.Community.Membership
 
   @required_attrs ~w(role)a
 

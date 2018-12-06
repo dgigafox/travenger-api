@@ -1,11 +1,11 @@
-defmodule Travenger.TravelGroup.Factory do
+defmodule Travenger.Community.Factory do
   @moduledoc """
   Factory lib for creating records and building schemas
   """
   use ExMachina.Ecto, repo: Travenger.Repo
 
-  alias Travenger.TravelGroup.Group
-  alias Travenger.TravelGroup.Membership
+  alias Travenger.Community.Group
+  alias Travenger.Community.Membership
 
   def group_factory do
     name = sequence(:email, &"Travel Group #{&1}")

@@ -1,15 +1,15 @@
-defmodule Travenger.TravelGroup do
+defmodule Travenger.Community do
   @moduledoc """
-  The TravelGroup context.
+  The Community context.
   """
 
   import Ecto.Query, warn: false
   alias Travenger.Repo
 
   alias Travenger.Account.User
-  alias Travenger.TravelGroup.Group
-  alias Travenger.TravelGroup.Member
-  alias Travenger.TravelGroup.Membership
+  alias Travenger.Community.Group
+  alias Travenger.Community.Member
+  alias Travenger.Community.Membership
 
   def build_member_from_user(%User{} = user) do
     %Member{

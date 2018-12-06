@@ -1,14 +1,14 @@
-defmodule Travenger.TravelGroupTest do
+defmodule Travenger.CommunityTest do
   use Travenger.DataCase
 
-  import Travenger.TravelGroup.Factory
+  import Travenger.Community.Factory
 
   alias Travenger.Account.Factory, as: Account
-  alias Travenger.TravelGroup
+  alias Travenger.Community
 
   def build_member_from_user do
     Account.insert(:user)
-    |> TravelGroup.build_member_from_user()
+    |> Community.build_member_from_user()
     |> elem(1)
   end
 
@@ -26,7 +26,7 @@ defmodule Travenger.TravelGroupTest do
         image_url: "https://dummyimage.com/600x400/000/fff.jpg&text=Testing"
       }
 
-      {:ok, group} = TravelGroup.create_group(member, params)
+      {:ok, group} = Community.create_group(member, params)
 
       assert group.id
       assert group.creator.id == member.id
@@ -36,7 +36,7 @@ defmodule Travenger.TravelGroupTest do
   describe "add_admin" do
     test "returns a membership", %{member: member} do
       group = insert(:group)
-      {:ok, membership} = TravelGroup.add_admin(member, group)
+      {:ok, membership} = Community.add_admin(member, group)
 
       assert membership.id
       assert membership.group.id == group.id

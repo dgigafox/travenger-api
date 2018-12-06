@@ -1,8 +1,8 @@
-defmodule Travenger.TravelGroup.MembershipTest do
+defmodule Travenger.Community.MembershipTest do
   use ExUnit.Case, async: true
 
-  import Travenger.TravelGroup.Factory
-  alias Travenger.TravelGroup.Membership
+  import Travenger.Community.Factory
+  alias Travenger.Community.Membership
 
   describe "changeset/2" do
     test "returns a valid changeset" do

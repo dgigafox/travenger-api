@@ -1,11 +1,11 @@
-defmodule Travenger.TravelGroup.Group do
+defmodule Travenger.Community.Group do
   @moduledoc """
   Group schema
   """
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias Travenger.TravelGroup.Member
+  alias Travenger.Community.Member
 
   @required_attrs ~w(name)a
   @optional_attrs ~w(description image_url)a

@@ -3,12 +3,12 @@ defmodule TravengerWeb.GroupController do
 
   import Travenger.Account.Guardian.Plug
 
-  alias Travenger.TravelGroup
+  alias Travenger.Community
 
   def create(conn, params) do
     with user <- current_resource(conn),
-         {:ok, member} <- TravelGroup.build_member_from_user(user),
-         {:ok, group} <- TravelGroup.create_group(member, params) do
+         {:ok, member} <- Community.build_member_from_user(user),
+         {:ok, group} <- Community.create_group(member, params) do
       conn
       |> put_status(:created)
       |> render("show.json", %{group: group})
