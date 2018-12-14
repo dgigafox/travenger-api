@@ -7,7 +7,6 @@ defmodule Travenger.Community.Membership do
 
   alias Travenger.Community.Group
   alias Travenger.Community.Member
-  alias Travenger.Community.Membership
 
   @required_attrs ~w(role)a
 
@@ -16,8 +15,6 @@ defmodule Travenger.Community.Membership do
 
     belongs_to(:member, Member)
     belongs_to(:group, Group)
-
-    has_many(:memberships, Membership)
 
     timestamps()
   end

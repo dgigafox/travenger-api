@@ -3,11 +3,13 @@ defmodule Travenger.CommunityTest do
 
   import Travenger.Community.Factory
 
-  alias Travenger.Account.Factory, as: Account
+  alias Travenger.Account
   alias Travenger.Community
+  alias Travenger.Community.Membership
+  alias Travenger.Repo
 
   def build_member_from_user do
-    Account.insert(:user)
+    Account.Factory.insert(:user)
     |> Community.build_member_from_user()
     |> elem(1)
   end
@@ -19,7 +21,7 @@ defmodule Travenger.CommunityTest do
   end
 
   describe "create_group/2" do
-    test "returns a group", %{member: member} do
+    setup %{member: member} do
       params = %{
         name: "Travel Group Sample",
         description: "This is a sample group",
@@ -28,8 +30,20 @@ defmodule Travenger.CommunityTest do
 
       {:ok, group} = Community.create_group(member, params)
 
-      assert group.id
-      assert group.creator.id == member.id
+      %{group: group, member: member}
+    end
+
+    test "returns a group", c do
+      assert c.group.id
+      assert c.group.creator.id == c.member.id
+    end
+
+    test "returns a membership", c do
+      assert Repo.get_by(
+               Membership,
+               member_id: c.member.id,
+               group_id: c.group.id
+             )
     end
   end
 

@@ -5,11 +5,10 @@ defmodule Travenger.Community.Member do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias Travenger.Account.User
   alias Travenger.Community.Membership
 
   schema "members" do
-    belongs_to(:user, User)
+    field(:user_id, :id)
     has_many(:memberships, Membership)
 
     timestamps()
@@ -18,7 +17,7 @@ defmodule Travenger.Community.Member do
   @doc false
   def changeset(member, attrs \\ %{}) do
     member
-    |> cast(attrs, [])
+    |> cast(attrs, ~w(user_id)a)
     |> validate_required([])
   end
 end

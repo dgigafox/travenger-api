@@ -6,6 +6,7 @@ defmodule Travenger.Community.Group do
   import Ecto.Changeset
 
   alias Travenger.Community.Member
+  alias Travenger.Community.Membership
 
   @required_attrs ~w(name)a
   @optional_attrs ~w(description image_url)a
@@ -16,6 +17,7 @@ defmodule Travenger.Community.Group do
     field(:name, :string)
 
     belongs_to(:creator, Member)
+    has_many(:membership, Membership)
     timestamps()
   end
 

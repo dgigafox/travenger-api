@@ -6,16 +6,15 @@ defmodule Travenger.Community do
   import Ecto.Query, warn: false
   alias Travenger.Repo
 
+  alias Ecto.Multi
   alias Travenger.Account.User
   alias Travenger.Community.Group
   alias Travenger.Community.Member
   alias Travenger.Community.Membership
 
   def build_member_from_user(%User{} = user) do
-    %Member{
-      user: user
-    }
-    |> Member.changeset()
+    %Member{}
+    |> Member.changeset(%{user_id: user.id})
     |> Repo.insert()
   end
 
@@ -25,6 +24,15 @@ defmodule Travenger.Community do
     }
     |> Group.changeset(params)
     |> Repo.insert()
+
+    Multi.new()
+    |> Multi.insert(:group, Group.changeset(%Group{creator: member}, params))
+    |> Multi.run(:admin_membership, &add_admin(member, &1.group))
+    |> Repo.transaction()
+    |> case do
+      {:ok, %{group: group}} -> {:ok, group}
+      {:error, _, ch, _} -> {:error, ch}
+    end
   end
 
   def add_admin(%Member{} = member, %Group{} = group) do
