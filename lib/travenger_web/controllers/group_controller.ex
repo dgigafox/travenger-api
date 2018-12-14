@@ -1,20 +1,14 @@
 defmodule TravengerWeb.GroupController do
   use TravengerWeb, :controller
 
-  import Travenger.Helpers.Utils
   import Travenger.Account.Guardian.Plug
 
-  alias Travenger.TravelGroup
+  alias Travenger.Community
 
   def create(conn, params) do
-    user = current_resource(conn)
-
-    params =
-      params
-      |> string_keys_to_atom()
-      |> Map.put(:creator_id, user.id)
-
-    with {:ok, group} <- TravelGroup.create_group(params) do
+    with user <- current_resource(conn),
+         {:ok, member} <- Community.build_member_from_user(user),
+         {:ok, group} <- Community.create_group(member, params) do
       conn
       |> put_status(:created)
       |> render("show.json", %{group: group})

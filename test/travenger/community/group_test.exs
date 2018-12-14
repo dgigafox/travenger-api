@@ -1,8 +1,8 @@
-defmodule Travenger.TravelGroup.GrooupTest do
+defmodule Travenger.Community.GroupTest do
   use ExUnit.Case, async: true
 
-  import Travenger.TravelGroup.Factory
-  alias Travenger.TravelGroup.Group
+  import Travenger.Community.Factory
+  alias Travenger.Community.Group
 
   describe "changeset/2" do
     test "returns a valid changeset" do
@@ -16,8 +16,6 @@ defmodule Travenger.TravelGroup.GrooupTest do
 
       refute ch.valid?
       assert ch.errors[:name]
-      assert ch.errors[:image_url]
-      assert ch.errors[:creator_id]
     end
   end
 end

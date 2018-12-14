@@ -2,7 +2,7 @@ defmodule TravengerWeb.GroupControllerTest do
   use TravengerWeb.ConnCase
 
   import Travenger.TestHelpers
-  import Travenger.TravelGroup.Factory
+  import Travenger.Community.Factory
 
   alias Travenger.Account.Factory, as: Account
   alias TravengerWeb.GroupView

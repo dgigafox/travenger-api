@@ -1,8 +1,6 @@
 defmodule TravengerWeb.ErrorView do
   use TravengerWeb, :view
 
-  alias Phoenix.Controller
-
   @not_found %{
     status: "404",
     title: "Resource not found"
