@@ -4,18 +4,22 @@ defmodule Travenger.Community do
   """
 
   import Ecto.Query, warn: false
-  alias Travenger.Repo
+  import Travenger.Helpers.Queries
 
   alias Ecto.Multi
   alias Travenger.Account.User
   alias Travenger.Community.Group
   alias Travenger.Community.Member
   alias Travenger.Community.Membership
+  alias Travenger.Repo
 
   def build_member_from_user(%User{} = user) do
-    %Member{}
-    |> Member.changeset(%{user_id: user.id})
-    |> Repo.insert()
+    params = %{user_id: user.id}
+
+    case find_member(params) do
+      nil -> Repo.insert(Member.changeset(%Member{}, params))
+      member -> {:ok, member}
+    end
   end
 
   def create_group(%Member{} = member, params) do
@@ -42,5 +46,11 @@ defmodule Travenger.Community do
     }
     |> Membership.changeset(%{role: :admin})
     |> Repo.insert()
+  end
+
+  def find_member(params) do
+    Member
+    |> where_user_id(params)
+    |> Repo.one()
   end
 end

@@ -504,6 +504,17 @@ function find(y) {
         
           <li>
             <span class='cov high'>100</span>
+            <a href='#lib/travenger/helpers/queries.ex'>
+              
+              
+                <span class='dirname'>lib/travenger/helpers/</span>
+              
+              <span class='basename'>queries.ex</span>
+            </a>
+          </li>
+        
+          <li>
+            <span class='cov high'>100</span>
             <a href='#lib/travenger/helpers/utils.ex'>
               
               
@@ -660,8 +671,8 @@ function find(y) {
 
       <div id='stats' class='high'>
         <div class='percentage'>100</div>
-        <div class='sloc'>75</div>
-        <div class='hits'>271</div>
+        <div class='sloc'>78</div>
+        <div class='hits'>287</div>
         <div class='misses'>0</div>
       </div>
       <div id='files'>
@@ -2017,8 +2028,8 @@ function find(y) {
             <h2 id='lib/travenger/community/community.ex'>lib/travenger/community/community.ex</h1>
             <div id='stats' class='high'>
               <div class='percentage'>100</div>
-              <div class='sloc'>6</div>
-              <div class='hits'>27</div>
+              <div class='sloc'>8</div>
+              <div class='hits'>37</div>
               <div class='misses'>0</div>
             </div>
             <table id='source'>
@@ -2082,7 +2093,7 @@ function find(y) {
                       <tr>
                         <td class='line'>6</td>
                         <td class='hits'></td>
-                        <td class='source'>  alias Travenger.Repo</td>
+                        <td class='source'>  import Travenger.Helpers.Queries</td>
                       </tr>
                   
                 
@@ -2138,7 +2149,7 @@ function find(y) {
                       <tr>
                         <td class='line'>13</td>
                         <td class='hits'></td>
-                        <td class='source'></td>
+                        <td class='source'>  alias Travenger.Repo</td>
                       </tr>
                   
                 
@@ -2146,7 +2157,7 @@ function find(y) {
                       <tr>
                         <td class='line'>14</td>
                         <td class='hits'></td>
-                        <td class='source'>  def build_member_from_user(%User{} = user) do</td>
+                        <td class='source'></td>
                       </tr>
                   
                 
@@ -2154,7 +2165,7 @@ function find(y) {
                       <tr>
                         <td class='line'>15</td>
                         <td class='hits'></td>
-                        <td class='source'>    %Member{}</td>
+                        <td class='source'>  def build_member_from_user(%User{} = user) do</td>
                       </tr>
                   
                 
@@ -2162,39 +2173,39 @@ function find(y) {
                       <tr class='hit'>
                         <td class='line'>16</td>
                         <td class='hits'>5</td>
-                        <td class='source'>    |&gt; Member.changeset(%{user_id: user.id})</td>
+                        <td class='source'>    params = %{user_id: user.id}</td>
                       </tr>
                     
                 
                   
-                      <tr class='hit'>
+                      <tr>
                         <td class='line'>17</td>
-                        <td class='hits'>5</td>
-                        <td class='source'>    |&gt; Repo.insert()</td>
-                      </tr>
-                    
-                
-                  
-                      <tr>
-                        <td class='line'>18</td>
-                        <td class='hits'></td>
-                        <td class='source'>  end</td>
-                      </tr>
-                  
-                
-                  
-                      <tr>
-                        <td class='line'>19</td>
                         <td class='hits'></td>
                         <td class='source'></td>
                       </tr>
                   
                 
                   
+                      <tr class='hit'>
+                        <td class='line'>18</td>
+                        <td class='hits'>5</td>
+                        <td class='source'>    case find_member(params) do</td>
+                      </tr>
+                    
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>19</td>
+                        <td class='hits'>5</td>
+                        <td class='source'>      nil -&gt; Repo.insert(Member.changeset(%Member{}, params))</td>
+                      </tr>
+                    
+                
+                  
                       <tr>
                         <td class='line'>20</td>
                         <td class='hits'></td>
-                        <td class='source'>  def create_group(%Member{} = member, params) do</td>
+                        <td class='source'>      member -&gt; {:ok, member}</td>
                       </tr>
                   
                 
@@ -2202,7 +2213,7 @@ function find(y) {
                       <tr>
                         <td class='line'>21</td>
                         <td class='hits'></td>
-                        <td class='source'>    %Group{</td>
+                        <td class='source'>    end</td>
                       </tr>
                   
                 
@@ -2210,7 +2221,7 @@ function find(y) {
                       <tr>
                         <td class='line'>22</td>
                         <td class='hits'></td>
-                        <td class='source'>      creator: member</td>
+                        <td class='source'>  end</td>
                       </tr>
                   
                 
@@ -2218,7 +2229,7 @@ function find(y) {
                       <tr>
                         <td class='line'>23</td>
                         <td class='hits'></td>
-                        <td class='source'>    }</td>
+                        <td class='source'></td>
                       </tr>
                   
                 
@@ -2226,23 +2237,23 @@ function find(y) {
                       <tr>
                         <td class='line'>24</td>
                         <td class='hits'></td>
-                        <td class='source'>    |&gt; Group.changeset(params)</td>
+                        <td class='source'>  def create_group(%Member{} = member, params) do</td>
                       </tr>
                   
                 
                   
-                      <tr class='hit'>
+                      <tr>
                         <td class='line'>25</td>
-                        <td class='hits'>4</td>
-                        <td class='source'>    |&gt; Repo.insert()</td>
+                        <td class='hits'></td>
+                        <td class='source'>    %Group{</td>
                       </tr>
-                    
+                  
                 
                   
                       <tr>
                         <td class='line'>26</td>
                         <td class='hits'></td>
-                        <td class='source'></td>
+                        <td class='source'>      creator: member</td>
                       </tr>
                   
                 
@@ -2250,7 +2261,7 @@ function find(y) {
                       <tr>
                         <td class='line'>27</td>
                         <td class='hits'></td>
-                        <td class='source'>    Multi.new()</td>
+                        <td class='source'>    }</td>
                       </tr>
                   
                 
@@ -2258,7 +2269,7 @@ function find(y) {
                       <tr>
                         <td class='line'>28</td>
                         <td class='hits'></td>
-                        <td class='source'>    |&gt; Multi.insert(:group, Group.changeset(%Group{creator: member}, params))</td>
+                        <td class='source'>    |&gt; Group.changeset(params)</td>
                       </tr>
                   
                 
@@ -2266,7 +2277,7 @@ function find(y) {
                       <tr class='hit'>
                         <td class='line'>29</td>
                         <td class='hits'>4</td>
-                        <td class='source'>    |&gt; Multi.run(:admin_membership, &amp;add_admin(member, &amp;1.group))</td>
+                        <td class='source'>    |&gt; Repo.insert()</td>
                       </tr>
                     
                 
@@ -2274,13 +2285,45 @@ function find(y) {
                       <tr>
                         <td class='line'>30</td>
                         <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>31</td>
+                        <td class='hits'></td>
+                        <td class='source'>    Multi.new()</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>32</td>
+                        <td class='hits'></td>
+                        <td class='source'>    |&gt; Multi.insert(:group, Group.changeset(%Group{creator: member}, params))</td>
+                      </tr>
+                  
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>33</td>
+                        <td class='hits'>4</td>
+                        <td class='source'>    |&gt; Multi.run(:admin_membership, &amp;add_admin(member, &amp;1.group))</td>
+                      </tr>
+                    
+                
+                  
+                      <tr>
+                        <td class='line'>34</td>
+                        <td class='hits'></td>
                         <td class='source'>    |&gt; Repo.transaction()</td>
                       </tr>
                   
                 
                   
                       <tr class='hit'>
-                        <td class='line'>31</td>
+                        <td class='line'>35</td>
                         <td class='hits'>4</td>
                         <td class='source'>    |&gt; case do</td>
                       </tr>
@@ -2288,7 +2331,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>32</td>
+                        <td class='line'>36</td>
                         <td class='hits'></td>
                         <td class='source'>      {:ok, %{group: group}} -&gt; {:ok, group}</td>
                       </tr>
@@ -2296,7 +2339,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>33</td>
+                        <td class='line'>37</td>
                         <td class='hits'></td>
                         <td class='source'>      {:error, _, ch, _} -&gt; {:error, ch}</td>
                       </tr>
@@ -2304,7 +2347,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>34</td>
+                        <td class='line'>38</td>
                         <td class='hits'></td>
                         <td class='source'>    end</td>
                       </tr>
@@ -2312,41 +2355,9 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>35</td>
-                        <td class='hits'></td>
-                        <td class='source'>  end</td>
-                      </tr>
-                  
-                
-                  
-                      <tr>
-                        <td class='line'>36</td>
-                        <td class='hits'></td>
-                        <td class='source'></td>
-                      </tr>
-                  
-                
-                  
-                      <tr>
-                        <td class='line'>37</td>
-                        <td class='hits'></td>
-                        <td class='source'>  def add_admin(%Member{} = member, %Group{} = group) do</td>
-                      </tr>
-                  
-                
-                  
-                      <tr>
-                        <td class='line'>38</td>
-                        <td class='hits'></td>
-                        <td class='source'>    %Membership{</td>
-                      </tr>
-                  
-                
-                  
-                      <tr>
                         <td class='line'>39</td>
                         <td class='hits'></td>
-                        <td class='source'>      member: member,</td>
+                        <td class='source'>  end</td>
                       </tr>
                   
                 
@@ -2354,7 +2365,7 @@ function find(y) {
                       <tr>
                         <td class='line'>40</td>
                         <td class='hits'></td>
-                        <td class='source'>      group: group</td>
+                        <td class='source'></td>
                       </tr>
                   
                 
@@ -2362,7 +2373,7 @@ function find(y) {
                       <tr>
                         <td class='line'>41</td>
                         <td class='hits'></td>
-                        <td class='source'>    }</td>
+                        <td class='source'>  def add_admin(%Member{} = member, %Group{} = group) do</td>
                       </tr>
                   
                 
@@ -2370,13 +2381,45 @@ function find(y) {
                       <tr>
                         <td class='line'>42</td>
                         <td class='hits'></td>
+                        <td class='source'>    %Membership{</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>43</td>
+                        <td class='hits'></td>
+                        <td class='source'>      member: member,</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>44</td>
+                        <td class='hits'></td>
+                        <td class='source'>      group: group</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>45</td>
+                        <td class='hits'></td>
+                        <td class='source'>    }</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>46</td>
+                        <td class='hits'></td>
                         <td class='source'>    |&gt; Membership.changeset(%{role: :admin})</td>
                       </tr>
                   
                 
                   
                       <tr class='hit'>
-                        <td class='line'>43</td>
+                        <td class='line'>47</td>
                         <td class='hits'>5</td>
                         <td class='source'>    |&gt; Repo.insert()</td>
                       </tr>
@@ -2384,7 +2427,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>44</td>
+                        <td class='line'>48</td>
                         <td class='hits'></td>
                         <td class='source'>  end</td>
                       </tr>
@@ -2392,7 +2435,55 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>45</td>
+                        <td class='line'>49</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>50</td>
+                        <td class='hits'></td>
+                        <td class='source'>  def find_member(params) do</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>51</td>
+                        <td class='hits'></td>
+                        <td class='source'>    Member</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>52</td>
+                        <td class='hits'></td>
+                        <td class='source'>    |&gt; where_user_id(params)</td>
+                      </tr>
+                  
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>53</td>
+                        <td class='hits'>5</td>
+                        <td class='source'>    |&gt; Repo.one()</td>
+                      </tr>
+                    
+                
+                  
+                      <tr>
+                        <td class='line'>54</td>
+                        <td class='hits'></td>
+                        <td class='source'>  end</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>55</td>
                         <td class='hits'></td>
                         <td class='source'>end</td>
                       </tr>
@@ -3038,7 +3129,7 @@ function find(y) {
             <div id='stats' class='high'>
               <div class='percentage'>100</div>
               <div class='sloc'>2</div>
-              <div class='hits'>23</div>
+              <div class='hits'>24</div>
               <div class='misses'>0</div>
             </div>
             <table id='source'>
@@ -3125,7 +3216,7 @@ function find(y) {
                   
                       <tr class='hit'>
                         <td class='line'>9</td>
-                        <td class='hits'>18</td>
+                        <td class='hits'>19</td>
                         <td class='source'>  schema &quot;members&quot; do</td>
                       </tr>
                     
@@ -3474,6 +3565,115 @@ function find(y) {
                   
                       <tr>
                         <td class='line'>27</td>
+                        <td class='hits'></td>
+                        <td class='source'>end</td>
+                      </tr>
+                  
+                
+              </tbody>
+            </table>
+          </div>
+        
+          <div class='file'>
+            <h2 id='lib/travenger/helpers/queries.ex'>lib/travenger/helpers/queries.ex</h1>
+            <div id='stats' class='high'>
+              <div class='percentage'>100</div>
+              <div class='sloc'>1</div>
+              <div class='hits'>5</div>
+              <div class='misses'>0</div>
+            </div>
+            <table id='source'>
+              <thead>
+                <tr>
+                  <th>Line</th>
+                  <th>Hits</th>
+                  <th>Source</th>
+                </tr>
+              <tbody>
+                
+                  
+                      <tr>
+                        <td class='line'>0</td>
+                        <td class='hits'></td>
+                        <td class='source'>defmodule Travenger.Helpers.Queries do</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>1</td>
+                        <td class='hits'></td>
+                        <td class='source'>  @moduledoc &quot;&quot;&quot;</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>2</td>
+                        <td class='hits'></td>
+                        <td class='source'>  Travenger generic queries</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>3</td>
+                        <td class='hits'></td>
+                        <td class='source'>  &quot;&quot;&quot;</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>4</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>5</td>
+                        <td class='hits'></td>
+                        <td class='source'>  import Ecto.Query</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>6</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>7</td>
+                        <td class='hits'></td>
+                        <td class='source'>  def where_user_id(query, %{user_id: user_id}) do</td>
+                      </tr>
+                  
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>8</td>
+                        <td class='hits'>5</td>
+                        <td class='source'>    where(query, [q], q.user_id == ^user_id)</td>
+                      </tr>
+                    
+                
+                  
+                      <tr>
+                        <td class='line'>9</td>
+                        <td class='hits'></td>
+                        <td class='source'>  end</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>10</td>
                         <td class='hits'></td>
                         <td class='source'>end</td>
                       </tr>
