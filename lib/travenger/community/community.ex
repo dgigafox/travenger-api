@@ -9,6 +9,7 @@ defmodule Travenger.Community do
   alias Ecto.Multi
   alias Travenger.Account.User
   alias Travenger.Community.Group
+  alias Travenger.Community.Invitation
   alias Travenger.Community.Member
   alias Travenger.Community.Membership
   alias Travenger.Repo
@@ -52,5 +53,14 @@ defmodule Travenger.Community do
     Member
     |> where_user_id(params)
     |> Repo.one()
+  end
+
+  def invite(%Member{} = member, %Group{} = group) do
+    %Invitation{
+      member: member,
+      group: group
+    }
+    |> Invitation.changeset()
+    |> Repo.insert()
   end
 end
