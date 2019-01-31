@@ -5,7 +5,7 @@ defmodule TravengerWeb.Plugs.UserAuthPipelineTest do
 
   alias Travenger.Account.Factory, as: Account
 
-  describe "test auth" do
+  describe "Authorize user pipeline" do
     test "returns conn when there is an authorized token" do
       user = Account.insert(:user)
 
@@ -18,7 +18,7 @@ defmodule TravengerWeb.Plugs.UserAuthPipelineTest do
       refute conn.halted
     end
 
-    test "returns error when there is no authorized token" do
+    test "returns unauthorized when there is no authorized token" do
       conn =
         build_conn()
         |> bypass_through(TravengerWeb.Router, [:authorize_user])
