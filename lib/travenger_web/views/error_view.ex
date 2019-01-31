@@ -6,10 +6,19 @@ defmodule TravengerWeb.ErrorView do
     title: "Resource not found"
   }
 
+  @forbidden %{
+    status: "403",
+    title: "Forbidden"
+  }
+
   # JSON errors
 
   def render("404.json", _assigns) do
     %{errors: [@not_found]}
+  end
+
+  def render("403.json", _assigns) do
+    %{errors: [@forbidden]}
   end
 
   # HTML errors
