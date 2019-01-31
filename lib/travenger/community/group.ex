@@ -27,4 +27,8 @@ defmodule Travenger.Community.Group do
     |> cast(attrs, @required_attrs ++ @optional_attrs)
     |> validate_required(@required_attrs)
   end
+
+  def update_changeset(group, attrs) do
+    cast(group, attrs, @required_attrs ++ @optional_attrs)
+  end
 end

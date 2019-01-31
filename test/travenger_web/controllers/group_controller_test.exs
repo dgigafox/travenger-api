@@ -62,4 +62,18 @@ defmodule TravengerWeb.GroupControllerTest do
       assert json_response(conn, :created) == expected
     end
   end
+
+  describe "update/2" do
+    test "returns 200", %{conn: conn, user: user} do
+      group = insert(:group)
+      member = insert(:member, user_id: user.id)
+      insert(:membership, group: group, member: member, role: :admin)
+
+      conn = put(conn, api_v1_group_path(conn, :update, group.id), %{name: "New Name"})
+      %{assigns: %{group: group}} = conn
+
+      expected = render_json(GroupView, "show.json", %{group: group})
+      assert json_response(conn, :ok) == expected
+    end
+  end
 end

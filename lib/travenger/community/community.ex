@@ -74,4 +74,10 @@ defmodule Travenger.Community do
     |> where_group_id(params)
     |> Repo.one()
   end
+
+  def update_group(%Group{} = group, params) do
+    group
+    |> Group.update_changeset(params)
+    |> Repo.update()
+  end
 end

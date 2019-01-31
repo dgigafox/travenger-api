@@ -70,4 +70,14 @@ defmodule Travenger.CommunityTest do
       assert invitation.status == :pending
     end
   end
+
+  describe "update_group" do
+    test "returns an updated group" do
+      group = insert(:group)
+      {:ok, updated_group} = Community.update_group(group, %{name: "New #{group.name}"})
+
+      assert group.id == updated_group.id
+      assert updated_group.name == "New #{group.name}"
+    end
+  end
 end
