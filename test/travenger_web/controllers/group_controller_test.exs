@@ -57,7 +57,6 @@ defmodule TravengerWeb.GroupControllerTest do
       %{invitation: inv, conn: conn}
     end
 
-    @tag :todo
     test "creates and returns an invitation", %{invitation: inv, conn: conn} do
       expected = render_json(InvitationView, "show.json", %{invitation: inv})
       assert json_response(conn, :created) == expected
