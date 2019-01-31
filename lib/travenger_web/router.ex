@@ -43,6 +43,8 @@ defmodule TravengerWeb.Router do
       scope "/groups" do
         pipe_through(:authorize_user)
         resources("/", GroupController, only: [:create])
+
+        post("/:group_id/invite/:user_id", GroupController, :invite)
       end
     end
   end

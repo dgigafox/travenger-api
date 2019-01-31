@@ -40,6 +40,8 @@ defmodule Travenger.Community do
     end
   end
 
+  def get_group(id), do: Repo.get(Group, id)
+
   def add_admin(%Member{} = member, %Group{} = group) do
     %Membership{
       member: member,
@@ -62,5 +64,14 @@ defmodule Travenger.Community do
     }
     |> Invitation.changeset()
     |> Repo.insert()
+  end
+
+  def find_membership(params) do
+    Membership
+    |> join_membership_member(params)
+    |> where_member_user_id(params)
+    |> where_role(params)
+    |> where_group_id(params)
+    |> Repo.one()
   end
 end
