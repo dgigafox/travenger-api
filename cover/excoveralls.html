@@ -482,6 +482,17 @@ function find(y) {
         
           <li>
             <span class='cov high'>100</span>
+            <a href='#lib/travenger/community/invitation.ex'>
+              
+              
+                <span class='dirname'>lib/travenger/community/</span>
+              
+              <span class='basename'>invitation.ex</span>
+            </a>
+          </li>
+        
+          <li>
+            <span class='cov high'>100</span>
             <a href='#lib/travenger/community/member.ex'>
               
               
@@ -671,8 +682,8 @@ function find(y) {
 
       <div id='stats' class='high'>
         <div class='percentage'>100</div>
-        <div class='sloc'>78</div>
-        <div class='hits'>287</div>
+        <div class='sloc'>83</div>
+        <div class='hits'>313</div>
         <div class='misses'>0</div>
       </div>
       <div id='files'>
@@ -988,7 +999,7 @@ function find(y) {
             <div id='stats' class='high'>
               <div class='percentage'>100</div>
               <div class='sloc'>1</div>
-              <div class='hits'>9</div>
+              <div class='hits'>10</div>
               <div class='misses'>0</div>
             </div>
             <table id='source'>
@@ -1019,7 +1030,7 @@ function find(y) {
                   
                       <tr class='hit'>
                         <td class='line'>2</td>
-                        <td class='hits'>9</td>
+                        <td class='hits'>10</td>
                         <td class='source'>defenum(</td>
                       </tr>
                     
@@ -1065,7 +1076,7 @@ function find(y) {
             <div id='stats' class='high'>
               <div class='percentage'>100</div>
               <div class='sloc'>2</div>
-              <div class='hits'>18</div>
+              <div class='hits'>20</div>
               <div class='misses'>0</div>
             </div>
             <table id='source'>
@@ -1152,7 +1163,7 @@ function find(y) {
                   
                       <tr class='hit'>
                         <td class='line'>9</td>
-                        <td class='hits'>9</td>
+                        <td class='hits'>10</td>
                         <td class='source'>    email = sequence(:email, &amp;&quot;email-#{&amp;1}@example.com&quot;)</td>
                       </tr>
                     
@@ -1168,7 +1179,7 @@ function find(y) {
                   
                       <tr class='hit'>
                         <td class='line'>11</td>
-                        <td class='hits'>9</td>
+                        <td class='hits'>10</td>
                         <td class='source'>    %User{</td>
                       </tr>
                     
@@ -1752,7 +1763,7 @@ function find(y) {
             <div id='stats' class='high'>
               <div class='percentage'>100</div>
               <div class='sloc'>2</div>
-              <div class='hits'>17</div>
+              <div class='hits'>18</div>
               <div class='misses'>0</div>
             </div>
             <table id='source'>
@@ -1847,7 +1858,7 @@ function find(y) {
                   
                       <tr class='hit'>
                         <td class='line'>10</td>
-                        <td class='hits'>12</td>
+                        <td class='hits'>13</td>
                         <td class='source'>  schema &quot;users&quot; do</td>
                       </tr>
                     
@@ -2028,8 +2039,8 @@ function find(y) {
             <h2 id='lib/travenger/community/community.ex'>lib/travenger/community/community.ex</h1>
             <div id='stats' class='high'>
               <div class='percentage'>100</div>
-              <div class='sloc'>8</div>
-              <div class='hits'>37</div>
+              <div class='sloc'>9</div>
+              <div class='hits'>42</div>
               <div class='misses'>0</div>
             </div>
             <table id='source'>
@@ -2133,7 +2144,7 @@ function find(y) {
                       <tr>
                         <td class='line'>11</td>
                         <td class='hits'></td>
-                        <td class='source'>  alias Travenger.Community.Member</td>
+                        <td class='source'>  alias Travenger.Community.Invitation</td>
                       </tr>
                   
                 
@@ -2141,7 +2152,7 @@ function find(y) {
                       <tr>
                         <td class='line'>12</td>
                         <td class='hits'></td>
-                        <td class='source'>  alias Travenger.Community.Membership</td>
+                        <td class='source'>  alias Travenger.Community.Member</td>
                       </tr>
                   
                 
@@ -2149,7 +2160,7 @@ function find(y) {
                       <tr>
                         <td class='line'>13</td>
                         <td class='hits'></td>
-                        <td class='source'>  alias Travenger.Repo</td>
+                        <td class='source'>  alias Travenger.Community.Membership</td>
                       </tr>
                   
                 
@@ -2157,7 +2168,7 @@ function find(y) {
                       <tr>
                         <td class='line'>14</td>
                         <td class='hits'></td>
-                        <td class='source'></td>
+                        <td class='source'>  alias Travenger.Repo</td>
                       </tr>
                   
                 
@@ -2165,21 +2176,29 @@ function find(y) {
                       <tr>
                         <td class='line'>15</td>
                         <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>16</td>
+                        <td class='hits'></td>
                         <td class='source'>  def build_member_from_user(%User{} = user) do</td>
                       </tr>
                   
                 
                   
                       <tr class='hit'>
-                        <td class='line'>16</td>
-                        <td class='hits'>5</td>
+                        <td class='line'>17</td>
+                        <td class='hits'>6</td>
                         <td class='source'>    params = %{user_id: user.id}</td>
                       </tr>
                     
                 
                   
                       <tr>
-                        <td class='line'>17</td>
+                        <td class='line'>18</td>
                         <td class='hits'></td>
                         <td class='source'></td>
                       </tr>
@@ -2187,23 +2206,23 @@ function find(y) {
                 
                   
                       <tr class='hit'>
-                        <td class='line'>18</td>
-                        <td class='hits'>5</td>
+                        <td class='line'>19</td>
+                        <td class='hits'>6</td>
                         <td class='source'>    case find_member(params) do</td>
                       </tr>
                     
                 
                   
                       <tr class='hit'>
-                        <td class='line'>19</td>
-                        <td class='hits'>5</td>
+                        <td class='line'>20</td>
+                        <td class='hits'>6</td>
                         <td class='source'>      nil -&gt; Repo.insert(Member.changeset(%Member{}, params))</td>
                       </tr>
                     
                 
                   
                       <tr>
-                        <td class='line'>20</td>
+                        <td class='line'>21</td>
                         <td class='hits'></td>
                         <td class='source'>      member -&gt; {:ok, member}</td>
                       </tr>
@@ -2211,17 +2230,9 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>21</td>
-                        <td class='hits'></td>
-                        <td class='source'>    end</td>
-                      </tr>
-                  
-                
-                  
-                      <tr>
                         <td class='line'>22</td>
                         <td class='hits'></td>
-                        <td class='source'>  end</td>
+                        <td class='source'>    end</td>
                       </tr>
                   
                 
@@ -2229,7 +2240,7 @@ function find(y) {
                       <tr>
                         <td class='line'>23</td>
                         <td class='hits'></td>
-                        <td class='source'></td>
+                        <td class='source'>  end</td>
                       </tr>
                   
                 
@@ -2237,7 +2248,7 @@ function find(y) {
                       <tr>
                         <td class='line'>24</td>
                         <td class='hits'></td>
-                        <td class='source'>  def create_group(%Member{} = member, params) do</td>
+                        <td class='source'></td>
                       </tr>
                   
                 
@@ -2245,7 +2256,7 @@ function find(y) {
                       <tr>
                         <td class='line'>25</td>
                         <td class='hits'></td>
-                        <td class='source'>    %Group{</td>
+                        <td class='source'>  def create_group(%Member{} = member, params) do</td>
                       </tr>
                   
                 
@@ -2253,7 +2264,7 @@ function find(y) {
                       <tr>
                         <td class='line'>26</td>
                         <td class='hits'></td>
-                        <td class='source'>      creator: member</td>
+                        <td class='source'>    %Group{</td>
                       </tr>
                   
                 
@@ -2261,7 +2272,7 @@ function find(y) {
                       <tr>
                         <td class='line'>27</td>
                         <td class='hits'></td>
-                        <td class='source'>    }</td>
+                        <td class='source'>      creator: member</td>
                       </tr>
                   
                 
@@ -2269,13 +2280,21 @@ function find(y) {
                       <tr>
                         <td class='line'>28</td>
                         <td class='hits'></td>
+                        <td class='source'>    }</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>29</td>
+                        <td class='hits'></td>
                         <td class='source'>    |&gt; Group.changeset(params)</td>
                       </tr>
                   
                 
                   
                       <tr class='hit'>
-                        <td class='line'>29</td>
+                        <td class='line'>30</td>
                         <td class='hits'>4</td>
                         <td class='source'>    |&gt; Repo.insert()</td>
                       </tr>
@@ -2283,17 +2302,9 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>30</td>
-                        <td class='hits'></td>
-                        <td class='source'></td>
-                      </tr>
-                  
-                
-                  
-                      <tr>
                         <td class='line'>31</td>
                         <td class='hits'></td>
-                        <td class='source'>    Multi.new()</td>
+                        <td class='source'></td>
                       </tr>
                   
                 
@@ -2301,13 +2312,21 @@ function find(y) {
                       <tr>
                         <td class='line'>32</td>
                         <td class='hits'></td>
+                        <td class='source'>    Multi.new()</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>33</td>
+                        <td class='hits'></td>
                         <td class='source'>    |&gt; Multi.insert(:group, Group.changeset(%Group{creator: member}, params))</td>
                       </tr>
                   
                 
                   
                       <tr class='hit'>
-                        <td class='line'>33</td>
+                        <td class='line'>34</td>
                         <td class='hits'>4</td>
                         <td class='source'>    |&gt; Multi.run(:admin_membership, &amp;add_admin(member, &amp;1.group))</td>
                       </tr>
@@ -2315,7 +2334,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>34</td>
+                        <td class='line'>35</td>
                         <td class='hits'></td>
                         <td class='source'>    |&gt; Repo.transaction()</td>
                       </tr>
@@ -2323,7 +2342,7 @@ function find(y) {
                 
                   
                       <tr class='hit'>
-                        <td class='line'>35</td>
+                        <td class='line'>36</td>
                         <td class='hits'>4</td>
                         <td class='source'>    |&gt; case do</td>
                       </tr>
@@ -2331,7 +2350,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>36</td>
+                        <td class='line'>37</td>
                         <td class='hits'></td>
                         <td class='source'>      {:ok, %{group: group}} -&gt; {:ok, group}</td>
                       </tr>
@@ -2339,7 +2358,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>37</td>
+                        <td class='line'>38</td>
                         <td class='hits'></td>
                         <td class='source'>      {:error, _, ch, _} -&gt; {:error, ch}</td>
                       </tr>
@@ -2347,7 +2366,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>38</td>
+                        <td class='line'>39</td>
                         <td class='hits'></td>
                         <td class='source'>    end</td>
                       </tr>
@@ -2355,17 +2374,9 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>39</td>
-                        <td class='hits'></td>
-                        <td class='source'>  end</td>
-                      </tr>
-                  
-                
-                  
-                      <tr>
                         <td class='line'>40</td>
                         <td class='hits'></td>
-                        <td class='source'></td>
+                        <td class='source'>  end</td>
                       </tr>
                   
                 
@@ -2373,7 +2384,7 @@ function find(y) {
                       <tr>
                         <td class='line'>41</td>
                         <td class='hits'></td>
-                        <td class='source'>  def add_admin(%Member{} = member, %Group{} = group) do</td>
+                        <td class='source'></td>
                       </tr>
                   
                 
@@ -2381,7 +2392,7 @@ function find(y) {
                       <tr>
                         <td class='line'>42</td>
                         <td class='hits'></td>
-                        <td class='source'>    %Membership{</td>
+                        <td class='source'>  def add_admin(%Member{} = member, %Group{} = group) do</td>
                       </tr>
                   
                 
@@ -2389,7 +2400,7 @@ function find(y) {
                       <tr>
                         <td class='line'>43</td>
                         <td class='hits'></td>
-                        <td class='source'>      member: member,</td>
+                        <td class='source'>    %Membership{</td>
                       </tr>
                   
                 
@@ -2397,7 +2408,7 @@ function find(y) {
                       <tr>
                         <td class='line'>44</td>
                         <td class='hits'></td>
-                        <td class='source'>      group: group</td>
+                        <td class='source'>      member: member,</td>
                       </tr>
                   
                 
@@ -2405,7 +2416,7 @@ function find(y) {
                       <tr>
                         <td class='line'>45</td>
                         <td class='hits'></td>
-                        <td class='source'>    }</td>
+                        <td class='source'>      group: group</td>
                       </tr>
                   
                 
@@ -2413,13 +2424,21 @@ function find(y) {
                       <tr>
                         <td class='line'>46</td>
                         <td class='hits'></td>
+                        <td class='source'>    }</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>47</td>
+                        <td class='hits'></td>
                         <td class='source'>    |&gt; Membership.changeset(%{role: :admin})</td>
                       </tr>
                   
                 
                   
                       <tr class='hit'>
-                        <td class='line'>47</td>
+                        <td class='line'>48</td>
                         <td class='hits'>5</td>
                         <td class='source'>    |&gt; Repo.insert()</td>
                       </tr>
@@ -2427,17 +2446,9 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>48</td>
-                        <td class='hits'></td>
-                        <td class='source'>  end</td>
-                      </tr>
-                  
-                
-                  
-                      <tr>
                         <td class='line'>49</td>
                         <td class='hits'></td>
-                        <td class='source'></td>
+                        <td class='source'>  end</td>
                       </tr>
                   
                 
@@ -2445,7 +2456,7 @@ function find(y) {
                       <tr>
                         <td class='line'>50</td>
                         <td class='hits'></td>
-                        <td class='source'>  def find_member(params) do</td>
+                        <td class='source'></td>
                       </tr>
                   
                 
@@ -2453,7 +2464,7 @@ function find(y) {
                       <tr>
                         <td class='line'>51</td>
                         <td class='hits'></td>
-                        <td class='source'>    Member</td>
+                        <td class='source'>  def find_member(params) do</td>
                       </tr>
                   
                 
@@ -2461,21 +2472,29 @@ function find(y) {
                       <tr>
                         <td class='line'>52</td>
                         <td class='hits'></td>
+                        <td class='source'>    Member</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>53</td>
+                        <td class='hits'></td>
                         <td class='source'>    |&gt; where_user_id(params)</td>
                       </tr>
                   
                 
                   
                       <tr class='hit'>
-                        <td class='line'>53</td>
-                        <td class='hits'>5</td>
+                        <td class='line'>54</td>
+                        <td class='hits'>6</td>
                         <td class='source'>    |&gt; Repo.one()</td>
                       </tr>
                     
                 
                   
                       <tr>
-                        <td class='line'>54</td>
+                        <td class='line'>55</td>
                         <td class='hits'></td>
                         <td class='source'>  end</td>
                       </tr>
@@ -2483,7 +2502,79 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>55</td>
+                        <td class='line'>56</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>57</td>
+                        <td class='hits'></td>
+                        <td class='source'>  def invite(%Member{} = member, %Group{} = group) do</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>58</td>
+                        <td class='hits'></td>
+                        <td class='source'>    %Invitation{</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>59</td>
+                        <td class='hits'></td>
+                        <td class='source'>      member: member,</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>60</td>
+                        <td class='hits'></td>
+                        <td class='source'>      group: group</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>61</td>
+                        <td class='hits'></td>
+                        <td class='source'>    }</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>62</td>
+                        <td class='hits'></td>
+                        <td class='source'>    |&gt; Invitation.changeset()</td>
+                      </tr>
+                  
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>63</td>
+                        <td class='hits'>1</td>
+                        <td class='source'>    |&gt; Repo.insert()</td>
+                      </tr>
+                    
+                
+                  
+                      <tr>
+                        <td class='line'>64</td>
+                        <td class='hits'></td>
+                        <td class='source'>  end</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>65</td>
                         <td class='hits'></td>
                         <td class='source'>end</td>
                       </tr>
@@ -2497,8 +2588,8 @@ function find(y) {
             <h2 id='lib/travenger/community/ecto_enums.ex'>lib/travenger/community/ecto_enums.ex</h1>
             <div id='stats' class='high'>
               <div class='percentage'>100</div>
-              <div class='sloc'>1</div>
-              <div class='hits'>6</div>
+              <div class='sloc'>2</div>
+              <div class='hits'>7</div>
               <div class='misses'>0</div>
             </div>
             <table id='source'>
@@ -2566,6 +2657,70 @@ function find(y) {
                       </tr>
                   
                 
+                  
+                      <tr>
+                        <td class='line'>7</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>8</td>
+                        <td class='hits'>1</td>
+                        <td class='source'>defenum(</td>
+                      </tr>
+                    
+                
+                  
+                      <tr>
+                        <td class='line'>9</td>
+                        <td class='hits'></td>
+                        <td class='source'>  InvitationStatusEnum,</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>10</td>
+                        <td class='hits'></td>
+                        <td class='source'>  pending: 0,</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>11</td>
+                        <td class='hits'></td>
+                        <td class='source'>  accepted: 1,</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>12</td>
+                        <td class='hits'></td>
+                        <td class='source'>  cancelled: 2,</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>13</td>
+                        <td class='hits'></td>
+                        <td class='source'>  rejected: 3</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>14</td>
+                        <td class='hits'></td>
+                        <td class='source'>)</td>
+                      </tr>
+                  
+                
               </tbody>
             </table>
           </div>
@@ -2574,8 +2729,8 @@ function find(y) {
             <h2 id='lib/travenger/community/factory.ex'>lib/travenger/community/factory.ex</h1>
             <div id='stats' class='high'>
               <div class='percentage'>100</div>
-              <div class='sloc'>4</div>
-              <div class='hits'>14</div>
+              <div class='sloc'>5</div>
+              <div class='hits'>20</div>
               <div class='misses'>0</div>
             </div>
             <table id='source'>
@@ -2647,7 +2802,7 @@ function find(y) {
                       <tr>
                         <td class='line'>7</td>
                         <td class='hits'></td>
-                        <td class='source'>  alias Travenger.Community.Member</td>
+                        <td class='source'>  alias Travenger.Community.Invitation</td>
                       </tr>
                   
                 
@@ -2655,7 +2810,7 @@ function find(y) {
                       <tr>
                         <td class='line'>8</td>
                         <td class='hits'></td>
-                        <td class='source'>  alias Travenger.Community.Membership</td>
+                        <td class='source'>  alias Travenger.Community.Member</td>
                       </tr>
                   
                 
@@ -2663,7 +2818,7 @@ function find(y) {
                       <tr>
                         <td class='line'>9</td>
                         <td class='hits'></td>
-                        <td class='source'></td>
+                        <td class='source'>  alias Travenger.Community.Membership</td>
                       </tr>
                   
                 
@@ -2671,21 +2826,29 @@ function find(y) {
                       <tr>
                         <td class='line'>10</td>
                         <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>11</td>
+                        <td class='hits'></td>
                         <td class='source'>  def group_factory do</td>
                       </tr>
                   
                 
                   
                       <tr class='hit'>
-                        <td class='line'>11</td>
-                        <td class='hits'>6</td>
+                        <td class='line'>12</td>
+                        <td class='hits'>8</td>
                         <td class='source'>    name = sequence(:email, &amp;&quot;Travel Group #{&amp;1}&quot;)</td>
                       </tr>
                     
                 
                   
                       <tr>
-                        <td class='line'>12</td>
+                        <td class='line'>13</td>
                         <td class='hits'></td>
                         <td class='source'></td>
                       </tr>
@@ -2693,15 +2856,15 @@ function find(y) {
                 
                   
                       <tr class='hit'>
-                        <td class='line'>13</td>
-                        <td class='hits'>6</td>
+                        <td class='line'>14</td>
+                        <td class='hits'>8</td>
                         <td class='source'>    %Group{</td>
                       </tr>
                     
                 
                   
                       <tr>
-                        <td class='line'>14</td>
+                        <td class='line'>15</td>
                         <td class='hits'></td>
                         <td class='source'>      name: name,</td>
                       </tr>
@@ -2709,7 +2872,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>15</td>
+                        <td class='line'>16</td>
                         <td class='hits'></td>
                         <td class='source'>      description: &quot;This is a sample travel group&quot;,</td>
                       </tr>
@@ -2717,7 +2880,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>16</td>
+                        <td class='line'>17</td>
                         <td class='hits'></td>
                         <td class='source'>      image_url: &quot;https://dummyimage.com/600x400/000/fff.jpg&amp;text=Testing&quot;</td>
                       </tr>
@@ -2725,17 +2888,9 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>17</td>
-                        <td class='hits'></td>
-                        <td class='source'>    }</td>
-                      </tr>
-                  
-                
-                  
-                      <tr>
                         <td class='line'>18</td>
                         <td class='hits'></td>
-                        <td class='source'>  end</td>
+                        <td class='source'>    }</td>
                       </tr>
                   
                 
@@ -2743,7 +2898,7 @@ function find(y) {
                       <tr>
                         <td class='line'>19</td>
                         <td class='hits'></td>
-                        <td class='source'></td>
+                        <td class='source'>  end</td>
                       </tr>
                   
                 
@@ -2751,13 +2906,21 @@ function find(y) {
                       <tr>
                         <td class='line'>20</td>
                         <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>21</td>
+                        <td class='hits'></td>
                         <td class='source'>  def membership_factory do</td>
                       </tr>
                   
                 
                   
                       <tr class='hit'>
-                        <td class='line'>21</td>
+                        <td class='line'>22</td>
                         <td class='hits'>1</td>
                         <td class='source'>    %Membership{</td>
                       </tr>
@@ -2765,7 +2928,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>22</td>
+                        <td class='line'>23</td>
                         <td class='hits'></td>
                         <td class='source'>      role: :member,</td>
                       </tr>
@@ -2773,7 +2936,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>23</td>
+                        <td class='line'>24</td>
                         <td class='hits'></td>
                         <td class='source'>      group: build(:group),</td>
                       </tr>
@@ -2781,7 +2944,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>24</td>
+                        <td class='line'>25</td>
                         <td class='hits'></td>
                         <td class='source'>      member: build(:member)</td>
                       </tr>
@@ -2789,17 +2952,9 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>25</td>
-                        <td class='hits'></td>
-                        <td class='source'>    }</td>
-                      </tr>
-                  
-                
-                  
-                      <tr>
                         <td class='line'>26</td>
                         <td class='hits'></td>
-                        <td class='source'>  end</td>
+                        <td class='source'>    }</td>
                       </tr>
                   
                 
@@ -2807,7 +2962,7 @@ function find(y) {
                       <tr>
                         <td class='line'>27</td>
                         <td class='hits'></td>
-                        <td class='source'></td>
+                        <td class='source'>  end</td>
                       </tr>
                   
                 
@@ -2815,21 +2970,29 @@ function find(y) {
                       <tr>
                         <td class='line'>28</td>
                         <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>29</td>
+                        <td class='hits'></td>
                         <td class='source'>  def member_factory do</td>
                       </tr>
                   
                 
                   
                       <tr class='hit'>
-                        <td class='line'>29</td>
-                        <td class='hits'>1</td>
+                        <td class='line'>30</td>
+                        <td class='hits'>2</td>
                         <td class='source'>    %Member{</td>
                       </tr>
                     
                 
                   
                       <tr>
-                        <td class='line'>30</td>
+                        <td class='line'>31</td>
                         <td class='hits'></td>
                         <td class='source'>      user_id: 1</td>
                       </tr>
@@ -2837,7 +3000,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>31</td>
+                        <td class='line'>32</td>
                         <td class='hits'></td>
                         <td class='source'>    }</td>
                       </tr>
@@ -2845,7 +3008,7 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>32</td>
+                        <td class='line'>33</td>
                         <td class='hits'></td>
                         <td class='source'>  end</td>
                       </tr>
@@ -2853,7 +3016,63 @@ function find(y) {
                 
                   
                       <tr>
-                        <td class='line'>33</td>
+                        <td class='line'>34</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>35</td>
+                        <td class='hits'></td>
+                        <td class='source'>  def invitation_factory do</td>
+                      </tr>
+                  
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>36</td>
+                        <td class='hits'>1</td>
+                        <td class='source'>    %Invitation{</td>
+                      </tr>
+                    
+                
+                  
+                      <tr>
+                        <td class='line'>37</td>
+                        <td class='hits'></td>
+                        <td class='source'>      member: build(:member),</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>38</td>
+                        <td class='hits'></td>
+                        <td class='source'>      group: build(:group)</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>39</td>
+                        <td class='hits'></td>
+                        <td class='source'>    }</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>40</td>
+                        <td class='hits'></td>
+                        <td class='source'>  end</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>41</td>
                         <td class='hits'></td>
                         <td class='source'>end</td>
                       </tr>
@@ -2868,7 +3087,7 @@ function find(y) {
             <div id='stats' class='high'>
               <div class='percentage'>100</div>
               <div class='sloc'>2</div>
-              <div class='hits'>26</div>
+              <div class='hits'>28</div>
               <div class='misses'>0</div>
             </div>
             <table id='source'>
@@ -2987,7 +3206,7 @@ function find(y) {
                   
                       <tr class='hit'>
                         <td class='line'>13</td>
-                        <td class='hits'>16</td>
+                        <td class='hits'>18</td>
                         <td class='source'>  schema &quot;groups&quot; do</td>
                       </tr>
                     
@@ -3125,11 +3344,272 @@ function find(y) {
           </div>
         
           <div class='file'>
+            <h2 id='lib/travenger/community/invitation.ex'>lib/travenger/community/invitation.ex</h1>
+            <div id='stats' class='high'>
+              <div class='percentage'>100</div>
+              <div class='sloc'>2</div>
+              <div class='hits'>4</div>
+              <div class='misses'>0</div>
+            </div>
+            <table id='source'>
+              <thead>
+                <tr>
+                  <th>Line</th>
+                  <th>Hits</th>
+                  <th>Source</th>
+                </tr>
+              <tbody>
+                
+                  
+                      <tr>
+                        <td class='line'>0</td>
+                        <td class='hits'></td>
+                        <td class='source'>defmodule Travenger.Community.Invitation do</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>1</td>
+                        <td class='hits'></td>
+                        <td class='source'>  @moduledoc &quot;&quot;&quot;</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>2</td>
+                        <td class='hits'></td>
+                        <td class='source'>  Invitation Schema</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>3</td>
+                        <td class='hits'></td>
+                        <td class='source'>  &quot;&quot;&quot;</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>4</td>
+                        <td class='hits'></td>
+                        <td class='source'>  use Ecto.Schema</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>5</td>
+                        <td class='hits'></td>
+                        <td class='source'>  import Ecto.Changeset</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>6</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>7</td>
+                        <td class='hits'></td>
+                        <td class='source'>  alias Travenger.Community.Group</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>8</td>
+                        <td class='hits'></td>
+                        <td class='source'>  alias Travenger.Community.Member</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>9</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>10</td>
+                        <td class='hits'>2</td>
+                        <td class='source'>  schema &quot;invitations&quot; do</td>
+                      </tr>
+                    
+                
+                  
+                      <tr>
+                        <td class='line'>11</td>
+                        <td class='hits'></td>
+                        <td class='source'>    field(:status, InvitationStatusEnum, default: :pending)</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>12</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>13</td>
+                        <td class='hits'></td>
+                        <td class='source'>    field(:accepted_at, :naive_datetime)</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>14</td>
+                        <td class='hits'></td>
+                        <td class='source'>    field(:cancelled_at, :naive_datetime)</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>15</td>
+                        <td class='hits'></td>
+                        <td class='source'>    field(:rejected_at, :naive_datetime)</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>16</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>17</td>
+                        <td class='hits'></td>
+                        <td class='source'>    belongs_to(:member, Member)</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>18</td>
+                        <td class='hits'></td>
+                        <td class='source'>    belongs_to(:group, Group)</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>19</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>20</td>
+                        <td class='hits'></td>
+                        <td class='source'>    timestamps()</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>21</td>
+                        <td class='hits'></td>
+                        <td class='source'>  end</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>22</td>
+                        <td class='hits'></td>
+                        <td class='source'></td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>23</td>
+                        <td class='hits'></td>
+                        <td class='source'>  @doc false</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>24</td>
+                        <td class='hits'></td>
+                        <td class='source'>  def changeset(invitation, attrs \\ %{}) do</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>25</td>
+                        <td class='hits'></td>
+                        <td class='source'>    invitation</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>26</td>
+                        <td class='hits'></td>
+                        <td class='source'>    |&gt; cast(attrs, [])</td>
+                      </tr>
+                  
+                
+                  
+                      <tr class='hit'>
+                        <td class='line'>27</td>
+                        <td class='hits'>2</td>
+                        <td class='source'>    |&gt; validate_required([])</td>
+                      </tr>
+                    
+                
+                  
+                      <tr>
+                        <td class='line'>28</td>
+                        <td class='hits'></td>
+                        <td class='source'>  end</td>
+                      </tr>
+                  
+                
+                  
+                      <tr>
+                        <td class='line'>29</td>
+                        <td class='hits'></td>
+                        <td class='source'>end</td>
+                      </tr>
+                  
+                
+              </tbody>
+            </table>
+          </div>
+        
+          <div class='file'>
             <h2 id='lib/travenger/community/member.ex'>lib/travenger/community/member.ex</h1>
             <div id='stats' class='high'>
               <div class='percentage'>100</div>
               <div class='sloc'>2</div>
-              <div class='hits'>24</div>
+              <div class='hits'>27</div>
               <div class='misses'>0</div>
             </div>
             <table id='source'>
@@ -3216,7 +3696,7 @@ function find(y) {
                   
                       <tr class='hit'>
                         <td class='line'>9</td>
-                        <td class='hits'>19</td>
+                        <td class='hits'>21</td>
                         <td class='source'>  schema &quot;members&quot; do</td>
                       </tr>
                     
@@ -3304,7 +3784,7 @@ function find(y) {
                   
                       <tr class='hit'>
                         <td class='line'>20</td>
-                        <td class='hits'>5</td>
+                        <td class='hits'>6</td>
                         <td class='source'>    |&gt; validate_required([])</td>
                       </tr>
                     
@@ -3579,7 +4059,7 @@ function find(y) {
             <div id='stats' class='high'>
               <div class='percentage'>100</div>
               <div class='sloc'>1</div>
-              <div class='hits'>5</div>
+              <div class='hits'>6</div>
               <div class='misses'>0</div>
             </div>
             <table id='source'>
@@ -3658,7 +4138,7 @@ function find(y) {
                   
                       <tr class='hit'>
                         <td class='line'>8</td>
-                        <td class='hits'>5</td>
+                        <td class='hits'>6</td>
                         <td class='source'>    where(query, [q], q.user_id == ^user_id)</td>
                       </tr>
                     

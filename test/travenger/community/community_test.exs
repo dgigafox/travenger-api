@@ -58,4 +58,16 @@ defmodule Travenger.CommunityTest do
       assert membership.role == :admin
     end
   end
+
+  describe "invite" do
+    test "returns a pending invitation", %{member: member} do
+      group = insert(:group)
+      {:ok, invitation} = Community.invite(member, group)
+
+      assert invitation.id
+      assert invitation.member_id == member.id
+      assert invitation.group_id == group.id
+      assert invitation.status == :pending
+    end
+  end
 end

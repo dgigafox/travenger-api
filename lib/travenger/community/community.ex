@@ -9,6 +9,7 @@ defmodule Travenger.Community do
   alias Ecto.Multi
   alias Travenger.Account.User
   alias Travenger.Community.Group
+  alias Travenger.Community.Invitation
   alias Travenger.Community.Member
   alias Travenger.Community.Membership
   alias Travenger.Repo
@@ -39,6 +40,8 @@ defmodule Travenger.Community do
     end
   end
 
+  def get_group(id), do: Repo.get(Group, id)
+
   def add_admin(%Member{} = member, %Group{} = group) do
     %Membership{
       member: member,
@@ -51,6 +54,24 @@ defmodule Travenger.Community do
   def find_member(params) do
     Member
     |> where_user_id(params)
+    |> Repo.one()
+  end
+
+  def invite(%Member{} = member, %Group{} = group) do
+    %Invitation{
+      member: member,
+      group: group
+    }
+    |> Invitation.changeset()
+    |> Repo.insert()
+  end
+
+  def find_membership(params) do
+    Membership
+    |> join_membership_member(params)
+    |> where_member_user_id(params)
+    |> where_role(params)
+    |> where_group_id(params)
     |> Repo.one()
   end
 end
