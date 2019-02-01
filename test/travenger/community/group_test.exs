@@ -18,4 +18,13 @@ defmodule Travenger.Community.GroupTest do
       assert ch.errors[:name]
     end
   end
+
+  describe "update_changeset/2" do
+    test "returns a valid changeset" do
+      ch = Group.update_changeset(build(:group), %{name: "New Group Name"})
+
+      assert ch.valid?
+      assert ch.changes[:name]
+    end
+  end
 end

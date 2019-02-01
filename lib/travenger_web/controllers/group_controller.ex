@@ -39,6 +39,16 @@ defmodule TravengerWeb.GroupController do
     end
   end
 
+  def update(conn, params) do
+    with params <- string_keys_to_atom(params),
+         {:ok, group} <- get_group(params.id),
+         {:ok, group} <- Community.update_group(group, params) do
+      conn
+      |> put_status(:ok)
+      |> render("show.json", %{group: group})
+    end
+  end
+
   defp get_user(user_id) do
     case Account.get_user(user_id) do
       nil -> {:error, "user not found"}
