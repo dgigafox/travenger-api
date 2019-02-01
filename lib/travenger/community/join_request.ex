@@ -1,4 +1,7 @@
 defmodule Travenger.Community.JoinRequest do
+  @moduledoc """
+  Join request schema
+  """
   use Ecto.Schema
   import Ecto.Changeset
 
