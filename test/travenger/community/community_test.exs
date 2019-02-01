@@ -92,4 +92,25 @@ defmodule Travenger.CommunityTest do
       assert join_request.group_id == group.id
     end
   end
+
+  describe "list_groups" do
+    setup %{member: member} do
+      insert_list(3, :group, %{creator: member})
+
+      {:ok, %{foo: "foo"}}
+    end
+
+    test "returns a list of groups with pagination" do
+      %{entries: entries} = Community.list_groups()
+
+      refute Enum.empty?(entries)
+    end
+
+    test "filter by creator", %{member: member} do
+      %{entries: entries} = Community.list_groups(%{creator_id: member.id})
+
+      refute Enum.empty?(entries)
+      assert Enum.all?(entries, &(Map.get(&1, :creator_id) == member.id))
+    end
+  end
 end
