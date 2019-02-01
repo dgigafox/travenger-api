@@ -17,6 +17,11 @@ defmodule TravengerWeb.GroupController do
     when action in @require_admin_functions
   )
 
+  def index(conn, params) do
+    params = string_keys_to_atom(params)
+    render(conn, "index.json", groups: Community.list_groups(params))
+  end
+
   def create(conn, params) do
     with user <- current_resource(conn),
          {:ok, member} <- Community.build_member_from_user(user),

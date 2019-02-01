@@ -4,6 +4,7 @@ defmodule Travenger.Community do
   """
 
   import Ecto.Query, warn: false
+  import Travenger.Community.Helpers.Queries
   import Travenger.Helpers.Queries
 
   alias Ecto.Multi
@@ -89,5 +90,11 @@ defmodule Travenger.Community do
     }
     |> JoinRequest.changeset()
     |> Repo.insert()
+  end
+
+  def list_groups(params \\ %{}) do
+    Group
+    |> where_creator(params)
+    |> Repo.paginate(params)
   end
 end

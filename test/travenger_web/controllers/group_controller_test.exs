@@ -89,4 +89,17 @@ defmodule TravengerWeb.GroupControllerTest do
       assert json_response(conn, :ok) == expected
     end
   end
+
+  describe "index/2" do
+    test "returns a paginated list of groups" do
+      insert_list(3, :group)
+      conn = build_conn()
+      conn = get(conn, api_v1_group_path(conn, :index))
+      %{assigns: %{groups: groups}} = conn
+
+      expected = render_json(GroupView, "index.json", %{groups: groups})
+
+      assert json_response(conn, :ok) == expected
+    end
+  end
 end
