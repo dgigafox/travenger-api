@@ -8,6 +8,7 @@ defmodule TravengerWeb.GroupController do
   alias Travenger.Community
 
   alias TravengerWeb.InvitationView
+  alias TravengerWeb.JoinRequestView
 
   @require_admin_functions ~w(invite)a
 
@@ -46,6 +47,19 @@ defmodule TravengerWeb.GroupController do
       conn
       |> put_status(:ok)
       |> render("show.json", %{group: group})
+    end
+  end
+
+  def join(conn, params) do
+    with params <- string_keys_to_atom(params),
+         user <- current_resource(conn),
+         {:ok, member} <- Community.build_member_from_user(user),
+         {:ok, group} <- get_group(params.group_id),
+         {:ok, joinreq} <- Community.join_group(member, group) do
+      conn
+      |> put_status(:ok)
+      |> put_view(JoinRequestView)
+      |> render("show.json", %{join_request: joinreq})
     end
   end
 

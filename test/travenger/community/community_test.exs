@@ -80,4 +80,16 @@ defmodule Travenger.CommunityTest do
       assert updated_group.name == "New #{group.name}"
     end
   end
+
+  describe "join_group" do
+    test "returns a join request", %{member: member} do
+      group = insert(:group)
+
+      {:ok, join_request} = Community.join_group(member, group)
+
+      assert join_request.id
+      assert join_request.requester_id == member.id
+      assert join_request.group_id == group.id
+    end
+  end
 end

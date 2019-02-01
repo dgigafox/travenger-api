@@ -7,6 +7,7 @@ defmodule TravengerWeb.GroupControllerTest do
   alias Travenger.Account.Factory, as: Account
   alias TravengerWeb.GroupView
   alias TravengerWeb.InvitationView
+  alias TravengerWeb.JoinRequestView
 
   @missing_token_error %{"error" => "missing_authorization_token"}
 
@@ -73,6 +74,18 @@ defmodule TravengerWeb.GroupControllerTest do
       %{assigns: %{group: group}} = conn
 
       expected = render_json(GroupView, "show.json", %{group: group})
+      assert json_response(conn, :ok) == expected
+    end
+  end
+
+  describe "join_request/2" do
+    test "returns 200", %{conn: conn} do
+      group = insert(:group)
+
+      conn = post(conn, api_v1_group_path(conn, :join, group.id))
+      %{assigns: %{join_request: joinreq}} = conn
+
+      expected = render_json(JoinRequestView, "show.json", %{join_request: joinreq})
       assert json_response(conn, :ok) == expected
     end
   end

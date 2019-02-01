@@ -10,6 +10,7 @@ defmodule Travenger.Community do
   alias Travenger.Account.User
   alias Travenger.Community.Group
   alias Travenger.Community.Invitation
+  alias Travenger.Community.JoinRequest
   alias Travenger.Community.Member
   alias Travenger.Community.Membership
   alias Travenger.Repo
@@ -79,5 +80,14 @@ defmodule Travenger.Community do
     group
     |> Group.update_changeset(params)
     |> Repo.update()
+  end
+
+  def join_group(%Member{} = member, %Group{} = group) do
+    %JoinRequest{
+      requester: member,
+      group: group
+    }
+    |> JoinRequest.changeset()
+    |> Repo.insert()
   end
 end
