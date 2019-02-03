@@ -47,7 +47,7 @@ defmodule TravengerWeb.Router do
         post("/:group_id/join", GroupController, :join)
       end
 
-      scope "groups/" do
+      scope "/groups" do
         resources("/", GroupController, only: [:index])
       end
     end
