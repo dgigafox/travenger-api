@@ -114,4 +114,15 @@ defmodule Travenger.CommunityTest do
       assert Enum.all?(entries, &(Map.get(&1, :creator_id) == member.id))
     end
   end
+
+  describe "accept_invitation/1" do
+    test "returns an accepted invitation", %{member: member} do
+      invitation = insert(:invitation, member: member, status: :pending)
+      {:ok, accepted_invitation} = Community.accept_invitation(invitation)
+
+      assert invitation.id == accepted_invitation.id
+      assert accepted_invitation.status == :accepted
+      assert accepted_invitation.accepted_at
+    end
+  end
 end

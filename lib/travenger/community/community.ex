@@ -6,6 +6,7 @@ defmodule Travenger.Community do
   import Ecto.Query, warn: false
   import Travenger.Community.Helpers.Queries
   import Travenger.Helpers.Queries
+  import Travenger.Helpers.Utils
 
   alias Ecto.Multi
   alias Travenger.Account.User
@@ -90,5 +91,28 @@ defmodule Travenger.Community do
     Group
     |> where_creator(params)
     |> Repo.paginate(params)
+  end
+
+  def accept_invitation(%Invitation{} = invitation) do
+    Multi.new()
+    |> Multi.run(:member, &get_assoc(&1, invitation, :member))
+    |> Multi.run(:group, &get_assoc(&1, invitation, :group))
+    |> Multi.update(
+      :updated_invitation,
+      Invitation.accept_changeset(invitation)
+    )
+    |> Multi.insert(
+      :membership,
+      Membership.changeset(%Membership{}, %{role: :member})
+    )
+    |> Repo.transaction()
+    |> case do
+      {:ok, %{updated_invitation: inv}} -> {:ok, inv}
+      {:error, _, ch, _} -> {:error, ch}
+    end
+  end
+
+  defp get_assoc(_, struct, key) do
+    get_assoc(struct, key)
   end
 end

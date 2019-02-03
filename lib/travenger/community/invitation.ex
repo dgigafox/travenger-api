@@ -27,4 +27,11 @@ defmodule Travenger.Community.Invitation do
     |> cast(attrs, [])
     |> validate_required([])
   end
+
+  def accept_changeset(invitation, attrs \\ %{}) do
+    invitation
+    |> cast(attrs, [:status, :accepted_at])
+    |> put_change(:status, :accepted)
+    |> put_change(:accepted_at, DateTime.utc_now())
+  end
 end
