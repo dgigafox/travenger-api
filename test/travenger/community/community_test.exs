@@ -42,7 +42,8 @@ defmodule Travenger.CommunityTest do
       assert Repo.get_by(
                Membership,
                member_id: c.member.id,
-               group_id: c.group.id
+               group_id: c.group.id,
+               role: :admin
              )
     end
   end

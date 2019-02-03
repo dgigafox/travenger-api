@@ -26,12 +26,6 @@ defmodule Travenger.Community do
   end
 
   def create_group(%Member{} = member, params) do
-    %Group{
-      creator: member
-    }
-    |> Group.changeset(params)
-    |> Repo.insert()
-
     Multi.new()
     |> Multi.insert(:group, Group.changeset(%Group{creator: member}, params))
     |> Multi.run(:admin_membership, &add_admin(member, &1.group))
