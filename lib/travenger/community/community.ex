@@ -48,6 +48,15 @@ defmodule Travenger.Community do
     |> Repo.insert()
   end
 
+  def add_member(%Member{} = member, %Group{} = group) do
+    %Membership{
+      member: member,
+      group: group
+    }
+    |> Membership.changeset(%{role: :member})
+    |> Repo.insert()
+  end
+
   def find_member(params) do
     Member
     |> where_user_id(params)
@@ -97,19 +106,19 @@ defmodule Travenger.Community do
     Multi.new()
     |> Multi.run(:member, &get_assoc(&1, invitation, :member))
     |> Multi.run(:group, &get_assoc(&1, invitation, :group))
-    |> Multi.update(
-      :updated_invitation,
-      Invitation.accept_changeset(invitation)
-    )
-    |> Multi.insert(
-      :membership,
-      Membership.changeset(%Membership{}, %{role: :member})
-    )
+    |> Multi.run(:updated_invitation, &accept_invitation(&1, invitation))
+    |> Multi.run(:membership, &add_member(&1.member, &1.group))
     |> Repo.transaction()
     |> case do
       {:ok, %{updated_invitation: inv}} -> {:ok, inv}
       {:error, _, ch, _} -> {:error, ch}
     end
+  end
+
+  defp accept_invitation(_, invitation) do
+    invitation
+    |> Invitation.accept_changeset()
+    |> Repo.update()
   end
 
   defp get_assoc(_, struct, key) do

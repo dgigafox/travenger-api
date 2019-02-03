@@ -60,6 +60,18 @@ defmodule Travenger.CommunityTest do
     end
   end
 
+  describe "add_member" do
+    test "returns a membership", %{member: member} do
+      group = insert(:group)
+      {:ok, membership} = Community.add_member(member, group)
+
+      assert membership.id
+      assert membership.group.id == group.id
+      assert membership.member.id == member.id
+      assert membership.role == :member
+    end
+  end
+
   describe "invite" do
     test "returns a pending invitation", %{member: member} do
       group = insert(:group)
@@ -116,13 +128,28 @@ defmodule Travenger.CommunityTest do
   end
 
   describe "accept_invitation/1" do
-    test "returns an accepted invitation", %{member: member} do
+    setup %{member: member} do
       invitation = insert(:invitation, member: member, status: :pending)
       {:ok, accepted_invitation} = Community.accept_invitation(invitation)
 
-      assert invitation.id == accepted_invitation.id
-      assert accepted_invitation.status == :accepted
-      assert accepted_invitation.accepted_at
+      %{
+        invitation: invitation,
+        accepted_invitation: accepted_invitation
+      }
+    end
+
+    test "returns an accepted invitation", c do
+      assert c.invitation.id == c.accepted_invitation.id
+      assert c.accepted_invitation.status == :accepted
+      assert c.accepted_invitation.accepted_at
+    end
+
+    test "returns a membership", c do
+      assert Repo.get_by(Membership,
+               member_id: c.invitation.member_id,
+               group_id: c.invitation.group_id,
+               role: :member
+             )
     end
   end
 end
