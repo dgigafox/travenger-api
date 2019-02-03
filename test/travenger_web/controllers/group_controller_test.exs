@@ -10,6 +10,7 @@ defmodule TravengerWeb.GroupControllerTest do
   alias TravengerWeb.JoinRequestView
 
   @missing_token_error %{"error" => "missing_authorization_token"}
+  @page_fields %{"page_size" => 20, "page_number" => 1}
 
   def build_user do
     Account.insert(:user)
@@ -94,12 +95,24 @@ defmodule TravengerWeb.GroupControllerTest do
     test "returns a paginated list of groups" do
       insert_list(3, :group)
       conn = build_conn()
-      conn = get(conn, api_v1_group_path(conn, :index))
-      %{assigns: %{groups: groups}} = conn
+      conn = get(conn, api_v1_group_path(conn, :index), @page_fields)
+      %{"data" => data} = json_response(conn, :ok)
 
-      expected = render_json(GroupView, "index.json", %{groups: groups})
+      assert data["page_number"] == @page_fields["page_number"]
+      assert data["page_size"] == @page_fields["page_size"]
+      assert data["total_entries"] == 3
+      assert data["total_pages"] == 1
+      refute data["entries"] == []
+    end
+  end
 
-      assert json_response(conn, :ok) == expected
+  describe "show/2" do
+    test "returns a group", %{conn: conn} do
+      group = insert(:group)
+      conn = get(conn, api_v1_group_path(conn, :show, group.id))
+      %{"data" => data} = json_response(conn, :ok)
+
+      assert data["id"]
     end
   end
 end

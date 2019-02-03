@@ -19,7 +19,7 @@ defmodule TravengerWeb.Plugs.RequireGroupAdminTest do
 
     test "returns 403 when user is not an admin of the group", c do
       params = %{member: c.member, group: c.group, role: :member}
-      membership = insert(:membership, params)
+      insert(:membership, params)
 
       conn =
         c.user
@@ -46,7 +46,7 @@ defmodule TravengerWeb.Plugs.RequireGroupAdminTest do
 
     test "returns conn if user is admin of the group", c do
       params = %{member: c.member, group: c.group, role: :admin}
-      membership = insert(:membership, params)
+      insert(:membership, params)
 
       conn =
         c.user

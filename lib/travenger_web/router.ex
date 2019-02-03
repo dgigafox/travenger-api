@@ -48,7 +48,7 @@ defmodule TravengerWeb.Router do
       end
 
       scope "/groups" do
-        resources("/", GroupController, only: [:index])
+        resources("/", GroupController, only: [:index, :show])
       end
     end
   end
