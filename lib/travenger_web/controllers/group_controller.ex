@@ -22,6 +22,13 @@ defmodule TravengerWeb.GroupController do
     render(conn, "index.json", groups: Community.list_groups(params))
   end
 
+  def show(conn, params) do
+    with params <- string_keys_to_atom(params),
+         {:ok, group} <- get_group(params.id) do
+      render(conn, "show.json", group: group)
+    end
+  end
+
   def create(conn, params) do
     with user <- current_resource(conn),
          {:ok, member} <- Community.build_member_from_user(user),
