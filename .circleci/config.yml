@@ -6,7 +6,7 @@ jobs:
   build:
     docker:
       # specify the version here
-      - image: circleci/elixir:1.6.5
+      - image: circleci/elixir:1.4
         environment:
           MIX_ENV: test
       - image: postgres:9.6
