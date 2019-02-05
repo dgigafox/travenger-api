@@ -17,6 +17,11 @@ defmodule TravengerWeb.Router do
     plug(TravengerWeb.UserAuthPipeline)
   end
 
+  pipeline :graphql do
+    plug(TravengerWeb.UserAuthPipeline)
+    plug(TravengerWeb.Plugs.GraphqlAuth)
+  end
+
   scope "/", TravengerWeb do
     # Use the default browser stack
     pipe_through(:browser)
@@ -34,6 +39,17 @@ defmodule TravengerWeb.Router do
 
     get("/:provider", AccountController, :request)
     get("/:provider/callback", AccountController, :callback)
+  end
+
+  # GraphQL for client API
+  scope "/api" do
+    pipe_through(:graphql)
+
+    forward("/graph", Absinthe.Plug, schema: TravengerWeb.ApiSchema)
+
+    if Mix.env() == :dev do
+      forward("/graphiql", Absinthe.Plug.GraphiQL, schema: TravengerWeb.ApiSchema)
+    end
   end
 
   scope "/api", TravengerWeb, as: :api do
