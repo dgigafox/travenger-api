@@ -1,11 +1,10 @@
-defmodule TravengerWeb.Plugs.GraphqlAuth do
+defmodule TravengerWeb.Plugs.Context do
   @moduledoc """
   Plug that puts conn resource into context
   """
 
   @behaviour Plug
 
-  import Plug.Conn
   import Travenger.Account.Guardian.Plug
 
   def init(opts), do: opts
@@ -16,9 +15,13 @@ defmodule TravengerWeb.Plugs.GraphqlAuth do
   assign the resource in the Plug.Conn
   """
   def call(conn, _) do
+    Absinthe.Plug.put_options(conn, context: build_context(conn))
+  end
+
+  defp build_context(conn) do
     case current_resource(conn) do
-      nil -> conn
-      resource -> put_private(conn, :absinthe, %{context: %{user: resource}})
+      nil -> %{}
+      user -> %{current_user: user}
     end
   end
 end

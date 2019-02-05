@@ -19,7 +19,7 @@ defmodule TravengerWeb.Router do
 
   pipeline :graphql do
     plug(TravengerWeb.UserAuthPipeline)
-    plug(TravengerWeb.Plugs.GraphqlAuth)
+    plug(TravengerWeb.Plugs.Context)
   end
 
   scope "/", TravengerWeb do
