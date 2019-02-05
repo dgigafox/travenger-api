@@ -10,7 +10,8 @@ defmodule TravengerWeb.InvitationView do
   def render("invitation.json", %{invitation: invitation}) do
     %{
       id: invitation.id,
-      status: invitation.status
+      status: invitation.status,
+      accepted_at: invitation.accepted_at
     }
   end
 end

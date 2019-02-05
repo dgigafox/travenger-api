@@ -75,6 +75,32 @@ defmodule TravengerWeb.GroupController do
     end
   end
 
+  def accept_invitation(conn, params) do
+    with params <- string_keys_to_atom(params),
+         user <- current_resource(conn),
+         {:ok, member} <- Community.build_member_from_user(user),
+         {:ok, params} <- put(params, :id, params.invitation_id),
+         {:ok, params} <- put(params, :member_id, member.id),
+         {:ok, invitation} <- get_invitation(params),
+         {:ok, invitation} <- Community.accept_invitation(invitation) do
+      conn
+      |> put_status(:ok)
+      |> put_view(InvitationView)
+      |> render("show.json", %{invitation: invitation})
+    end
+  end
+
+  defp put(map, key, value) do
+    {:ok, Map.put(map, key, value)}
+  end
+
+  defp get_invitation(params) do
+    case Community.find_invitation(params) do
+      nil -> {:error, "invitation not found"}
+      invitation -> {:ok, invitation}
+    end
+  end
+
   defp get_user(user_id) do
     case Account.get_user(user_id) do
       nil -> {:error, "user not found"}

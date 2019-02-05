@@ -115,4 +115,18 @@ defmodule TravengerWeb.GroupControllerTest do
       assert data["id"]
     end
   end
+
+  describe "accept_invitation/2" do
+    test "returns an accepted invitation", %{conn: conn, user: user} do
+      member = insert(:member, user_id: user.id)
+      invitation = insert(:invitation, member: member)
+      path = api_v1_group_path(conn, :accept_invitation, invitation.id)
+      conn = put(conn, path)
+      %{"data" => data} = json_response(conn, :ok)
+
+      assert data["id"]
+      assert data["status"]
+      assert data["accepted_at"]
+    end
+  end
 end
