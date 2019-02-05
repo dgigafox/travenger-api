@@ -13,6 +13,7 @@ defmodule TravengerWeb.ApiSchema do
 
   # root query fields
   import_types(ApiSchema.Queries)
+  import_types(ApiSchema.Mutations)
 
   import_types(Api.CommunityTypes)
 
@@ -21,6 +22,10 @@ defmodule TravengerWeb.ApiSchema do
 
   query do
     import_fields(:queries)
+  end
+
+  mutation do
+    import_fields(:mutations)
   end
 
   def middleware(middleware, _field, _object) do

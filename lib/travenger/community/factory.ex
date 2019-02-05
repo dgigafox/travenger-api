@@ -29,7 +29,7 @@ defmodule Travenger.Community.Factory do
 
   def member_factory do
     %Member{
-      user_id: 1
+      user_id: sequence(:user_id, & &1)
     }
   end
 

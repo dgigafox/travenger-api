@@ -1,4 +1,4 @@
-defmodule TravengerWeb.Graphql.Admin.QueriesTest do
+defmodule TravengerWeb.Graphql.Api.QueriesTest do
   use TravengerWeb.ConnCase
 
   import Travenger.Community.Factory
@@ -13,13 +13,6 @@ defmodule TravengerWeb.Graphql.Admin.QueriesTest do
     name
     description
   """
-
-  defp create_resp(user, query) do
-    user
-    |> build_user_conn(&build_conn/0, &put_req_header/3)
-    |> post(@api_graphql, query_skeleton(query))
-    |> json_response(200)
-  end
 
   defp create_unauthenticated_resp(query) do
     build_conn()
