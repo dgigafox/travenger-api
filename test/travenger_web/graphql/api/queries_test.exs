@@ -21,12 +21,18 @@ defmodule TravengerWeb.Graphql.Admin.QueriesTest do
     |> json_response(200)
   end
 
+  defp create_unauthenticated_resp(query) do
+    build_conn()
+    |> post(@api_graphql, query_skeleton(query))
+    |> json_response(200)
+  end
+
   setup do
     {:ok, %{user: Account.insert(:user)}}
   end
 
   describe "groups" do
-    test "returns paginated groups", %{user: user} do
+    test "returns paginated groups" do
       insert_list(5, :group)
 
       query = """
@@ -40,8 +46,8 @@ defmodule TravengerWeb.Graphql.Admin.QueriesTest do
       """
 
       resp =
-        user
-        |> create_resp(query)
+        query
+        |> create_unauthenticated_resp()
         |> Map.get("data")
         |> Map.get("groups")
         |> Map.get("entries")

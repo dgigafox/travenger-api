@@ -5,7 +5,7 @@ defmodule TravengerWeb.Api.CommunityResolver do
 
   alias Travenger.Community
 
-  def list_groups(params, _context) do
+  def list_groups(params, _res) do
     {:ok, Community.list_groups(params)}
   end
 end
