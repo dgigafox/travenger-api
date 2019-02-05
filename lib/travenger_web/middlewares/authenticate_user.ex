@@ -4,17 +4,19 @@ defmodule TravengerWeb.Middlewares.AuthenticateUser do
   """
   @behaviour Absinthe.Middleware
 
+  alias Absinthe.Resolution
+
   @error_map %{
     code: :not_authenticated,
     error: "Not authenticated",
     message: "Not authenticated"
   }
 
-  def call(resolution = %{context: %{current_user: _}}, _config) do
+  def call(%{context: %{current_user: _}} = resolution, _config) do
     resolution
   end
 
   def call(resolution, _config) do
-    Absinthe.Resolution.put_result(resolution, {:error, @error_map})
+    Resolution.put_result(resolution, {:error, @error_map})
   end
 end

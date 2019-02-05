@@ -9,7 +9,6 @@ defmodule TravengerWeb.GroupControllerTest do
   alias TravengerWeb.InvitationView
   alias TravengerWeb.JoinRequestView
 
-  @missing_token_error %{"error" => "missing_authorization_token"}
   @page_fields %{"page_size" => 20, "page_number" => 1}
 
   def build_user do
@@ -35,13 +34,6 @@ defmodule TravengerWeb.GroupControllerTest do
     test "creates and returns group", %{group: group, conn: conn} do
       expected = render_json(GroupView, "show.json", %{group: group})
       assert json_response(conn, :created) == expected
-    end
-
-    test "returns error if user is not authenticated" do
-      params = params_for(:group)
-      conn = build_conn()
-      conn = post(conn, api_v1_group_path(conn, :create), params)
-      assert json_response(conn, 401) == @missing_token_error
     end
   end
 

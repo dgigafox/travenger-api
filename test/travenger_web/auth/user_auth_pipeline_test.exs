@@ -18,14 +18,13 @@ defmodule TravengerWeb.Plugs.UserAuthPipelineTest do
       refute conn.halted
     end
 
-    test "returns unauthorized when there is no authorized token" do
+    test "returns conn when there is no authorized token" do
       conn =
         build_conn()
         |> bypass_through(TravengerWeb.Router, [:authorize_user])
         |> get("/")
 
-      assert conn.halted
-      assert conn.status == 401
+      refute conn.halted
     end
   end
 end
