@@ -11,6 +11,14 @@ defmodule Travenger.TestHelpers do
     put_req_header.(build_conn.(), "authorization", "Bearer " <> token)
   end
 
+  def query_skeleton(query) do
+    %{
+      "operationName" => "",
+      "query" => "#{query}",
+      "variables" => "{}"
+    }
+  end
+
   def get_assoc(struct, key) do
     struct
     |> Repo.preload(key)
