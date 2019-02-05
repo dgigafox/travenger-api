@@ -4,9 +4,12 @@ defmodule Travenger.Community.Invitation do
   """
   use Ecto.Schema
   import Ecto.Changeset
+  import Travenger.Helpers.Validators
 
   alias Travenger.Community.Group
   alias Travenger.Community.Member
+
+  @valid_status ~w(pending)a
 
   schema "invitations" do
     field(:status, InvitationStatusEnum, default: :pending)
@@ -26,5 +29,13 @@ defmodule Travenger.Community.Invitation do
     invitation
     |> cast(attrs, [])
     |> validate_required([])
+  end
+
+  def accept_changeset(invitation, attrs \\ %{}) do
+    invitation
+    |> cast(attrs, [:status, :accepted_at])
+    |> validate_status(@valid_status)
+    |> put_change(:status, :accepted)
+    |> put_change(:accepted_at, DateTime.utc_now())
   end
 end

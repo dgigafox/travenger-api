@@ -50,6 +50,11 @@ defmodule TravengerWeb.Router do
       scope "/groups" do
         resources("/", GroupController, only: [:index, :show])
       end
+
+      scope "/invitations" do
+        pipe_through(:authorize_user)
+        put("/:invitation_id/accept", GroupController, :accept_invitation)
+      end
     end
   end
 end

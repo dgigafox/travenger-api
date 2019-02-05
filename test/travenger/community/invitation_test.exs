@@ -12,4 +12,22 @@ defmodule Travenger.Community.InvitationTest do
       assert ch.valid?
     end
   end
+
+  describe "accept_changeset/2" do
+    test "returns a valid changeset" do
+      ch = Invitation.accept_changeset(build(:invitation))
+
+      assert ch.valid?
+      assert ch.changes[:status] == :accepted
+      assert ch.changes[:accepted_at]
+    end
+
+    test "returns invalid if it is not pending" do
+      invitation = build(:invitation, status: :accepted)
+      ch = Invitation.accept_changeset(invitation)
+
+      refute ch.valid?
+      assert ch.errors == [status: {"is already accepted", []}]
+    end
+  end
 end

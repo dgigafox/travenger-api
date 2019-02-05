@@ -6,6 +6,7 @@ defmodule Travenger.Community do
   import Ecto.Query, warn: false
   import Travenger.Community.Helpers.Queries
   import Travenger.Helpers.Queries
+  import Travenger.Helpers.Utils
 
   alias Ecto.Multi
   alias Travenger.Account.User
@@ -26,12 +27,6 @@ defmodule Travenger.Community do
   end
 
   def create_group(%Member{} = member, params) do
-    %Group{
-      creator: member
-    }
-    |> Group.changeset(params)
-    |> Repo.insert()
-
     Multi.new()
     |> Multi.insert(:group, Group.changeset(%Group{creator: member}, params))
     |> Multi.run(:admin_membership, &add_admin(member, &1.group))
@@ -50,6 +45,15 @@ defmodule Travenger.Community do
       group: group
     }
     |> Membership.changeset(%{role: :admin})
+    |> Repo.insert()
+  end
+
+  def add_member(%Member{} = member, %Group{} = group) do
+    %Membership{
+      member: member,
+      group: group
+    }
+    |> Membership.changeset(%{role: :member})
     |> Repo.insert()
   end
 
@@ -96,5 +100,35 @@ defmodule Travenger.Community do
     Group
     |> where_creator(params)
     |> Repo.paginate(params)
+  end
+
+  def accept_invitation(%Invitation{} = invitation) do
+    Multi.new()
+    |> Multi.run(:member, &get_assoc(&1, invitation, :member))
+    |> Multi.run(:group, &get_assoc(&1, invitation, :group))
+    |> Multi.run(:updated_invitation, &accept_invitation(&1, invitation))
+    |> Multi.run(:membership, &add_member(&1.member, &1.group))
+    |> Repo.transaction()
+    |> case do
+      {:ok, %{updated_invitation: inv}} -> {:ok, inv}
+      {:error, _, ch, _} -> {:error, ch}
+    end
+  end
+
+  def find_invitation(params) do
+    Invitation
+    |> where_id(params)
+    |> where_member(params)
+    |> Repo.one()
+  end
+
+  defp accept_invitation(_, invitation) do
+    invitation
+    |> Invitation.accept_changeset()
+    |> Repo.update()
+  end
+
+  defp get_assoc(_, struct, key) do
+    get_assoc(struct, key)
   end
 end
