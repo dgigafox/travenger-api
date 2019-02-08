@@ -26,7 +26,7 @@ jobs:
           command: mix local.rebar --force
       - run:
           name: Install dependencies
-          command: mix deps.get
+          command: mix deps.get, compile
       - run:
           name: Run Linter
           command: mix credo --strict
