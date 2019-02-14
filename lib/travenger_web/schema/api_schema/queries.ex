@@ -5,6 +5,7 @@ defmodule TravengerWeb.ApiSchema.Queries do
 
   use Absinthe.Schema.Notation
 
+  alias Travenger.Community
   alias TravengerWeb.Api.CommunityResolver
 
   object :queries do
@@ -14,6 +15,14 @@ defmodule TravengerWeb.ApiSchema.Queries do
       arg(:page_size, :integer)
 
       resolve(&CommunityResolver.list_groups/2)
+    end
+
+    field :group, :group do
+      arg(:id, non_null(:id))
+
+      resolve(fn params, _ ->
+        Community.get_group(params.id)
+      end)
     end
   end
 end

@@ -48,4 +48,26 @@ defmodule TravengerWeb.Graphql.Api.QueriesTest do
       refute Enum.empty?(resp)
     end
   end
+
+  describe "group" do
+    test "returns a group" do
+      group = insert(:group)
+
+      query = """
+        query {
+          group(id: #{group.id}) {
+            #{@group_fields}
+          }
+        }
+      """
+
+      resp =
+        query
+        |> create_unauthenticated_resp()
+        |> Map.get("data")
+        |> Map.get("group")
+
+      assert resp["id"]
+    end
+  end
 end
