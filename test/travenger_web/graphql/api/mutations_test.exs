@@ -182,4 +182,27 @@ defmodule TravengerWeb.Graphql.Api.MutationsTest do
       assert resp["id"]
     end
   end
+
+  describe "accept_group_invitation" do
+    test "returns an accepted invitation", %{user: user} do
+      member = insert(:member, user_id: user.id)
+      invitation = insert(:invitation, member: member)
+
+      query = """
+        mutation {
+          accept_group_invitation(invitation_id: #{invitation.id}) {
+            #{@invitation_fields}
+          }
+        }
+      """
+
+      resp =
+        user
+        |> create_resp(query)
+        |> Map.get("data")
+        |> Map.get("accept_group_invitation")
+
+      assert resp["id"]
+    end
+  end
 end

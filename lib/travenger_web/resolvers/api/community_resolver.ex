@@ -29,9 +29,25 @@ defmodule TravengerWeb.Api.CommunityResolver do
   end
 
   def join_group(params, %{context: %{current_user: user}}) do
-    with {:ok, member} <- Community.build_member_from_user(user.id),
+    with {:ok, member} <- Community.build_member_from_user(user),
          {:ok, group} <- find_group(params.group_id) do
       Community.join_group(member, group)
+    end
+  end
+
+  def accept_group_invitation(params, %{context: %{current_user: user}}) do
+    with {:ok, member} <- Community.build_member_from_user(user),
+         params <- Map.put(params, :id, params.invitation_id),
+         params <- Map.put(params, :member_id, member.id),
+         {:ok, invitation} <- find_invitation(params) do
+      Community.accept_invitation(invitation)
+    end
+  end
+
+  defp find_invitation(params) do
+    case Community.find_invitation(params) do
+      nil -> {:error, "invitation not found"}
+      inv -> {:ok, inv}
     end
   end
 
