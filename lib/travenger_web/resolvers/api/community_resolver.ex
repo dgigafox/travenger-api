@@ -28,6 +28,13 @@ defmodule TravengerWeb.Api.CommunityResolver do
     end
   end
 
+  def join_group(params, %{context: %{current_user: user}}) do
+    with {:ok, member} <- Community.build_member_from_user(user.id),
+         {:ok, group} <- find_group(params.group_id) do
+      Community.join_group(member, group)
+    end
+  end
+
   defp find_group(id) do
     case Community.get_group(id) do
       nil -> {:error, "group not found"}

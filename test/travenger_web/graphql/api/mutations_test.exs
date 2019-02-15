@@ -23,6 +23,12 @@ defmodule TravengerWeb.Graphql.Api.MutationsTest do
     inserted_at
   """
 
+  @join_request_fields """
+    id
+    status
+    inserted_at
+  """
+
   defp create_resp(user, query) do
     user
     |> build_user_conn(&build_conn/0, &put_req_header/3)
@@ -150,6 +156,28 @@ defmodule TravengerWeb.Graphql.Api.MutationsTest do
         |> create_resp(query)
         |> Map.get("data")
         |> Map.get("update_group")
+
+      assert resp["id"]
+    end
+  end
+
+  describe "join_group" do
+    test "returns a join request", %{user: user} do
+      group = insert(:group)
+
+      query = """
+        mutation {
+          join_group(group_id: #{group.id}) {
+            #{@join_request_fields}
+          }
+        }
+      """
+
+      resp =
+        user
+        |> create_resp(query)
+        |> Map.get("data")
+        |> Map.get("join_group")
 
       assert resp["id"]
     end

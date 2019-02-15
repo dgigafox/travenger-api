@@ -29,4 +29,16 @@ defmodule TravengerWeb.Api.CommunityTypes do
     field(:rejected_at, :naive_datetime)
     field(:inserted_at, :naive_datetime)
   end
+
+  object(:join_request) do
+    field(:id, :id)
+    field(:status, :join_request_status)
+    field(:requester, :member, resolve: assoc(:member))
+    field(:inserted_at, :naive_datetime)
+  end
+
+  object(:member) do
+    field(:id, :id)
+    field(:user_id, :integer)
+  end
 end
