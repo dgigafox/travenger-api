@@ -126,4 +126,32 @@ defmodule TravengerWeb.Graphql.Api.MutationsTest do
       assert resp["inserted_at"]
     end
   end
+
+  describe "update_group" do
+    test "returns an updated group", %{user: user} do
+      group = insert(:group)
+      member = insert(:member, user_id: user.id)
+      insert(:membership, role: :admin, member: member, group: group)
+
+      query = """
+        mutation {
+          update_group(
+            group_id: #{group.id}
+            name: "New #{group.name}",
+            description: "New #{group.description}"
+            ) {
+            #{@group_fields}
+          }
+        }
+      """
+
+      resp =
+        user
+        |> create_resp(query)
+        |> Map.get("data")
+        |> Map.get("update_group")
+
+      assert resp["id"]
+    end
+  end
 end

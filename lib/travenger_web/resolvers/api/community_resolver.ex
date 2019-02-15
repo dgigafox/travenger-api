@@ -15,6 +15,12 @@ defmodule TravengerWeb.Api.CommunityResolver do
     end
   end
 
+  def update_group(params, _) do
+    with {:ok, group} <- find_group(params.group_id) do
+      Community.update_group(group, params)
+    end
+  end
+
   def invite(params, _res) do
     with {:ok, member} <- Community.build_member_from_user(params.user_id),
          {:ok, group} <- find_group(params.group_id) do

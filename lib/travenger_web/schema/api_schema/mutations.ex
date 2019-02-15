@@ -27,5 +27,16 @@ defmodule TravengerWeb.ApiSchema.Mutations do
 
       resolve(&CommunityResolver.invite/2)
     end
+
+    field :update_group, :group do
+      middleware(AuthenticateUser)
+      middleware(RequireGroupAdmin)
+      arg(:group_id, non_null(:id))
+      arg(:name, :string)
+      arg(:description, :string)
+      arg(:image_url, :string)
+
+      resolve(&CommunityResolver.update_group/2)
+    end
   end
 end
