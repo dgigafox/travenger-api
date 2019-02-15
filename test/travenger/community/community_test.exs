@@ -145,7 +145,8 @@ defmodule Travenger.CommunityTest do
     end
 
     test "returns a membership", c do
-      assert Repo.get_by(Membership,
+      assert Repo.get_by(
+               Membership,
                member_id: c.invitation.member_id,
                group_id: c.invitation.group_id,
                role: :member

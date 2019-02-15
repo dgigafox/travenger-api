@@ -1,0 +1,36 @@
+version: '3.2'
+services:
+  db:
+    image: postgres
+    environment:
+       POSTGRES_USER: postgres
+       POSTGRES_PASSWORD: postgres
+
+
+  web:
+    build: .
+    volumes:
+      - type: bind
+        source: .
+        target: /app
+    environment:
+         POSTGRES_USER: postgres
+         POSTGRES_PASSWORD: postgres
+         POSTGRES_HOST: db
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db
+    command:
+      - ./run.sh
+
+  
+  test:
+    image: travenger-api_web
+    command: mix test
+    environment:
+    - MIX_ENV=test
+    volumes:
+    - web
+    links:
+      - db

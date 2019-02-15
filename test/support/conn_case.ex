@@ -27,6 +27,7 @@ defmodule TravengerWeb.ConnCase do
 
       # The default endpoint for testing
       @endpoint TravengerWeb.Endpoint
+      @api_graphql "/api/graph"
     end
   end
 
