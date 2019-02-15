@@ -2,6 +2,7 @@ defmodule TravengerWeb.Graphql.Api.MutationsTest do
   use TravengerWeb.ConnCase
 
   import Travenger.TestHelpers
+  import Travenger.Community.Factory
 
   alias Travenger.Account.Factory, as: Account
 
@@ -11,6 +12,15 @@ defmodule TravengerWeb.Graphql.Api.MutationsTest do
     id
     name
     description
+  """
+
+  @invitation_fields """
+    id
+    status
+    accepted_at
+    cancelled_at
+    rejected_at
+    inserted_at
   """
 
   defp create_resp(user, query) do
@@ -66,6 +76,54 @@ defmodule TravengerWeb.Graphql.Api.MutationsTest do
         |> Map.get("create_group")
 
       assert resp["id"]
+    end
+  end
+
+  describe "invite_to_group for non-admin user" do
+    test "returns an error", %{user: user} do
+      group = insert(:group)
+      member = insert(:member, user_id: user.id)
+      insert(:membership, role: :member, member: member, group: group)
+
+      query = """
+        mutation {
+          invite_to_group(user_id: #{user.id}, group_id: #{group.id}) {
+            #{@invitation_fields}
+          }
+        }
+      """
+
+      resp =
+        user
+        |> create_resp(query)
+        |> Map.get("errors")
+
+      assert hd(resp)["code"] == "not_authorized"
+    end
+  end
+
+  describe "invite_to_group" do
+    test "returns an invitation", %{user: user} do
+      group = insert(:group)
+      member = insert(:member, user_id: user.id)
+      insert(:membership, role: :admin, member: member, group: group)
+
+      query = """
+        mutation {
+          invite_to_group(user_id: #{user.id}, group_id: #{group.id}) {
+            #{@invitation_fields}
+          }
+        }
+      """
+
+      resp =
+        user
+        |> create_resp(query)
+        |> Map.get("data")
+        |> Map.get("invite_to_group")
+
+      assert resp["id"]
+      assert resp["inserted_at"]
     end
   end
 end

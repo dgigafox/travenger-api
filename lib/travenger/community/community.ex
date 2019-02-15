@@ -26,6 +26,13 @@ defmodule Travenger.Community do
     end
   end
 
+  def build_member_from_user(id) do
+    case get_member(id) do
+      nil -> Repo.insert(Member.changeset(%Member{}, %{user_id: id}))
+      member -> {:ok, member}
+    end
+  end
+
   def create_group(%Member{} = member, params) do
     Multi.new()
     |> Multi.insert(:group, Group.changeset(%Group{creator: member}, params))
@@ -62,6 +69,8 @@ defmodule Travenger.Community do
     |> where_user_id(params)
     |> Repo.one()
   end
+
+  def get_member(id), do: Repo.get(Member, id)
 
   def invite(%Member{} = member, %Group{} = group) do
     %Invitation{

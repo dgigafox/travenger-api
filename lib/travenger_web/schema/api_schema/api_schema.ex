@@ -17,6 +17,9 @@ defmodule TravengerWeb.ApiSchema do
 
   import_types(Api.CommunityTypes)
 
+  import_types(TravengerWeb.EnumTypes)
+  import_types(TravengerWeb.ScalarTypes)
+
   # check for N+1 queries in the resolvers using dataloader
   # https://hexdocs.pm/absinthe/ecto.html#content
 

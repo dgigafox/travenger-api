@@ -20,4 +20,13 @@ defmodule TravengerWeb.Api.CommunityTypes do
     field(:total_entries, :integer)
     field(:total_pages, :integer)
   end
+
+  object(:invitation) do
+    field(:id, :id)
+    field(:status, :invitation_status)
+    field(:accepted_at, :naive_datetime)
+    field(:cancelled_at, :naive_datetime)
+    field(:rejected_at, :naive_datetime)
+    field(:inserted_at, :naive_datetime)
+  end
 end
