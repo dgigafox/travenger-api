@@ -21,7 +21,7 @@ defmodule TravengerWeb.ApiSchema.Queries do
       arg(:id, non_null(:id))
 
       resolve(fn params, _ ->
-        Community.get_group(params.id)
+        {:ok, Community.get_group(params.id)}
       end)
     end
   end
