@@ -153,4 +153,31 @@ defmodule Travenger.CommunityTest do
              )
     end
   end
+
+  describe "accept_join_request/1" do
+    setup %{member: member} do
+      join_request = insert(:join_request, requester: member)
+      {:ok, accepted_join_request} = Community.accept_join_request(join_request)
+
+      %{
+        join_request: join_request,
+        accepted_join_request: accepted_join_request
+      }
+    end
+
+    test "returns an accepted join request", c do
+      assert c.join_request.id == c.accepted_join_request.id
+      assert c.accepted_join_request.status == :accepted
+      assert c.accepted_join_request.accepted_at
+    end
+
+    test "returns a membership", c do
+      assert Repo.get_by(
+               Membership,
+               member_id: c.join_request.requester_id,
+               group_id: c.join_request.group_id,
+               role: :member
+             )
+    end
+  end
 end

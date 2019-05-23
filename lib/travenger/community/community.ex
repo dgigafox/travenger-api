@@ -130,6 +130,25 @@ defmodule Travenger.Community do
     end
   end
 
+  def accept_join_request(%JoinRequest{} = join_request) do
+    Multi.new()
+    |> Multi.run(:member, &get_assoc(&1, join_request, :requester))
+    |> Multi.run(:group, &get_assoc(&1, join_request, :group))
+    |> Multi.run(:updated_request, &accept_join_request(&1, join_request))
+    |> Multi.run(:membership, &add_member(&1.member, &1.group))
+    |> Repo.transaction()
+    |> case do
+      {:ok, %{updated_request: join_request}} -> {:ok, join_request}
+      {:error, _, ch, _} -> {:error, ch}
+    end
+  end
+
+  def accept_join_request(_, join_request) do
+    join_request
+    |> JoinRequest.accept_changeset()
+    |> Repo.update()
+  end
+
   def find_invitation(params) do
     Invitation
     |> where_id(params)
