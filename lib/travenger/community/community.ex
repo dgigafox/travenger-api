@@ -156,6 +156,13 @@ defmodule Travenger.Community do
     |> Repo.one()
   end
 
+  def find_join_request(params) do
+    JoinRequest
+    |> where_id(params)
+    |> where_group_id(params)
+    |> Repo.one()
+  end
+
   defp accept_invitation(_, invitation) do
     invitation
     |> Invitation.accept_changeset()
