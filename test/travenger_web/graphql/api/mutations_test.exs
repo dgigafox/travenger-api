@@ -30,6 +30,12 @@ defmodule TravengerWeb.Graphql.Api.MutationsTest do
     inserted_at
   """
 
+  @event_fields """
+    id
+    title
+    description
+  """
+
   defp create_resp(user, query) do
     user
     |> build_user_conn(&build_conn/0, &put_req_header/3)
@@ -257,6 +263,29 @@ defmodule TravengerWeb.Graphql.Api.MutationsTest do
         |> Map.get("errors")
 
       assert resp["message"] == @unauthorized_msg
+    end
+  end
+
+  describe "create_event" do
+    test "returns a created event", %{user: user} do
+      query = """
+        mutation {
+          create_event(
+            title: "Event Title",
+            description: "Event Description"
+          ) {
+            #{@event_fields}
+          }
+        }
+      """
+
+      resp =
+        user
+        |> create_resp(query)
+        |> Map.get("data")
+        |> Map.get("create_event")
+
+      assert resp["id"]
     end
   end
 end

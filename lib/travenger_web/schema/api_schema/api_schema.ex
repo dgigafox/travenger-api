@@ -16,6 +16,7 @@ defmodule TravengerWeb.ApiSchema do
   import_types(ApiSchema.Mutations)
 
   import_types(Api.CommunityTypes)
+  import_types(Api.TravelTypes)
 
   import_types(TravengerWeb.EnumTypes)
   import_types(TravengerWeb.ScalarTypes)
