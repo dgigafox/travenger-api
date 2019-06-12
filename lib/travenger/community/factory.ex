@@ -6,6 +6,7 @@ defmodule Travenger.Community.Factory do
 
   alias Travenger.Community.Group
   alias Travenger.Community.Invitation
+  alias Travenger.Community.JoinRequest
   alias Travenger.Community.Member
   alias Travenger.Community.Membership
 
@@ -36,6 +37,13 @@ defmodule Travenger.Community.Factory do
   def invitation_factory do
     %Invitation{
       member: build(:member),
+      group: build(:group)
+    }
+  end
+
+  def join_request_factory do
+    %JoinRequest{
+      requester: build(:member),
       group: build(:group)
     }
   end

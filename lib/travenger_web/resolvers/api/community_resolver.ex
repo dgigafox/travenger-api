@@ -44,6 +44,20 @@ defmodule TravengerWeb.Api.CommunityResolver do
     end
   end
 
+  def accept_join_request(params, _context) do
+    with params <- Map.put(params, :id, params.join_request_id),
+         {:ok, join_req} <- find_join_request(params) do
+      Community.accept_join_request(join_req)
+    end
+  end
+
+  defp find_join_request(params) do
+    case Community.find_join_request(params) do
+      nil -> {:error, "join request not found"}
+      join_req -> {:ok, join_req}
+    end
+  end
+
   defp find_invitation(params) do
     case Community.find_invitation(params) do
       nil -> {:error, "invitation not found"}

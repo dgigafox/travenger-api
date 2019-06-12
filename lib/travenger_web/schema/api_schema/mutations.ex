@@ -52,5 +52,14 @@ defmodule TravengerWeb.ApiSchema.Mutations do
 
       resolve(&CommunityResolver.accept_group_invitation/2)
     end
+
+    field :accept_join_request, :join_request do
+      middleware(AuthenticateUser)
+      middleware(RequireGroupAdmin)
+      arg(:group_id, non_null(:id))
+      arg(:join_request_id, non_null(:id))
+
+      resolve(&CommunityResolver.accept_join_request/2)
+    end
   end
 end

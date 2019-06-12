@@ -7,6 +7,7 @@ defmodule TravengerWeb.Graphql.Api.MutationsTest do
   alias Travenger.Account.Factory, as: Account
 
   @unauthenticated_msg "Not authenticated"
+  @unauthorized_msg "Not authorized"
 
   @group_fields """
     id
@@ -42,9 +43,11 @@ defmodule TravengerWeb.Graphql.Api.MutationsTest do
     |> json_response(200)
   end
 
-  setup do
-    {:ok, %{user: Account.insert(:user)}}
+  defp create_user_account(_) do
+    {:ok, user: Account.insert(:user)}
   end
+
+  setup [:create_user_account]
 
   describe "create_group for non authenticated user" do
     test "returns error" do
@@ -203,6 +206,57 @@ defmodule TravengerWeb.Graphql.Api.MutationsTest do
         |> Map.get("accept_group_invitation")
 
       assert resp["id"]
+    end
+  end
+
+  describe "accept_join_request" do
+    test "returns an accepted join request", %{user: user} do
+      approver = insert(:member, user_id: user.id)
+      requester = insert(:member, user_id: Account.insert(:user).id)
+      join_req = insert(:join_request, requester: requester, status: :pending)
+      insert(:membership, group: join_req.group, member: approver, role: :admin)
+
+      query = """
+        mutation {
+          accept_join_request(
+            join_request_id: #{join_req.id},
+            group_id: #{join_req.group_id}
+            ) {
+            #{@join_request_fields}
+          }
+        }
+      """
+
+      resp =
+        user
+        |> create_resp(query)
+        |> Map.get("data")
+        |> Map.get("accept_join_request")
+
+      assert resp["id"]
+    end
+
+    test "returns error when the user is not an admin of the group", c do
+      requester = insert(:member, user_id: Account.insert(:user).id)
+      join_req = insert(:join_request, requester: requester, status: :pending)
+
+      query = """
+        mutation {
+          accept_join_request(
+            join_request_id: #{join_req.id},
+            group_id: #{join_req.group_id}
+            ) {
+            #{@join_request_fields}
+          }
+        }
+      """
+
+      [resp] =
+        c.user
+        |> create_resp(query)
+        |> Map.get("errors")
+
+      assert resp["message"] == @unauthorized_msg
     end
   end
 end
