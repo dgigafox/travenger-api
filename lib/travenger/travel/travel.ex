@@ -5,6 +5,7 @@ defmodule Travenger.Travel do
 
   import Ecto.Query, warn: false
   import Travenger.Helpers.Queries
+  import Travenger.Travel.Helpers.Queries
 
   alias Travenger.Account.User
   alias Travenger.Repo
@@ -25,6 +26,14 @@ defmodule Travenger.Travel do
     |> Repo.one()
   end
 
+  def find_event(params) do
+    Event
+    |> join_event_organizer(params)
+    |> where_id(params)
+    |> where_organizer_user_id(params)
+    |> Repo.one()
+  end
+
   def create_organizer(nil, params) do
     %Organizer{}
     |> Organizer.changeset(params)
@@ -35,5 +44,11 @@ defmodule Travenger.Travel do
     %Event{organizer: organizer}
     |> Event.changeset(params)
     |> Repo.insert()
+  end
+
+  def update_event(%Event{} = event, params) do
+    event
+    |> Event.changeset(params)
+    |> Repo.update()
   end
 end

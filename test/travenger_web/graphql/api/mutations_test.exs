@@ -4,7 +4,8 @@ defmodule TravengerWeb.Graphql.Api.MutationsTest do
   import Travenger.TestHelpers
   import Travenger.Community.Factory
 
-  alias Travenger.Account.Factory, as: Account
+  alias Travenger.Account.Factory, as: AccountFactory
+  alias Travenger.Travel.Factory, as: TravelFactory
 
   @unauthenticated_msg "Not authenticated"
   @unauthorized_msg "Not authorized"
@@ -50,7 +51,7 @@ defmodule TravengerWeb.Graphql.Api.MutationsTest do
   end
 
   defp create_user_account(_) do
-    {:ok, user: Account.insert(:user)}
+    {:ok, user: AccountFactory.insert(:user)}
   end
 
   setup [:create_user_account]
@@ -218,7 +219,7 @@ defmodule TravengerWeb.Graphql.Api.MutationsTest do
   describe "accept_join_request" do
     test "returns an accepted join request", %{user: user} do
       approver = insert(:member, user_id: user.id)
-      requester = insert(:member, user_id: Account.insert(:user).id)
+      requester = insert(:member, user_id: AccountFactory.insert(:user).id)
       join_req = insert(:join_request, requester: requester, status: :pending)
       insert(:membership, group: join_req.group, member: approver, role: :admin)
 
@@ -243,7 +244,7 @@ defmodule TravengerWeb.Graphql.Api.MutationsTest do
     end
 
     test "returns error when the user is not an admin of the group", c do
-      requester = insert(:member, user_id: Account.insert(:user).id)
+      requester = insert(:member, user_id: AccountFactory.insert(:user).id)
       join_req = insert(:join_request, requester: requester, status: :pending)
 
       query = """
@@ -286,6 +287,56 @@ defmodule TravengerWeb.Graphql.Api.MutationsTest do
         |> Map.get("create_event")
 
       assert resp["id"]
+    end
+  end
+
+  describe "update_event" do
+    test "returns an updated event", %{user: user} do
+      organizer = TravelFactory.insert(:organizer, user_id: user.id)
+      event = TravelFactory.insert(:event, organizer: organizer)
+
+      query = update_event_query(event)
+
+      resp =
+        user
+        |> create_resp(query)
+        |> Map.get("data")
+        |> Map.get("update_event")
+
+      assert resp["id"]
+    end
+
+    test "returns error when user is not the organizer", %{user: user} do
+      organizer =
+        TravelFactory.insert(
+          :organizer,
+          user_id: AccountFactory.insert(:user).id
+        )
+
+      event = TravelFactory.insert(:event, organizer: organizer)
+
+      query = update_event_query(event)
+
+      [resp] =
+        user
+        |> create_resp(query)
+        |> Map.get("errors")
+
+      assert resp["message"] == @unauthorized_msg
+    end
+
+    defp update_event_query(event) do
+      """
+        mutation {
+          update_event(
+            event_id: #{event.id},
+            title: "New Title",
+            description: "New Description"
+          ) {
+            #{@event_fields}
+          }
+        }
+      """
     end
   end
 end
