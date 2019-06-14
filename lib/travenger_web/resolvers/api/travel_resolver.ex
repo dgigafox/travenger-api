@@ -10,4 +10,17 @@ defmodule TravengerWeb.Api.TravelResolver do
       Travel.create_event(organizer, params)
     end
   end
+
+  def update_event(params, _context) do
+    with {:ok, event} <- find_event(Map.put(params, :id, params.event_id)) do
+      Travel.update_event(event, params)
+    end
+  end
+
+  defp find_event(params) do
+    case Travel.find_event(params) do
+      nil -> {:error, "event not found"}
+      event -> {:ok, event}
+    end
+  end
 end

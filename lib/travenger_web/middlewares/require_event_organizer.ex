@@ -1,11 +1,11 @@
-defmodule TravengerWeb.Middlewares.RequireGroupAdmin do
+defmodule TravengerWeb.Middlewares.RequireEventOrganizer do
   @moduledoc """
-  Absinthe Middleware that ensures user is the admin of the group
+  Absinthe Middleware that ensures user the organizer of the event
   """
   @behaviour Absinthe.Middleware
 
   alias Absinthe.Resolution
-  alias Travenger.Community
+  alias Travenger.Travel
 
   @error_map %{
     code: :not_authorized,
@@ -15,9 +15,9 @@ defmodule TravengerWeb.Middlewares.RequireGroupAdmin do
 
   def call(%{arguments: args, context: %{current_user: user}} = resolution, _config) do
     args
+    |> Map.put(:id, args.event_id)
     |> Map.put(:user_id, user.id)
-    |> Map.put(:role, :admin)
-    |> Community.find_membership()
+    |> Travel.find_event()
     |> case do
       nil -> Resolution.put_result(resolution, {:error, @error_map})
       _ -> resolution

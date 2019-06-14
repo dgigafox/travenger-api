@@ -1,6 +1,8 @@
 defmodule Travenger.TravelTest do
   use Travenger.DataCase
 
+  import Travenger.Travel.Factory
+
   alias Travenger.Account.Factory, as: AccountFactory
   alias Travenger.Travel
 
@@ -16,6 +18,22 @@ defmodule Travenger.TravelTest do
       {:ok, event} = Travel.create_event(organizer, params)
 
       assert event.id
+    end
+  end
+
+  describe "update_event" do
+    test "can update event", %{organizer: organizer} do
+      event = insert(:event, organizer: organizer)
+
+      params = %{
+        title: "New Test Event",
+        description: "New Test Event Description"
+      }
+
+      {:ok, event} = Travel.update_event(event, params)
+
+      assert event.title == params.title
+      assert event.description == params.description
     end
   end
 

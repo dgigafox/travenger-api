@@ -8,6 +8,7 @@ defmodule TravengerWeb.ApiSchema.Mutations do
   alias TravengerWeb.Api.CommunityResolver
   alias TravengerWeb.Api.TravelResolver
   alias TravengerWeb.Middlewares.AuthenticateUser
+  alias TravengerWeb.Middlewares.RequireEventOrganizer
   alias TravengerWeb.Middlewares.RequireGroupAdmin
 
   object :mutations do
@@ -69,6 +70,17 @@ defmodule TravengerWeb.ApiSchema.Mutations do
       arg(:description, :string)
 
       resolve(&TravelResolver.create_event/2)
+    end
+
+    field :update_event, :event do
+      middleware(AuthenticateUser)
+      middleware(RequireEventOrganizer)
+
+      arg(:event_id, non_null(:id))
+      arg(:title, :string)
+      arg(:description, :string)
+
+      resolve(&TravelResolver.update_event/2)
     end
   end
 end
