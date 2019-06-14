@@ -6,6 +6,7 @@ defmodule TravengerWeb.ApiSchema.Mutations do
   use Absinthe.Schema.Notation
 
   alias TravengerWeb.Api.CommunityResolver
+  alias TravengerWeb.Api.TravelResolver
   alias TravengerWeb.Middlewares.AuthenticateUser
   alias TravengerWeb.Middlewares.RequireGroupAdmin
 
@@ -60,6 +61,14 @@ defmodule TravengerWeb.ApiSchema.Mutations do
       arg(:join_request_id, non_null(:id))
 
       resolve(&CommunityResolver.accept_join_request/2)
+    end
+
+    field :create_event, :event do
+      middleware(AuthenticateUser)
+      arg(:title, non_null(:string))
+      arg(:description, :string)
+
+      resolve(&TravelResolver.create_event/2)
     end
   end
 end
