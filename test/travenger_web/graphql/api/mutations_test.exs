@@ -5,6 +5,7 @@ defmodule TravengerWeb.Graphql.Api.MutationsTest do
   import Travenger.Community.Factory
 
   alias Travenger.Account.Factory, as: AccountFactory
+
   alias Travenger.Travel.Factory, as: TravelFactory
 
   @unauthenticated_msg "Not authenticated"
@@ -17,6 +18,15 @@ defmodule TravengerWeb.Graphql.Api.MutationsTest do
   """
 
   @invitation_fields """
+    id
+    status
+    accepted_at
+    cancelled_at
+    rejected_at
+    inserted_at
+  """
+
+  @event_invitation_fields """
     id
     status
     accepted_at
@@ -337,6 +347,39 @@ defmodule TravengerWeb.Graphql.Api.MutationsTest do
           }
         }
       """
+    end
+  end
+
+  describe "invite_to_event" do
+    setup do
+      user = AccountFactory.insert(:user)
+      joiner = TravelFactory.insert(:joiner, user_id: user.id)
+
+      %{joiner: joiner}
+    end
+
+    test "returns an invitation", %{user: user, joiner: joiner} do
+      organizer = TravelFactory.insert(:organizer, user_id: user.id)
+      event = TravelFactory.insert(:event, organizer: organizer)
+
+      query = """
+        mutation {
+          invite_to_event(
+            event_id: #{event.id},
+            joiner_id: #{joiner.id}
+          ) {
+            #{@event_invitation_fields}
+          }
+        }
+      """
+
+      resp =
+        user
+        |> create_resp(query)
+        |> Map.get("data")
+        |> Map.get("invite_to_event")
+
+      assert resp["id"]
     end
   end
 end

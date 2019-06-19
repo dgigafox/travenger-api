@@ -10,6 +10,8 @@ defmodule Travenger.Travel do
   alias Travenger.Account.User
   alias Travenger.Repo
   alias Travenger.Travel.Event
+  alias Travenger.Travel.Invitation
+  alias Travenger.Travel.Joiner
   alias Travenger.Travel.Organizer
 
   def build_organizer_from_user(%User{} = user) do
@@ -20,8 +22,23 @@ defmodule Travenger.Travel do
     |> create_organizer(params)
   end
 
+  def build_joiner_from_user(%User{} = user) do
+    params = %{user_id: user.id}
+
+    params
+    |> find_joiner()
+    |> create_joiner(params)
+  end
+
   def find_organizer(params) do
     Organizer
+    |> where_user_id(params)
+    |> Repo.one()
+  end
+
+  def find_joiner(params) do
+    Joiner
+    |> where_id(params)
     |> where_user_id(params)
     |> Repo.one()
   end
@@ -30,6 +47,7 @@ defmodule Travenger.Travel do
     Event
     |> join_event_organizer(params)
     |> where_id(params)
+    |> where_organizer(params)
     |> where_organizer_user_id(params)
     |> Repo.one()
   end
@@ -37,6 +55,14 @@ defmodule Travenger.Travel do
   def create_organizer(nil, params) do
     %Organizer{}
     |> Organizer.changeset(params)
+    |> Repo.insert()
+  end
+
+  def create_organizer(organizer, _), do: {:ok, organizer}
+
+  def create_joiner(nil, params) do
+    %Joiner{}
+    |> Joiner.changeset(params)
     |> Repo.insert()
   end
 
@@ -50,5 +76,14 @@ defmodule Travenger.Travel do
     event
     |> Event.changeset(params)
     |> Repo.update()
+  end
+
+  def invite(%Event{} = event, %Joiner{} = joiner) do
+    %Invitation{
+      event: event,
+      joiner: joiner
+    }
+    |> Invitation.changeset()
+    |> Repo.insert()
   end
 end
