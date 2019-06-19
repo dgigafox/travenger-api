@@ -5,10 +5,17 @@ defmodule Travenger.Travel.Factory do
   use ExMachina.Ecto, repo: Travenger.Repo
 
   alias Travenger.Travel.Event
+  alias Travenger.Travel.Joiner
   alias Travenger.Travel.Organizer
 
   def organizer_factory do
     %Organizer{
+      user_id: sequence(:user_id, & &1)
+    }
+  end
+
+  def joiner_factory do
+    %Joiner{
       user_id: sequence(:user_id, & &1)
     }
   end

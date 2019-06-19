@@ -9,6 +9,12 @@ defmodule Travenger.Travel.Helpers.Queries do
     join(query, :inner, [q], _ in assoc(q, :organizer))
   end
 
+  def where_organizer(query, %{organizer_id: oid}) do
+    where(query, [e], e.organizer_id == ^oid)
+  end
+
+  def where_organizer(query, _), do: query
+
   def where_organizer_user_id(query, %{user_id: uid}) do
     where(query, [_e, o], o.user_id == ^uid)
   end

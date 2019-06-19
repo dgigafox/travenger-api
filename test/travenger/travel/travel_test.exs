@@ -6,7 +6,7 @@ defmodule Travenger.TravelTest do
   alias Travenger.Account.Factory, as: AccountFactory
   alias Travenger.Travel
 
-  setup [:build_organizer_from_user]
+  setup [:build_organizer_from_user, :build_joiner_from_user]
 
   describe "create_event" do
     test "can create event", %{organizer: organizer} do
@@ -37,6 +37,19 @@ defmodule Travenger.TravelTest do
     end
   end
 
+  describe "invite" do
+    test "can invite a joiner", %{joiner: joiner, organizer: organizer} do
+      event = insert(:event, organizer: organizer)
+
+      {:ok, invitation} = Travel.invite(event, joiner)
+
+      assert invitation.id
+      assert invitation.status == :pending
+      assert invitation.joiner_id == joiner.id
+      assert invitation.event_id == event.id
+    end
+  end
+
   defp build_organizer_from_user(_) do
     organizer =
       :user
@@ -45,5 +58,15 @@ defmodule Travenger.TravelTest do
       |> elem(1)
 
     {:ok, organizer: organizer}
+  end
+
+  defp build_joiner_from_user(_) do
+    joiner =
+      :user
+      |> AccountFactory.insert()
+      |> Travel.build_joiner_from_user()
+      |> elem(1)
+
+    {:ok, joiner: joiner}
   end
 end

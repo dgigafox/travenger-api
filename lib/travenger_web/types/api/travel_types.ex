@@ -13,6 +13,15 @@ defmodule TravengerWeb.Api.TravelTypes do
     field(:organizer, :organizer, resolve: assoc(:organizer))
   end
 
+  object(:event_invitation) do
+    field(:id, :id)
+    field(:status, :invitation_status)
+    field(:accepted_at, :naive_datetime)
+    field(:cancelled_at, :naive_datetime)
+    field(:rejected_at, :naive_datetime)
+    field(:inserted_at, :naive_datetime)
+  end
+
   object(:organizer) do
     field(:id, :id)
     field(:user_id, :integer)
