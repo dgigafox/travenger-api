@@ -9,6 +9,8 @@ defmodule Travenger.Helpers.Queries do
     where(query, [q], q.id == ^id)
   end
 
+  def where_id(query, _), do: query
+
   def where_user_id(query, %{user_id: user_id}) do
     where(query, [q], q.user_id == ^user_id)
   end

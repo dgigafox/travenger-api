@@ -62,7 +62,7 @@ defmodule Travenger.Travel do
 
   def create_joiner(nil, params) do
     %Joiner{}
-    |> Organizer.changeset(params)
+    |> Joiner.changeset(params)
     |> Repo.insert()
   end
 

@@ -1,4 +1,7 @@
 defmodule Travenger.Travel.Joiner do
+  @moduledoc """
+  Joiner schema
+  """
   use Ecto.Schema
   import Ecto.Changeset
 

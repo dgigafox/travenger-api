@@ -1,4 +1,7 @@
 defmodule Travenger.Travel.Invitation do
+  @moduledoc """
+  Invitation schema
+  """
   use Ecto.Schema
   import Ecto.Changeset
 
