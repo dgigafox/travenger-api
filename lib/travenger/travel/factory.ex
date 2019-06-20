@@ -5,6 +5,7 @@ defmodule Travenger.Travel.Factory do
   use ExMachina.Ecto, repo: Travenger.Repo
 
   alias Travenger.Travel.Event
+  alias Travenger.Travel.Invitation
   alias Travenger.Travel.Joiner
   alias Travenger.Travel.Organizer
 
@@ -27,6 +28,13 @@ defmodule Travenger.Travel.Factory do
       title: title,
       description: "This is a sample travel group",
       organizer: build(:organizer)
+    }
+  end
+
+  def event_invitation_factory do
+    %Invitation{
+      joiner: build(:joiner),
+      event: build(:event)
     }
   end
 end

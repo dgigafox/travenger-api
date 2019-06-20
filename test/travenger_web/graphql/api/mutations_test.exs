@@ -382,4 +382,44 @@ defmodule TravengerWeb.Graphql.Api.MutationsTest do
       assert resp["id"]
     end
   end
+
+  describe "accept_event_invitation" do
+    test "returns an accepted invitation", %{user: user} do
+      joiner = TravelFactory.insert(:joiner, user_id: user.id)
+
+      organizer =
+        TravelFactory.insert(
+          :organizer,
+          user_id: AccountFactory.insert(:user).id
+        )
+
+      event = TravelFactory.insert(:event, organizer: organizer)
+
+      invitation =
+        TravelFactory.insert(
+          :event_invitation,
+          event: event,
+          joiner: joiner
+        )
+
+      query = """
+        mutation {
+          accept_event_invitation(
+            invitation_id: #{invitation.id}
+          ) {
+            #{@event_invitation_fields}
+          }
+        }
+      """
+
+      resp =
+        user
+        |> create_resp(query)
+        |> Map.get("data")
+        |> Map.get("accept_event_invitation")
+
+      assert resp["id"]
+      assert resp["status"] == "ACCEPTED"
+    end
+  end
 end

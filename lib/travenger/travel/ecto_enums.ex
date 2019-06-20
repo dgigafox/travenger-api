@@ -7,3 +7,9 @@ defenum(
   cancelled: 2,
   rejected: 3
 )
+
+defenum(
+  EventRegistrationStatusEnum,
+  confirmed: 0,
+  cancelled: 1
+)

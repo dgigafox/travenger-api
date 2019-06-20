@@ -15,6 +15,10 @@ defmodule Travenger.Travel.Helpers.Queries do
 
   def where_organizer(query, _), do: query
 
+  def where_joiner(query, %{joiner_id: jid}) do
+    where(query, [q], q.joiner_id == ^jid)
+  end
+
   def where_organizer_user_id(query, %{user_id: uid}) do
     where(query, [_e, o], o.user_id == ^uid)
   end

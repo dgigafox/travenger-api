@@ -92,5 +92,13 @@ defmodule TravengerWeb.ApiSchema.Mutations do
 
       resolve(&TravelResolver.invite/2)
     end
+
+    field :accept_event_invitation, :event_invitation do
+      middleware(AuthenticateUser)
+
+      arg(:invitation_id, non_null(:id))
+
+      resolve(&TravelResolver.accept_event_invitation/2)
+    end
   end
 end

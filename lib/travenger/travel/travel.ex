@@ -5,14 +5,17 @@ defmodule Travenger.Travel do
 
   import Ecto.Query, warn: false
   import Travenger.Helpers.Queries
+  import Travenger.Helpers.Utils
   import Travenger.Travel.Helpers.Queries
 
+  alias Ecto.Multi
   alias Travenger.Account.User
   alias Travenger.Repo
   alias Travenger.Travel.Event
   alias Travenger.Travel.Invitation
   alias Travenger.Travel.Joiner
   alias Travenger.Travel.Organizer
+  alias Travenger.Travel.Registration
 
   def build_organizer_from_user(%User{} = user) do
     params = %{user_id: user.id}
@@ -66,6 +69,8 @@ defmodule Travenger.Travel do
     |> Repo.insert()
   end
 
+  def create_joiner(joiner, _), do: {:ok, joiner}
+
   def create_event(%Organizer{} = organizer, params) do
     %Event{organizer: organizer}
     |> Event.changeset(params)
@@ -85,5 +90,44 @@ defmodule Travenger.Travel do
     }
     |> Invitation.changeset()
     |> Repo.insert()
+  end
+
+  def accept_invitation(%Invitation{} = invitation) do
+    Multi.new()
+    |> Multi.run(:event, &get_assoc(&1, invitation, :event))
+    |> Multi.run(:participant, &get_assoc(&1, invitation, :joiner))
+    |> Multi.run(:updated_invitation, &accept_invitation(&1, invitation))
+    |> Multi.run(:registration, &register(&1.event, &1.participant))
+    |> Repo.transaction()
+    |> case do
+      {:ok, %{updated_invitation: inv}} -> {:ok, inv}
+      {:error, _, ch, _} -> {:error, ch}
+    end
+  end
+
+  def register(%Event{} = event, %Joiner{} = participant) do
+    %Registration{
+      event: event,
+      participant: participant
+    }
+    |> Registration.changeset()
+    |> Repo.insert()
+  end
+
+  def find_invitation(params) do
+    Invitation
+    |> where_id(params)
+    |> where_joiner(params)
+    |> Repo.one()
+  end
+
+  defp accept_invitation(_, %Invitation{} = invitation) do
+    invitation
+    |> Invitation.accept_changeset()
+    |> Repo.update()
+  end
+
+  defp get_assoc(_, struct, key) do
+    get_assoc(struct, key)
   end
 end

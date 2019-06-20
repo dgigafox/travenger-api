@@ -29,6 +29,24 @@ defmodule TravengerWeb.Api.TravelResolver do
     end
   end
 
+  def accept_event_invitation(params, %{context: %{current_user: user}}) do
+    with {:ok, joiner} <- Travel.build_joiner_from_user(user),
+         {:ok, inv} <-
+           find_invitation(%{
+             id: params.invitation_id,
+             joiner_id: joiner.id
+           }) do
+      Travel.accept_invitation(inv)
+    end
+  end
+
+  def find_invitation(params) do
+    case Travel.find_invitation(params) do
+      nil -> {:error, "invitation not found"}
+      inv -> {:ok, inv}
+    end
+  end
+
   defp find_joiner(params) do
     case Travel.find_joiner(params) do
       nil -> {:error, "joiner not found"}
