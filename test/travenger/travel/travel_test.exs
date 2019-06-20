@@ -4,7 +4,9 @@ defmodule Travenger.TravelTest do
   import Travenger.Travel.Factory
 
   alias Travenger.Account.Factory, as: AccountFactory
+  alias Travenger.Repo
   alias Travenger.Travel
+  alias Travenger.Travel.Registration
 
   setup [:build_organizer_from_user, :build_joiner_from_user]
 
@@ -47,6 +49,35 @@ defmodule Travenger.TravelTest do
       assert invitation.status == :pending
       assert invitation.joiner_id == joiner.id
       assert invitation.event_id == event.id
+    end
+  end
+
+  describe "accept_invitation" do
+    setup %{organizer: organizer, joiner: joiner} do
+      event = insert(:event, organizer: organizer)
+      invitation = insert(:event_invitation, event: event, joiner: joiner)
+
+      {:ok, invitation} = Travel.accept_invitation(invitation)
+
+      %{
+        invitation: invitation,
+        event: event,
+        joiner: joiner
+      }
+    end
+
+    test "returns an accepted invitation", c do
+      assert c.invitation.status == :accepted
+      assert c.invitation.joiner.id == c.joiner.id
+      assert c.invitation.event.id == c.event.id
+    end
+
+    test "returns a confirmed registration", %{invitation: invitation} do
+      assert Repo.get_by(Registration,
+               event_id: invitation.event.id,
+               participant_id: invitation.joiner.id,
+               status: :confirmed
+             )
     end
   end
 
