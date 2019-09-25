@@ -55,6 +55,10 @@ defmodule Travenger.Travel do
     |> Repo.one()
   end
 
+  def list_events(params \\ %{}) do
+    Repo.paginate(Event, params)
+  end
+
   def create_organizer(nil, params) do
     %Organizer{}
     |> Organizer.changeset(params)

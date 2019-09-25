@@ -39,6 +39,14 @@ defmodule Travenger.TravelTest do
     end
   end
 
+  describe "list_events" do
+    test "can list events" do
+      insert_list(3, :event)
+      %{entries: entries, page_number: 1} = Travel.list_events()
+      refute Enum.empty?(entries)
+    end
+  end
+
   describe "invite" do
     test "can invite a joiner", %{joiner: joiner, organizer: organizer} do
       event = insert(:event, organizer: organizer)

@@ -28,8 +28,9 @@ defmodule TravengerWeb do
 
   def view do
     quote do
-      use Phoenix.View, root: "lib/travenger_web/templates",
-                        namespace: TravengerWeb
+      use Phoenix.View,
+        root: "lib/travenger_web/templates",
+        namespace: TravengerWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 2, view_module: 1]
@@ -40,6 +41,8 @@ defmodule TravengerWeb do
       import TravengerWeb.Router.Helpers
       import TravengerWeb.ErrorHelpers
       import TravengerWeb.Gettext
+
+      alias TravengerWeb.Router.Helpers, as: Routes
     end
   end
 

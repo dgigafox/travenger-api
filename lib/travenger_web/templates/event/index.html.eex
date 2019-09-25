@@ -1,0 +1,53 @@
+<section>
+  <div class="banner">
+    <img src="<%= Routes.static_path(@conn, "/images/scenery1.jpg") %>" class="img-fluid" alt="Responsive image">
+
+        <div class="search-bar input-group md-form form-sm form-2">
+          <input class="form-control my-0 py-1 red-border" type="text" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <span class="input-group-text red lighten-3" id="basic-text1"><i class="fas fa-search text-grey"
+            aria-hidden="true"></i></span>
+          </div>
+        </div>
+
+  </div>
+  <div class="container-fluid">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" href="#all-events" data-toggle="tab">All</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#friendly-events" data-toggle="tab">Friendly</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#your-events" data-toggle="tab">Yours</a>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+      <div class="tab-pane active" id="all-events">
+        <div class="col-md-9">
+          <h1 class="all-events-heading">All Events</h1><hr/>
+            <%= for event <- @events do %>
+                <div class="col-sm-4 py-sm-3 float-left">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><%=event.title%></h5>
+                            <p class="card-text"><%=event.description%></p>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+      </div>
+
+      <div class="tab-pane" id="friendly-events">
+        My Friend's Events
+      </div>
+
+      <div class="tab-pane" id="your-events">
+        Your Events
+      </div>
+    </div>
+  </div>
+</section>
