@@ -6,8 +6,8 @@ defmodule Travenger.Seeds.DatabaseSeederTest do
 
   alias Travenger.Account.Factory, as: AccountFactory
   alias Travenger.Account.User
-  alias Travenger.Travel.Organizer
   alias Travenger.Travel.Event
+  alias Travenger.Travel.Organizer
 
   describe "creates dummy records" do
     test "run/0" do
