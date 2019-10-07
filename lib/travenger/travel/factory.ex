@@ -4,6 +4,7 @@ defmodule Travenger.Travel.Factory do
   """
   use ExMachina.Ecto, repo: Travenger.Repo
 
+  alias Travenger.Account.Factory, as: Account
   alias Travenger.Travel.Event
   alias Travenger.Travel.Invitation
   alias Travenger.Travel.Joiner
@@ -11,7 +12,7 @@ defmodule Travenger.Travel.Factory do
 
   def organizer_factory do
     %Organizer{
-      user_id: sequence(:user_id, & &1)
+      user_id: Account.insert(:user).id
     }
   end
 
